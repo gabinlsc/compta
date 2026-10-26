@@ -30,6 +30,10 @@ npm test             # unitaires + parcours, CSP, accessibilité
 | `deploy.sh`, `deploy/` | script de déploiement, en-têtes nginx (CSP, cache) |
 | `docs/` | procédures (mise à jour annuelle, données à vérifier) |
 
+## Marque
+
+Le site suit le kit de marque StudioGLSC (https://studio.glsc.fr/marque/) : monogramme du kit tel quel (jamais redessiné ni recoloré), palette (bleu #2447D6, encre, bleu pâle, fonds), Inter Display 700 pour les titres et Inter 400/500/600 pour les textes. En thème sombre, le bleu reste le même ; les liens et textes bleus passent au bleu pâle de la palette pour rester lisibles.
+
 ## Déployer
 
 Sur un serveur Debian ou Ubuntu, en une commande (nginx, HTTPS, en-têtes, sauvegarde, retour arrière) :

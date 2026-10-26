@@ -6,24 +6,29 @@
 
 :root {
   color-scheme: light;
-  --bg: #f6f7f9; --surface: #fff; --surface-2: #eef1f6; --ink: #0b1220; --muted: #4d586d; --line: #e1e5ed; --line-strong: #cfd5e1;
-  --accent: #2447d6; --accent-strong: #1b37b0; --accent-soft: #e9eefe; --accent-ink: #fff; --ok: #107a57; --warn-bg: #fff6df; --warn-ink: #5b4300; --warn-line: #ecd48b;
-  --nav: rgba(246, 247, 249, .88); --shadow: 0 10px 30px -12px rgba(11, 18, 32, .18), 0 2px 6px rgba(11, 18, 32, .05);
-  --radius: 14px; --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; --font-display: "Inter Display", "Inter", system-ui, sans-serif;
+  /* Palette du kit de marque StudioGLSC (https://studio.glsc.fr/marque/) : bleu 60 %, blanc et fonds 30 %, encre 10 %. */
+  --bg: #f6f7f9; --surface: #ffffff; --surface-2: #eef1f6; --ink: #0b1220; --muted: #566074; --line: #e1e5ed; --line-strong: #cfd5e1;
+  --accent: #2447d6; --accent-strong: #1b37b0; --accent-soft: #e9eefe; --accent-ink: #ffffff; --link: #2447d6; --ok: #107a57;
+  --warn-bg: #fff6df; --warn-ink: #5b4300; --warn-line: #ecd48b;
+  --nav: rgba(246, 247, 249, .86); --shadow-sm: 0 1px 2px rgba(11, 18, 32, .06), 0 1px 1px rgba(11, 18, 32, .04);
+  --shadow: 0 10px 30px -12px rgba(11, 18, 32, .18), 0 2px 6px rgba(11, 18, 32, .05);
+  --radius: 16px; --radius-sm: 10px; --radius-lg: 24px;
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; --font-display: "Inter Display", "Inter", system-ui, sans-serif;
 }
+/* Thème sombre : le bleu de la marque reste le même (#2447d6) pour les fonds et boutons ; les liens et textes bleus passent au bleu pâle de la palette pour rester lisibles. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --bg: #0a0f1c; --surface: #111829; --surface-2: #172037; --ink: #edf0f7; --muted: #a3aec4; --line: #202a42; --line-strong: #2c3857;
-    --accent: #8fa6ff; --accent-strong: #b3c2ff; --accent-soft: #16213f; --accent-ink: #0a0f1c; --ok: #4cc9a0; --warn-bg: #2a2209; --warn-ink: #f1dc9a; --warn-line: #5a4a14;
-    --nav: rgba(10, 15, 28, .86); --shadow: 0 14px 34px -14px rgba(0, 0, 0, .6);
+    --bg: #0a0f1c; --surface: #111829; --surface-2: #172037; --ink: #edf0f7; --muted: #9aa6bd; --line: #202a42; --line-strong: #2c3857;
+    --accent-soft: #16213f; --link: #e9eefe; --ok: #4cc9a0; --warn-bg: #2a2209; --warn-ink: #f1dc9a; --warn-line: #5a4a14;
+    --nav: rgba(10, 15, 28, .82); --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4); --shadow: 0 14px 34px -14px rgba(0, 0, 0, .6), 0 2px 6px rgba(0, 0, 0, .3);
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0a0f1c; --surface: #111829; --surface-2: #172037; --ink: #edf0f7; --muted: #a3aec4; --line: #202a42; --line-strong: #2c3857;
-  --accent: #8fa6ff; --accent-strong: #b3c2ff; --accent-soft: #16213f; --accent-ink: #0a0f1c; --ok: #4cc9a0; --warn-bg: #2a2209; --warn-ink: #f1dc9a; --warn-line: #5a4a14;
-  --nav: rgba(10, 15, 28, .86); --shadow: 0 14px 34px -14px rgba(0, 0, 0, .6);
+  --bg: #0a0f1c; --surface: #111829; --surface-2: #172037; --ink: #edf0f7; --muted: #9aa6bd; --line: #202a42; --line-strong: #2c3857;
+  --accent-soft: #16213f; --link: #e9eefe; --ok: #4cc9a0; --warn-bg: #2a2209; --warn-ink: #f1dc9a; --warn-line: #5a4a14;
+  --nav: rgba(10, 15, 28, .82); --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4); --shadow: 0 14px 34px -14px rgba(0, 0, 0, .6), 0 2px 6px rgba(0, 0, 0, .3);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -31,8 +36,9 @@ html { scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 1.0625rem; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 h1, h2, h3, p, ul, ol, figure { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
-a { color: var(--accent); text-underline-offset: 3px; }
+a { color: var(--link); text-underline-offset: 3px; }
 a:hover { color: var(--accent-strong); }
+:root[data-theme="dark"] a:hover { color: #fff; }
 img, svg { display: block; max-width: 100%; }
 [hidden] { display: none !important; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
@@ -46,19 +52,19 @@ img, svg { display: block; max-width: 100%; }
 .nav { position: sticky; top: 0; z-index: 50; background: var(--nav); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
 .nav-in { display: flex; align-items: center; gap: 16px; min-height: 64px; flex-wrap: wrap; padding-block: 8px; }
 .brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
-.brand img { width: 32px; height: 32px; border-radius: 9px; }
+.brand img { width: 36px; height: 36px; } /* monogramme du kit de marque : 24 px minimum, jamais déformé ni recoloré */
 .brand small { font: 500 .78rem var(--font); color: var(--muted); }
 .menu { display: flex; gap: 4px; margin-left: auto; align-items: center; flex-wrap: wrap; }
 .menu a { padding: 8px 12px; border-radius: 10px; color: var(--ink); text-decoration: none; font-weight: 500; font-size: .98rem; }
-.menu a:hover, .menu a[aria-current="page"] { background: var(--accent-soft); color: var(--accent-strong); }
+.menu a:hover, .menu a[aria-current="page"] { background: var(--accent-soft); color: var(--link); }
 .search { display: flex; }
 .search input { font: inherit; font-size: .95rem; padding: 8px 12px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--surface); color: var(--ink); width: 11rem; }
-.icon-btn { font: inherit; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); border-radius: 10px; width: 40px; height: 40px; cursor: pointer; display: inline-grid; place-items: center; }
+.icon-btn { font: inherit; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink); border-radius: var(--radius-sm); width: 40px; height: 40px; cursor: pointer; display: inline-grid; place-items: center; }
 .icon-btn:hover { background: var(--accent-soft); }
 
 /* contenu */
 main { padding-block: 40px 72px; }
-.eyebrow { font-weight: 600; font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); }
+.eyebrow { font-weight: 600; font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; color: var(--link); }
 h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.15; letter-spacing: -.02em; margin-block: 8px 16px; }
 h2 { font-family: var(--font-display); font-weight: 700; font-size: 1.45rem; line-height: 1.25; margin-block: 36px 12px; }
 h3 { font-weight: 600; font-size: 1.1rem; margin-block: 24px 8px; }
@@ -66,13 +72,14 @@ h3 { font-weight: 600; font-size: 1.1rem; margin-block: 24px 8px; }
 .prose p, .prose ul, .prose ol { margin-block: 12px; max-width: 46rem; }
 .prose ul { list-style: disc; padding-left: 1.3rem; } .prose ol { list-style: decimal; padding-left: 1.3rem; } .prose li { margin-block: 4px; }
 .crumbs { font-size: .9rem; color: var(--muted); margin-bottom: 8px; } .crumbs ol { display: flex; flex-wrap: wrap; gap: 6px; } .crumbs li + li::before { content: "›"; margin-right: 6px; }
-.btn { display: inline-flex; align-items: center; gap: 8px; font: 600 1rem var(--font); padding: 12px 20px; border-radius: 12px; background: var(--accent); color: var(--accent-ink); border: 0; text-decoration: none; cursor: pointer; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 20px; border: 1px solid transparent; border-radius: 12px; font: 600 .98rem/1 var(--font); text-decoration: none; cursor: pointer; background: var(--accent); color: var(--accent-ink); box-shadow: 0 1px 0 rgba(255, 255, 255, .18) inset, 0 8px 20px -8px color-mix(in srgb, var(--accent) 70%, transparent); }
 .btn:hover { background: var(--accent-strong); color: var(--accent-ink); }
-.btn.ghost { background: var(--surface); color: var(--ink); border: 1px solid var(--line-strong); } .btn.ghost:hover { background: var(--accent-soft); color: var(--accent-strong); }
+.btn:active { transform: translateY(1px); }
+.btn.ghost { background: var(--surface); color: var(--ink); border-color: var(--line-strong); box-shadow: var(--shadow-sm); } .btn.ghost:hover { border-color: var(--accent); color: var(--link); background: var(--surface); }
 .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); margin-block: 20px; }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow-sm); }
 .card h3 { margin-top: 0; } .card p { color: var(--muted); font-size: .98rem; }
-.tag { display: inline-block; font-size: .78rem; font-weight: 600; padding: 2px 10px; border-radius: 99px; background: var(--surface-2); color: var(--muted); }
+.tag { display: inline-block; font-size: .78rem; font-weight: 600; padding: 2px 10px; border-radius: 99px; background: var(--accent-soft); color: var(--link); }
 .notice { border: 1px solid var(--warn-line); background: var(--warn-bg); color: var(--warn-ink); padding: 14px 16px; border-radius: 12px; margin-block: 20px; font-size: .98rem; max-width: 46rem; }
 .notice.info { border-color: var(--line-strong); background: var(--accent-soft); color: var(--ink); }
 .hero { padding-block: 24px 8px; } .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
@@ -81,6 +88,7 @@ th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--li
 .results li { border-bottom: 1px solid var(--line); padding-block: 12px; } .results a { font-weight: 600; } .results p { color: var(--muted); font-size: .96rem; }
 
 /* pied de page */
+.footer-logo { display: flex; align-items: center; gap: 10px; font: 700 1.05rem var(--font-display); margin-bottom: 10px; } .footer-logo img { width: 32px; height: 32px; }
 .footer { border-top: 1px solid var(--line); background: var(--surface); padding-block: 36px; font-size: .96rem; }
 .footer-cols { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
 .footer h2 { font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
