@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulateur de revenu net auto-entrepreneur · Compta by glsc</title>
+<meta name="description" content="Estimez vos cotisations et ce qu’il vous reste après cotisations selon votre activité, avec l’Acre et le versement libératoire. Gratuit, sans compte.">
+<link rel="canonical" href="https://compta.glsc.fr/outils/simulateur-revenu-net/">
+<meta name="theme-color" content="#2447d6">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=24796b38">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Compta by glsc">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Simulateur de revenu net auto-entrepreneur · Compta by glsc">
+<meta property="og:description" content="Estimez vos cotisations et ce qu’il vous reste après cotisations selon votre activité, avec l’Acre et le versement libératoire. Gratuit, sans compte.">
+<meta property="og:url" content="https://compta.glsc.fr/outils/simulateur-revenu-net/">
+<meta property="og:image" content="https://compta.glsc.fr/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Compta by glsc : La boîte à outils gratuite du micro-entrepreneur">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://compta.glsc.fr/"},{"@type":"ListItem","position":2,"name":"Outils","item":"https://compta.glsc.fr/outils/"},{"@type":"ListItem","position":3,"name":"Simulateur de revenu net","item":"https://compta.glsc.fr/outils/simulateur-revenu-net/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Simulateur : combien me reste-t-il ?","url":"https://compta.glsc.fr/outils/simulateur-revenu-net/","applicationCategory":"FinanceApplication","operatingSystem":"Web","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Simulateur de cotisations et de revenu net pour micro-entrepreneur, dans le navigateur."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Que contient le taux de cotisations d’un micro-entrepreneur ?","acceptedAnswer":{"@type":"Answer","text":"Un pourcentage fixe du chiffre d’affaires qui inclut toutes les cotisations et contributions sociales : maladie, retraite, allocations familiales, formation professionnelle, CSG et CRDS."}},{"@type":"Question","name":"L’Acre est-elle toujours à 50 % ?","acceptedAnswer":{"@type":"Answer","text":"Non. Pour les micro-entreprises créées ou reprises à partir du 1er juillet 2026, l’exonération est de 25 % (taux minoré à 75 % du taux normal). Pour une création antérieure, elle était de 50 %."}},{"@type":"Question","name":"Mes données sont-elles enregistrées ?","acceptedAnswer":{"@type":"Answer","text":"Non : les calculs se font dans votre navigateur et rien n’est conservé."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/"><img src="/assets/favicon.svg" width="36" height="36" alt=""><span>Compta <small>by glsc</small></span></a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="/outils/" aria-current="page">Outils</a><a href="/guides/">Guides</a><a href="/sources/">Sources</a>
+    </nav>
+    <form class="search" action="/recherche/" method="get" role="search"><label class="sr-only" for="q">Rechercher sur le site</label><input id="q" name="q" type="search" placeholder="Rechercher…" autocomplete="off" maxlength="80"></form>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Changer de thème (clair ou sombre)" title="Changer de thème"><span aria-hidden="true">◐</span></button>
+  </div>
+</header>
+<main id="contenu">
+<div class="wrap wrap-outil">
+<nav class="crumbs" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href="/outils/">Outils</a></li><li aria-current="page">Simulateur de revenu net</li></ol></nav>
+<p class="eyebrow">Outil gratuit · sans compte</p>
+<h1>Simulateur : combien me reste-t-il après cotisations ?</h1>
+<p class="lead">Indiquez votre chiffre d’affaires de micro-entrepreneur : vous voyez tout de suite vos cotisations, ce qu’il vous reste avant impôt et si vous approchez des plafonds. Rien n’est envoyé, rien n’est conservé.</p>
+<p class="notice info"><strong>Estimation indicative.</strong> Les taux viennent de <a href="/sources/">sources officielles</a> ; seule votre déclaration à l’Urssaf fait foi. Le simulateur ne remplace ni l’avis d’un comptable ni le simulateur de l’Urssaf.</p>
+<noscript><p class="notice">Cet outil demande JavaScript pour calculer dans votre navigateur. Aucune donnée n’est envoyée.</p></noscript>
+
+<div class="outil outil-simu" id="outil-simulateur" hidden>
+<form class="outil-form" id="formulaire" novalidate autocomplete="off" aria-label="Paramètres de la simulation">
+  <div class="bloc plein">
+    <div class="grille">
+    <div class="champ"><label for="f-ca">Chiffre d’affaires hors taxes encaissé (€) *</label><input id="f-ca" name="ca" type="text" inputmode="decimal" maxlength="14" required><p class="aide" id="f-ca-aide">Le montant encaissé sur la période, sans TVA : vous êtes en franchise.</p></div>
+    <div class="champ"><label for="f-periode">Pour quelle période ?</label><select id="f-periode" name="periode"><option value="mois">Un mois</option><option value="trimestre">Un trimestre</option><option value="annee">Une année</option></select></div>
+    <div class="champ"><label for="f-activite">Votre activité *</label><select id="f-activite" name="activite"><option value="vente">Vente de marchandises, fourniture de logement (BIC)</option><option value="bic_services">Prestations de services commerciales ou artisanales (BIC)</option><option value="bnc_ssi">Profession libérale non réglementée (BNC, SSI)</option><option value="bnc_cipav">Profession libérale réglementée (BNC, Cipav)</option></select><p class="aide">Le taux de cotisations dépend de la nature de l’activité.</p></div>
+    <div class="champ"><label for="f-depenses">Vos dépenses professionnelles sur la période (€, facultatif)</label><input id="f-depenses" name="depenses" type="text" inputmode="decimal" maxlength="14"><p class="aide" id="f-depenses-aide">Elles ne réduisent pas vos cotisations (calculées sur le chiffre d’affaires) mais votre revenu réel.</p></div>
+    </div>
+    <div class="champ coche"><label><input id="f-acre" name="acre" type="checkbox"> <span>Je bénéficie de l’Acre</span></label><p class="aide">Taux minoré à 75 % du taux normal (exonération de 25 %) pour les micro-entreprises créées ou reprises à partir du 1<sup>er</sup> juillet 2026, jusqu’à la fin du 3 trimestres suivant le début d’activité. Demande à faire dans les 60 jours suivant l’ouverture de l’activité.</p></div>
+    <div class="champ si-acre"><label for="f-debutActivite">Date de début d’activité (facultatif)</label><input id="f-debutActivite" name="debutActivite" type="date"><p class="aide" id="f-debutActivite-aide">Pour calculer la date de fin de votre Acre.</p></div>
+    <div class="champ coche"><label><input id="f-vl" name="vl" type="checkbox"> <span>J’ai opté pour le versement forfaitaire libératoire de l’impôt</span></label><p class="aide">Vous payez l’impôt avec vos cotisations, en pourcentage du chiffre d’affaires. Possible si le revenu fiscal de référence du foyer (année N-2) ne dépasse pas 29 579 € pour une personne seule, 59 158 € pour un couple, 73 947,5 € avec 1 enfant, 88 737 € avec 2 enfants. Option avant le 30 septembre de l’année précédente.</p></div>
+  </div>
+</form>
+
+<section class="resultat" aria-labelledby="titre-resultat">
+  <h2 id="titre-resultat">Votre résultat</h2>
+  <div id="bilan" role="status" aria-live="polite"></div>
+  <div id="resultat-zone"></div>
+</section>
+</div>
+
+<div class="prose aide-page">
+<h2>Comment ça marche</h2>
+<p>Les cotisations d’un micro-entrepreneur sont un pourcentage fixe du chiffre d’affaires encaissé. Ce pourcentage inclut toutes les cotisations et contributions sociales : maladie, retraite, allocations familiales, formation professionnelle, CSG et CRDS. Le simulateur applique le taux de votre activité, déduit votre Acre si vous en bénéficiez, ajoute l’impôt libératoire si vous l’avez choisi, puis soustrait vos dépenses.</p>
+<p>Il ne calcule pas : la cotisation foncière des entreprises (CFE), les éventuels frais de chambre consulaire, ni l’impôt sur le revenu au barème (voir plus bas).</p>
+<h2>Questions fréquentes</h2>
+<h3>Que devient mon revenu pour l’impôt sur le revenu ?</h3>
+<p>Sans versement libératoire, l’administration fiscale applique un abattement forfaitaire à votre chiffre d’affaires : 71 % pour la vente, 50 % pour les prestations de services BIC, 34 % pour les activités libérales (minimum 305 €). Le reste est ajouté aux autres revenus de votre foyer et soumis au barème. Le simulateur affiche ce revenu imposable estimé, pas le montant de l’impôt, qui dépend de toute votre situation.</p>
+<h3>Mon chiffre d’affaires dépasse le plafond, que se passe-t-il ?</h3>
+<p>Le plafond est de 203 100 € pour la vente et de 83 600 € pour les prestations de services. Le régime de la micro-entreprise ne s’applique plus si vous le dépassez deux années consécutives. Voir le guide <a href="/guides/plafonds-et-seuils-de-tva/">Plafonds et seuils de TVA</a>.</p>
+<h3>L’Acre est-elle toujours à 50 % ?</h3>
+<p>Non. Pour les micro-entreprises créées ou reprises à partir du 1<sup>er</sup> juillet 2026, l’exonération est de 25 % (décret du 6 février 2026). Pour une création antérieure, l’exonération était de 50 % : le simulateur ne calcule pas ce cas, utilisez le simulateur de l’Urssaf.</p>
+<h3>Mes données sont-elles enregistrées ?</h3>
+<p>Non : les calculs se font dans votre navigateur et rien n’est conservé. Si vous fermez la page, la saisie disparaît.</p>
+</div>
+<aside class="studio-cta no-print" aria-label="À propos de l’éditeur"><strong>Besoin d’un site pour votre activité ?</strong> Ce site est édité par StudioGLSC, studio web en Bretagne. <a href="https://studio.glsc.fr" rel="noopener">Découvrir StudioGLSC</a>.</aside>
+</div>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div><p class="footer-logo"><img src="/assets/favicon.svg" width="32" height="32" alt="">Compta by glsc</p><p>Outils gratuits pour les micro-entrepreneurs. Sans compte, sans publicité, sans cookie : vos chiffres restent dans votre navigateur.</p></div>
+      <div><h2>Le site</h2><ul><li><a href="/outils/">Outils</a></li><li><a href="/guides/">Guides</a></li><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+      <div><h2>Informations</h2><ul><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/confidentialite/">Confidentialité</a></li><li><a href="/cgu/">Conditions d’utilisation</a></li><li><a href="/sources/">Sources et mises à jour</a></li><li><a href="https://github.com/gabinlsc/compta" rel="noopener">Code source</a></li></ul></div>
+    </div>
+    <p class="small">Ces outils ne constituent ni un conseil juridique, ni un conseil fiscal, ni un conseil comptable. Édité par Gabin Lescoat (<a href="https://studio.glsc.fr" rel="noopener">StudioGLSC</a>).</p>
+  </div>
+</footer>
+<script type="application/json" id="regles-data">[{"id":"taux_vente","unite":"pourcent","valeur":12.3,"statut":"verifie"},{"id":"taux_bic_services","unite":"pourcent","valeur":21.2,"statut":"verifie"},{"id":"taux_bnc_ssi","unite":"pourcent","valeur":25.6,"statut":"verifie"},{"id":"taux_bnc_cipav","unite":"pourcent","valeur":23.2,"statut":"verifie"},{"id":"taux_vl_vente","unite":"pourcent","valeur":13.3,"statut":"verifie"},{"id":"taux_vl_bic_services","unite":"pourcent","valeur":22.9,"statut":"verifie"},{"id":"taux_vl_bnc_ssi","unite":"pourcent","valeur":27.8,"statut":"verifie"},{"id":"taux_vl_bnc_cipav","unite":"pourcent","valeur":25.4,"statut":"verifie"},{"id":"plafond_ca_vente","unite":"euro","valeur":203100,"statut":"verifie"},{"id":"plafond_ca_services","unite":"euro","valeur":83600,"statut":"verifie"},{"id":"tva_franchise_vente","unite":"euro","valeur":85000,"statut":"verifie"},{"id":"tva_majore_vente","unite":"euro","valeur":93500,"statut":"verifie"},{"id":"tva_franchise_services","unite":"euro","valeur":37500,"statut":"verifie"},{"id":"tva_majore_services","unite":"euro","valeur":41250,"statut":"verifie"},{"id":"abattement_vente","unite":"pourcent","valeur":71,"statut":"verifie"},{"id":"abattement_bic_services","unite":"pourcent","valeur":50,"statut":"verifie"},{"id":"abattement_bnc","unite":"pourcent","valeur":34,"statut":"verifie"},{"id":"mention_franchise_tva_cibs","unite":"texte","valeur":"TVA non applicable, art. L. 223 et s. du code des impositions sur les biens et services (CIBS)","statut":"verifie"},{"id":"mention_franchise_tva_cgi","unite":"texte","valeur":"TVA non applicable, art. 293 B du code général des impôts","statut":"verifie"},{"id":"mention_entrepreneur_individuel","unite":"texte","valeur":"Entrepreneur individuel (EI)","statut":"verifie"},{"id":"mention_siret_en_cours","unite":"texte","valeur":"Siret en cours d'attribution","statut":"verifie"},{"id":"mention_escompte_neant","unite":"texte","valeur":"Escompte pour paiement anticipé : néant","statut":"verifie"},{"id":"indemnite_recouvrement","unite":"euro","valeur":40,"statut":"verifie"},{"id":"penalite_taux_minimum","unite":"pourcent","valeur":8.25,"statut":"verifie"},{"id":"penalite_majoration_bce","unite":"points","valeur":10,"statut":"verifie"},{"id":"penalite_bce_2026_s1","unite":"pourcent","valeur":12.15,"statut":"verifie"},{"id":"penalite_bce_2026_s2","unite":"pourcent","valeur":12.4,"statut":"verifie"},{"id":"delai_paiement_max_jours","unite":"jours","valeur":60,"statut":"verifie"},{"id":"siren_client_obligatoire_micro","unite":"date","valeur":"2027-09-01","statut":"verifie"},{"id":"garantie_conformite_ans","unite":"ans","valeur":2,"statut":"verifie"},{"id":"mention_association_agreee","unite":"texte","valeur":"Membre d'une association agréée, le règlement par chèque et carte bancaire est accepté","statut":"verifie"},{"id":"acre_exoneration_micro","unite":"pourcent","valeur":25,"statut":"verifie"},{"id":"acre_debut_regime","unite":"date","valeur":"2026-07-01","statut":"verifie"},{"id":"acre_trimestres_suivants","unite":"trimestres","valeur":3,"statut":"verifie"},{"id":"acre_delai_demande_jours","unite":"jours","valeur":60,"statut":"verifie"},{"id":"vfl_rfr_seul","unite":"euro","valeur":29579,"statut":"verifie"},{"id":"vfl_rfr_couple","unite":"euro","valeur":59158,"statut":"verifie"},{"id":"vfl_rfr_couple_1_enfant","unite":"euro","valeur":73947.5,"statut":"verifie"},{"id":"vfl_rfr_couple_2_enfants","unite":"euro","valeur":88737,"statut":"verifie"},{"id":"abattement_minimum","unite":"euro","valeur":305,"statut":"verifie"}]</script>
+<script src="/assets/app.js?v=cfc3cd7e" defer></script>
+<script type="module" src="/assets/js/outils/simulateur.js?v=6f339342"></script>
+</body>
+</html>

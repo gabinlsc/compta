@@ -27,7 +27,7 @@ export function validerRegles(data, today = aujourdhui()) {
     const err = (m) => erreurs.push(`${e.id ?? '?'} : ${m}`);
     if (!/^[a-z][a-z0-9_]*$/.test(e.id ?? '')) err('identifiant invalide');
     if (ids.has(e.id)) err('identifiant en double'); ids.add(e.id);
-    if (!['pourcent', 'euro', 'date', 'texte', 'jours', 'points', 'ans'].includes(e.unite)) err('unité inconnue');
+    if (!['pourcent', 'euro', 'date', 'texte', 'jours', 'points', 'ans', 'trimestres'].includes(e.unite)) err('unité inconnue');
     if (!['verifie', 'a_verifier'].includes(e.statut)) err('statut inconnu');
     for (const k of ['valable_du', 'valable_au']) if (!DATE.test(e[k] ?? '')) err(`${k} invalide`);
     if (DATE.test(e.valable_du ?? '') && DATE.test(e.valable_au ?? '') && e.valable_du > e.valable_au) err('valable_du postérieur à valable_au');
@@ -36,7 +36,7 @@ export function validerRegles(data, today = aujourdhui()) {
       continue;
     }
     if (e.valeur === null || e.valeur === undefined) err('valeur absente');
-    if (['pourcent', 'euro', 'jours', 'points', 'ans'].includes(e.unite)) { if (typeof e.valeur !== 'number' || e.valeur < 0) err('nombre positif attendu'); }
+    if (['pourcent', 'euro', 'jours', 'points', 'ans', 'trimestres'].includes(e.unite)) { if (typeof e.valeur !== 'number' || e.valeur < 0) err('nombre positif attendu'); }
     let host = '';
     try { host = new URL(e.source_url).hostname.replace(/^www\./, ''); } catch { err('source_url absente ou invalide'); }
     if (host && !SOURCES_OFFICIELLES.some((s) => host === s || host.endsWith('.' + s))) err(`source non officielle : ${host}`);
@@ -55,6 +55,7 @@ export const formaterValeur = (e) => {
   if (e.valeur === null) return 'en cours de vérification';
   if (e.unite === 'pourcent') return e.valeur.toLocaleString('fr-FR', { maximumFractionDigits: 2 }).replace(/ /g, ' ') + ' %';
   if (e.unite === 'jours') return `${e.valeur}\u00a0jours`;
+  if (e.unite === 'trimestres') return `${e.valeur}\u00a0trimestres`;
   if (e.unite === 'ans') return `${e.valeur}\u00a0ans`;
   if (e.unite === 'points') return `${e.valeur}\u00a0points`;
   if (e.unite === 'euro') return e.valeur.toLocaleString('fr-FR', { maximumFractionDigits: 2 }).replace(/ /g, ' ') + ' €';
