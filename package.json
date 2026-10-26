@@ -9,7 +9,7 @@
     "build": "node tools/build.mjs",
     "check": "node tools/build.mjs && git diff --exit-code -- . ':!package-lock.json' && node tools/check-links.mjs && node tools/check-seo.mjs && node tools/check-budget.mjs",
     "test:unit": "node --test tests/unit/*.test.mjs",
-    "test": "npm run test:unit && node tests/e2e.mjs && node tests/outil-facture.mjs && node tests/outil-simulateur.mjs && node tests/outil-calendrier.mjs && node tests/csp.mjs && node tests/a11y.mjs"
+    "test": "npm run test:unit && node tests/e2e.mjs && node tests/outil-facture.mjs && node tests/outil-simulateur.mjs && node tests/outil-calendrier.mjs && node tests/outil-tjm.mjs && node tests/csp.mjs && node tests/a11y.mjs"
   },
   "devDependencies": {
     "axe-core": "4.10.2",

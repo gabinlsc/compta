@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculateur de TJM et tarif horaire freelance · Compta by glsc</title>
+<meta name="description" content="Calculez le tarif journalier et horaire nécessaire pour atteindre votre revenu net visé, après cotisations, frais, congés et temps non facturé. Gratuit.">
+<link rel="canonical" href="https://compta.glsc.fr/outils/tarif-journalier/">
+<meta name="theme-color" content="#2447d6">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=46a16fa1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Compta by glsc">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Calculateur de TJM et tarif horaire freelance · Compta by glsc">
+<meta property="og:description" content="Calculez le tarif journalier et horaire nécessaire pour atteindre votre revenu net visé, après cotisations, frais, congés et temps non facturé. Gratuit.">
+<meta property="og:url" content="https://compta.glsc.fr/outils/tarif-journalier/">
+<meta property="og:image" content="https://compta.glsc.fr/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Compta by glsc : La boîte à outils gratuite du micro-entrepreneur">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://compta.glsc.fr/"},{"@type":"ListItem","position":2,"name":"Outils","item":"https://compta.glsc.fr/outils/"},{"@type":"ListItem","position":3,"name":"Tarif journalier","item":"https://compta.glsc.fr/outils/tarif-journalier/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calculateur de tarif journalier (TJM) et horaire","url":"https://compta.glsc.fr/outils/tarif-journalier/","applicationCategory":"FinanceApplication","operatingSystem":"Web","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Calcul du TJM et du taux horaire d’un indépendant à partir du revenu net visé, dans le navigateur."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Pourquoi ne pas facturer 5 jours par semaine toute l’année ?","acceptedAnswer":{"@type":"Answer","text":"Une partie de votre temps ne se facture pas : prospection, devis, comptabilité, formation. Le calcul montre l’effet de chaque hypothèse sur le tarif nécessaire."}},{"@type":"Question","name":"Le tarif tient-il compte de l’impôt sur le revenu ?","acceptedAnswer":{"@type":"Answer","text":"Non, sauf avec le versement libératoire, dont l’impôt est inclus dans le taux. Sinon, le revenu net visé est avant impôt sur le revenu."}},{"@type":"Question","name":"Comment le tarif journalier est-il calculé ?","acceptedAnswer":{"@type":"Answer","text":"Chiffre d’affaires nécessaire = (revenu net + frais) ÷ (1 − taux de cotisations), divisé par le nombre de jours facturés, arrondi à l’euro supérieur."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/"><img src="/assets/favicon.svg" width="36" height="36" alt=""><span>Compta <small>by glsc</small></span></a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="/outils/" aria-current="page">Outils</a><a href="/guides/">Guides</a><a href="/sources/">Sources</a>
+    </nav>
+    <form class="search" action="/recherche/" method="get" role="search"><label class="sr-only" for="q">Rechercher sur le site</label><input id="q" name="q" type="search" placeholder="Rechercher…" autocomplete="off" maxlength="80"></form>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Changer de thème (clair ou sombre)" title="Changer de thème"><span aria-hidden="true">◐</span></button>
+  </div>
+</header>
+<main id="contenu">
+<div class="wrap wrap-outil">
+<nav class="crumbs" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href="/outils/">Outils</a></li><li aria-current="page">Tarif journalier</li></ol></nav>
+<p class="eyebrow">Outil gratuit · sans compte</p>
+<h1>Calculateur de tarif journalier (TJM) et horaire</h1>
+<p class="lead">Quel tarif facturer pour vous verser le revenu que vous visez, une fois les cotisations, les frais, les congés et le temps non facturé pris en compte ? Modifiez chaque hypothèse : tout est visible et rien n’est envoyé.</p>
+<p class="notice info"><strong>Estimation indicative.</strong> Le calcul part de votre revenu net visé et remonte jusqu’au tarif, avec les taux de cotisations publiés (voir <a href="/sources/">les sources</a>). Il ne remplace pas l’avis d’un comptable.</p>
+<noscript><p class="notice">Cet outil demande JavaScript pour calculer dans votre navigateur. Aucune donnée n’est envoyée.</p></noscript>
+
+<div class="outil outil-simu" id="outil-tjm" hidden>
+<form class="outil-form" id="formulaire" novalidate autocomplete="off" aria-label="Paramètres du calcul">
+  <div class="bloc plein">
+    <h2 class="titre-form">Votre objectif</h2>
+    <div class="grille">
+    <div class="champ"><label for="f-net">Revenu net visé par mois (€) *</label><input id="f-net" name="net" type="text" inputmode="decimal" maxlength="12" required><p class="aide" id="f-net-aide">Ce qu’il vous reste à la fin du mois, après cotisations et frais, avant impôt sur le revenu.</p></div>
+    <div class="champ"><label for="f-fraisMensuels">Frais professionnels par mois (€)</label><input id="f-fraisMensuels" name="fraisMensuels" type="text" inputmode="decimal" maxlength="12"><p class="aide" id="f-fraisMensuels-aide">Logiciels, matériel, assurance, comptabilité, déplacements…</p></div>
+    <div class="champ"><label for="f-activite">Votre activité *</label><select id="f-activite" name="activite"><option value="bic_services">Prestations de services commerciales ou artisanales (BIC)</option><option value="bnc_ssi">Profession libérale non réglementée (BNC, SSI)</option><option value="bnc_cipav">Profession libérale réglementée (BNC, Cipav)</option><option value="vente">Vente de marchandises (BIC)</option></select></div>
+    </div>
+    <div class="champ coche"><label><input id="f-acre" name="acre" type="checkbox"> <span>Je bénéficie de l’Acre</span></label><p class="aide">Taux minoré pour les créations à partir du 1<sup>er</sup> juillet 2026 : il ne dure qu’un temps, pensez à votre tarif une fois l’Acre terminée.</p></div>
+    <div class="champ si-acre"><label for="f-debutActivite">Date de début d’activité (facultatif)</label><input id="f-debutActivite" name="debutActivite" type="date"></div>
+    <div class="champ coche"><label><input id="f-vl" name="vl" type="checkbox"> <span>J’ai opté pour le versement forfaitaire libératoire de l’impôt</span></label></div>
+    <h2 class="titre-form">Votre temps de travail</h2>
+    <p class="aide">Ces valeurs sont des hypothèses de départ, à adapter à votre façon de travailler.</p>
+    <div class="grille">
+    <div class="champ"><label for="f-joursSemaine">Jours travaillés par semaine</label><input id="f-joursSemaine" name="joursSemaine" type="text" inputmode="numeric" maxlength="1"></div>
+    <div class="champ"><label for="f-semainesConges">Semaines de congés par an</label><input id="f-semainesConges" name="semainesConges" type="text" inputmode="numeric" maxlength="2"></div>
+    <div class="champ"><label for="f-joursFeries">Jours fériés non travaillés par an</label><input id="f-joursFeries" name="joursFeries" type="text" inputmode="numeric" maxlength="2"><p class="aide" id="f-joursFeries-aide">Ceux qui tombent un jour où vous auriez travaillé.</p></div>
+    <div class="champ"><label for="f-pourcentNonFacture">Temps non facturé (%)</label><input id="f-pourcentNonFacture" name="pourcentNonFacture" type="text" inputmode="numeric" maxlength="2"><p class="aide" id="f-pourcentNonFacture-aide">Prospection, administratif, formation, projets sans facture.</p></div>
+    <div class="champ"><label for="f-heuresJour">Heures facturées par jour</label><input id="f-heuresJour" name="heuresJour" type="text" inputmode="decimal" maxlength="5"><p class="aide" id="f-heuresJour-aide">Pour passer du tarif journalier au tarif horaire.</p></div>
+    </div>
+  </div>
+</form>
+
+<section class="resultat" aria-labelledby="titre-resultat">
+  <h2 id="titre-resultat">Votre tarif</h2>
+  <div id="bilan" role="status" aria-live="polite"></div>
+  <div id="resultat-zone"></div>
+</section>
+</div>
+
+<div class="prose aide-page">
+<h2>Comment le tarif est calculé</h2>
+<ol>
+<li>On additionne le revenu net visé sur l’année et vos frais.</li>
+<li>Les cotisations étant un pourcentage du chiffre d’affaires, on en déduit le chiffre d’affaires nécessaire : <em>(net + frais) ÷ (1 − taux)</em>.</li>
+<li>On compte vos jours disponibles (semaines travaillées × jours par semaine − jours fériés), puis la part facturée.</li>
+<li>Le tarif journalier est le chiffre d’affaires divisé par les jours facturés, arrondi à l’euro supérieur ; le tarif horaire en découle.</li>
+</ol>
+<h2>Questions fréquentes</h2>
+<h3>Pourquoi ne pas facturer simplement 5 jours par semaine toute l’année ?</h3>
+<p>Parce qu’une partie de votre temps ne se facture pas : prospection, devis, comptabilité, formation, jours sans mission. Le calcul vous montre l’effet de chaque hypothèse sur le tarif nécessaire.</p>
+<h3>Le tarif tient-il compte de l’impôt sur le revenu ?</h3>
+<p>Non, sauf si vous avez choisi le versement libératoire, dont l’impôt est alors inclus dans le taux. Sinon, le revenu net visé est avant impôt sur le revenu.</p>
+<h3>Et si mon tarif me fait dépasser le plafond ?</h3>
+<p>Le calculateur vous prévient quand le chiffre d’affaires nécessaire dépasse le plafond de la micro-entreprise (83 600 € en services) ou les seuils de franchise de TVA. Voir le guide <a href="/guides/plafonds-et-seuils-de-tva/">Plafonds et seuils de TVA</a>.</p>
+</div>
+<aside class="studio-cta no-print" aria-label="À propos de l’éditeur"><strong>Besoin d’un site pour votre activité ?</strong> Ce site est édité par StudioGLSC, studio web en Bretagne. <a href="https://studio.glsc.fr" rel="noopener">Découvrir StudioGLSC</a>.</aside>
+</div>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div><p class="footer-logo"><img src="/assets/favicon.svg" width="32" height="32" alt="">Compta by glsc</p><p>Outils gratuits pour les micro-entrepreneurs. Sans compte, sans publicité, sans cookie : vos chiffres restent dans votre navigateur.</p></div>
+      <div><h2>Le site</h2><ul><li><a href="/outils/">Outils</a></li><li><a href="/guides/">Guides</a></li><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+      <div><h2>Informations</h2><ul><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/confidentialite/">Confidentialité</a></li><li><a href="/cgu/">Conditions d’utilisation</a></li><li><a href="/sources/">Sources et mises à jour</a></li><li><a href="https://github.com/gabinlsc/compta" rel="noopener">Code source</a></li></ul></div>
+    </div>
+    <p class="small">Ces outils ne constituent ni un conseil juridique, ni un conseil fiscal, ni un conseil comptable. Édité par Gabin Lescoat (<a href="https://studio.glsc.fr" rel="noopener">StudioGLSC</a>).</p>
+  </div>
+</footer>
+<script type="application/json" id="regles-data">[{"id":"taux_vente","unite":"pourcent","valeur":12.3,"statut":"verifie"},{"id":"taux_bic_services","unite":"pourcent","valeur":21.2,"statut":"verifie"},{"id":"taux_bnc_ssi","unite":"pourcent","valeur":25.6,"statut":"verifie"},{"id":"taux_bnc_cipav","unite":"pourcent","valeur":23.2,"statut":"verifie"},{"id":"taux_vl_vente","unite":"pourcent","valeur":13.3,"statut":"verifie"},{"id":"taux_vl_bic_services","unite":"pourcent","valeur":22.9,"statut":"verifie"},{"id":"taux_vl_bnc_ssi","unite":"pourcent","valeur":27.8,"statut":"verifie"},{"id":"taux_vl_bnc_cipav","unite":"pourcent","valeur":25.4,"statut":"verifie"},{"id":"plafond_ca_vente","unite":"euro","valeur":203100,"statut":"verifie"},{"id":"plafond_ca_services","unite":"euro","valeur":83600,"statut":"verifie"},{"id":"tva_franchise_vente","unite":"euro","valeur":85000,"statut":"verifie"},{"id":"tva_majore_vente","unite":"euro","valeur":93500,"statut":"verifie"},{"id":"tva_franchise_services","unite":"euro","valeur":37500,"statut":"verifie"},{"id":"tva_majore_services","unite":"euro","valeur":41250,"statut":"verifie"},{"id":"abattement_vente","unite":"pourcent","valeur":71,"statut":"verifie"},{"id":"abattement_bic_services","unite":"pourcent","valeur":50,"statut":"verifie"},{"id":"abattement_bnc","unite":"pourcent","valeur":34,"statut":"verifie"},{"id":"mention_franchise_tva_cibs","unite":"texte","valeur":"TVA non applicable, art. L. 223 et s. du code des impositions sur les biens et services (CIBS)","statut":"verifie"},{"id":"mention_franchise_tva_cgi","unite":"texte","valeur":"TVA non applicable, art. 293 B du code général des impôts","statut":"verifie"},{"id":"mention_entrepreneur_individuel","unite":"texte","valeur":"Entrepreneur individuel (EI)","statut":"verifie"},{"id":"mention_siret_en_cours","unite":"texte","valeur":"Siret en cours d'attribution","statut":"verifie"},{"id":"mention_escompte_neant","unite":"texte","valeur":"Escompte pour paiement anticipé : néant","statut":"verifie"},{"id":"indemnite_recouvrement","unite":"euro","valeur":40,"statut":"verifie"},{"id":"penalite_taux_minimum","unite":"pourcent","valeur":8.25,"statut":"verifie"},{"id":"penalite_majoration_bce","unite":"points","valeur":10,"statut":"verifie"},{"id":"penalite_bce_2026_s1","unite":"pourcent","valeur":12.15,"statut":"verifie"},{"id":"penalite_bce_2026_s2","unite":"pourcent","valeur":12.4,"statut":"verifie"},{"id":"delai_paiement_max_jours","unite":"jours","valeur":60,"statut":"verifie"},{"id":"siren_client_obligatoire_micro","unite":"date","valeur":"2027-09-01","statut":"verifie"},{"id":"garantie_conformite_ans","unite":"ans","valeur":2,"statut":"verifie"},{"id":"mention_association_agreee","unite":"texte","valeur":"Membre d'une association agréée, le règlement par chèque et carte bancaire est accepté","statut":"verifie"},{"id":"acre_exoneration_micro","unite":"pourcent","valeur":25,"statut":"verifie"},{"id":"acre_debut_regime","unite":"date","valeur":"2026-07-01","statut":"verifie"},{"id":"acre_trimestres_suivants","unite":"trimestres","valeur":3,"statut":"verifie"},{"id":"acre_delai_demande_jours","unite":"jours","valeur":60,"statut":"verifie"},{"id":"vfl_rfr_seul","unite":"euro","valeur":29579,"statut":"verifie"},{"id":"vfl_rfr_couple","unite":"euro","valeur":59158,"statut":"verifie"},{"id":"vfl_rfr_couple_1_enfant","unite":"euro","valeur":73947.5,"statut":"verifie"},{"id":"vfl_rfr_couple_2_enfants","unite":"euro","valeur":88737,"statut":"verifie"},{"id":"abattement_minimum","unite":"euro","valeur":305,"statut":"verifie"},{"id":"decl_trimestre_1","unite":"jour_mois","valeur":"04-30","statut":"verifie"},{"id":"decl_trimestre_2","unite":"jour_mois","valeur":"07-31","statut":"verifie"},{"id":"decl_trimestre_3","unite":"jour_mois","valeur":"10-31","statut":"verifie"},{"id":"decl_trimestre_4","unite":"jour_mois","valeur":"01-31","statut":"verifie"},{"id":"decl_retour_mensuel_limite","unite":"jour_mois","valeur":"10-31","statut":"verifie"},{"id":"decl_penalite_euros","unite":"euro","valeur":60.1,"statut":"verifie"},{"id":"decl_majoration_mensuelle","unite":"pourcent","valeur":5,"statut":"verifie"},{"id":"decl_majoration_trimestrielle","unite":"pourcent","valeur":15,"statut":"verifie"},{"id":"cfe_paiement","unite":"jour_mois","valeur":"12-15","statut":"verifie"},{"id":"cfe_declaration_creation","unite":"jour_mois","valeur":"12-31","statut":"verifie"},{"id":"cfe_exoneration_ca_max","unite":"euro","valeur":5000,"statut":"verifie"},{"id":"cfe_reduction_deuxieme_annee","unite":"pourcent","valeur":50,"statut":"verifie"},{"id":"fe_reception_obligatoire","unite":"date","valeur":"2026-09-01","statut":"verifie"},{"id":"fe_emission_micro","unite":"date","valeur":"2027-09-01","statut":"verifie"},{"id":"vfl_option_limite","unite":"jour_mois","valeur":"09-30","statut":"verifie"},{"id":"decl_base_forfaitaire_vente_mensuelle","unite":"euro","valeur":7791.67,"statut":"verifie"},{"id":"decl_base_forfaitaire_services_mensuelle","unite":"euro","valeur":3125,"statut":"verifie"},{"id":"decl_base_forfaitaire_vente_trimestrielle","unite":"euro","valeur":23375,"statut":"verifie"},{"id":"decl_base_forfaitaire_services_trimestrielle","unite":"euro","valeur":10313,"statut":"verifie"}]</script>
+<script src="/assets/app.js?v=cfc3cd7e" defer></script>
+<script type="module" src="/assets/js/outils/tjm.js?v=122afbfd"></script>
+</body>
+</html>
