@@ -1,5 +1,5 @@
 // Sauvegarde explicite (navigateur ou fichier JSON) : tout ce qui entre est nettoyé champ par champ avant d'être utilisé.
-import { docVide, ligneVide, TYPES, NATURES, MAX_LIGNES } from './facture.js?v=bf7e5117';
+import { docVide, ligneVide, TYPES, NATURES, MAX_LIGNES } from './facture.js?v=122afbfd';
 
 export const CLE = 'compta:facture:v1';
 export const FORMAT = 'compta-by-glsc-facture-1';

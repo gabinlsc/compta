@@ -1,8 +1,8 @@
 // Outil « Calendrier des échéances » : génère le fichier .ics dans le navigateur. Aucune requête réseau ; rien n'est stocké ; jamais d'innerHTML.
-import { creerRegles } from '../lib/facture.js?v=bf7e5117';
-import { genererEcheances, FIN_VALIDITE } from '../lib/echeances.js?v=bf7e5117';
-import { construireIcs } from '../lib/ics.js?v=bf7e5117';
-import { ajouterJours, ajouterMois, dateLongue, aujourdhui, MOIS_FR } from '../lib/dates.js?v=bf7e5117';
+import { creerRegles } from '../lib/facture.js?v=122afbfd';
+import { genererEcheances, FIN_VALIDITE } from '../lib/echeances.js?v=122afbfd';
+import { construireIcs } from '../lib/ics.js?v=122afbfd';
+import { ajouterJours, ajouterMois, dateLongue, aujourdhui, MOIS_FR } from '../lib/dates.js?v=122afbfd';
 
 const $ = (s, r = document) => r.querySelector(s);
 const AUJ = aujourdhui();

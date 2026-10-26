@@ -7,6 +7,7 @@ import { GUIDES } from './guides.mjs';
 import { pageFacture, FAQ_FACTURE } from './outil-facture.mjs';
 import { pageSimulateur, FAQ_SIMULATEUR } from './outil-simulateur.mjs';
 import { pageCalendrier, FAQ_CALENDRIER } from './outil-calendrier.mjs';
+import { pageTjm, FAQ_TJM } from './outil-tjm.mjs';
 
 const carte = (x, base) => `<article class="card"><h3>${x.pret ? `<a href="${base}${x.slug}/">${esc(x.titre)}</a>` : esc(x.titre)}</h3><p>${esc(x.resume)}</p>${x.pret ? '' : '<span class="tag">Bientôt</span>'}</article>`;
 const HOME = [['/', 'Accueil']];
@@ -66,6 +67,17 @@ export function pages(regles) {
       { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_CALENDRIER.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
     ],
     body: pageCalendrier(),
+  });
+
+  liste.push({
+    path: '/outils/tarif-journalier/', title: 'Calculateur de TJM et tarif horaire freelance', outil: true,
+    description: 'Calculez le tarif journalier et horaire nécessaire pour atteindre votre revenu net visé, après cotisations, frais, congés et temps non facturé. Gratuit.',
+    crumbs: [...HOME, ['/outils/', 'Outils'], ['/outils/tarif-journalier/', 'Tarif journalier']], modules: ['/assets/js/outils/tjm.js'], studio: true,
+    jsonld: [
+      { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Calculateur de tarif journalier (TJM) et horaire', url: CFG.origin + '/outils/tarif-journalier/', applicationCategory: 'FinanceApplication', operatingSystem: 'Web', inLanguage: 'fr', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, description: 'Calcul du TJM et du taux horaire d’un indépendant à partir du revenu net visé, dans le navigateur.' },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_TJM.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
+    ],
+    body: pageTjm(),
   });
 
   for (const g of GUIDES.filter((x) => x.pret)) {
