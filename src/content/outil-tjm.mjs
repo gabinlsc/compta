@@ -4,8 +4,8 @@ import { champ, coche, choisir } from './formulaires.mjs';
 export function pageTjm() {
   return `<p class="eyebrow">Outil gratuit · sans compte</p>
 <h1>Calculateur de tarif journalier (TJM) et horaire</h1>
-<p class="lead">Quel tarif facturer pour vous verser le revenu que vous visez, une fois les cotisations, les frais, les congés et le temps non facturé pris en compte ? Modifiez chaque hypothèse : tout est visible et rien n’est envoyé.</p>
-<p class="notice info"><strong>Estimation indicative.</strong> Le calcul part de votre revenu net visé et remonte jusqu’au tarif, avec les taux de cotisations publiés (voir <a href="/sources/">les sources</a>). Il ne remplace pas l’avis d’un comptable.</p>
+<p class="lead">Le tarif à facturer pour atteindre votre revenu net visé.</p>
+<p class="notice info"><strong>Estimation indicative.</strong> Basée sur les taux publiés (<a href="/sources/">sources</a>).</p>
 <noscript><p class="notice">Cet outil demande JavaScript pour calculer dans votre navigateur. Aucune donnée n’est envoyée.</p></noscript>
 
 <div class="outil outil-simu" id="outil-tjm" hidden>

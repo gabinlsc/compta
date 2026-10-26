@@ -8,8 +8,8 @@ export function pageCalendrier() {
   const host = new URL(CFG.origin).host;
   return `<p class="eyebrow">Outil gratuit · sans compte</p>
 <h1>Calendrier des échéances du micro-entrepreneur</h1>
-<p class="lead">Téléchargez un fichier pour votre agenda (Google Agenda, Apple Calendrier, Outlook…) avec toutes vos dates de déclaration et de paiement, et des rappels avant chaque échéance. Il se crée dans votre navigateur : rien n’est envoyé.</p>
-<p class="notice info"><strong>Dates officielles.</strong> Elles viennent de <a href="/sources/">service-public.gouv.fr</a>. Pour la CFE, la date exacte figure sur votre avis d’imposition, qui fait foi.</p>
+<p class="lead">Vos dates de déclaration et de paiement, avec rappels, dans votre agenda.</p>
+<p class="notice info"><strong>Dates officielles</strong> (<a href="/sources/">service-public.gouv.fr</a>). Pour la CFE, votre avis d’imposition fait foi.</p>
 <noscript><p class="notice">Le fichier se crée dans votre navigateur : JavaScript est nécessaire. Vous pouvez sinon vous abonner à un calendrier ci-dessous.</p></noscript>
 
 <div class="outil outil-cal" id="outil-calendrier" hidden>

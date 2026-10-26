@@ -10,7 +10,7 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/style.css?v=533f3286">
+<link rel="stylesheet" href="/assets/style.css?v=535aaa31">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Compta by glsc">
 <meta property="og:locale" content="fr_FR">
@@ -32,7 +32,7 @@
   <div class="wrap nav-in">
     <a class="brand" href="/"><img src="/assets/favicon.svg" width="36" height="36" alt=""><span>Compta <small>by glsc</small></span></a>
     <nav class="menu" aria-label="Navigation principale">
-      <a href="/outils/">Outils</a><a href="/guides/" aria-current="page">Guides</a><a href="/sources/">Sources</a>
+      <a href="/outils/"><svg class="ico ico-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Outils</a><a href="/guides/" aria-current="page"><svg class="ico ico-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 6.5C10 4.7 7 4 3.5 4.5v13c3.5-.5 6.5.2 8.5 2 2-1.8 5-2.5 8.5-2v-13C17 4 14 4.7 12 6.5z"/><path d="M12 6.5v13"/></svg> Guides</a><a href="/sources/"><svg class="ico ico-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg> Sources</a>
     </nav>
     <form class="search" action="/recherche/" method="get" role="search"><label class="sr-only" for="q">Rechercher sur le site</label><input id="q" name="q" type="search" placeholder="Rechercher…" autocomplete="off" maxlength="80"></form>
     <button class="icon-btn" id="theme-toggle" type="button" aria-label="Changer de thème (clair ou sombre)" title="Changer de thème"><span aria-hidden="true">◐</span></button>
@@ -41,7 +41,7 @@
 <main id="contenu">
 <div class="wrap">
 <nav class="crumbs" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href="/guides/">Guides</a></li><li aria-current="page">Plafonds et seuils de TVA</li></ol></nav>
-<article class="prose guide"><p class="eyebrow">Guide · mis à jour le 26 octobre 2026</p><h1>Plafonds de chiffre d’affaires et seuils de TVA</h1><p class="lead">Deux limites de chiffre d’affaires existent pour un micro-entrepreneur, et on les confond souvent : celle qui vous garde dans le régime de la micro-entreprise, et celle qui vous dispense de facturer la TVA. Voici les valeurs de 2026 et les règles pour les calculer.</p>
+<article class="prose guide"><p class="eyebrow">Guide · mis à jour le 26 octobre 2026</p><h1><span class="bulle bulle-h1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3.5 16.5 6-6 4 4 7-7.5"/><path d="M15 7h5.5v5.5"/></svg></span> Plafonds de chiffre d’affaires et seuils de TVA</h1><p class="lead">Deux limites de chiffre d’affaires existent pour un micro-entrepreneur, et on les confond souvent : celle qui vous garde dans le régime de la micro-entreprise, et celle qui vous dispense de facturer la TVA. Voici les valeurs de 2026 et les règles pour les calculer.</p>
 <p class="notice info"><strong>Voir où vous en êtes.</strong> Le <a href="/outils/simulateur-revenu-net/">simulateur de revenu net</a> compare votre chiffre d’affaires à ces limites et vous prévient quand vous vous en approchez.</p>
 
 <h2>En bref</h2>
@@ -52,7 +52,7 @@
 <li>Pour 2026, les seuils de franchise de TVA sont inchangés ; le seuil unique de 25 000 € envisagé a été abandonné.</li>
 </ul>
 
-<h2>Le plafond de la micro-entreprise</h2>
+<details class="plus" open><summary><h2>Le plafond de la micro-entreprise</h2></summary><div class="plus-in">
 <p>Le régime de la micro-entreprise s’applique tant que votre chiffre d’affaires annuel, <strong>effectivement encaissé au cours de l’année civile</strong>, ne dépasse pas un certain seuil. Ce seuil varie selon la nature de l’activité. En 2026 :</p>
 <ul>
 <li><strong>203 100 €</strong> pour une activité commerciale de vente de marchandises (hors location meublée) ;</li>
@@ -66,7 +66,7 @@
 <h3>La première année</h3>
 <p>Si vous créez votre activité en cours d’année, le seuil est ajusté au prorata de votre temps d’exploitation : (seuil de l’année × nombre de jours d’existence) / 365. Exemple officiel : une activité de vente créée le 31 janvier 2026 dispose de 335 jours, soit (203 100 € × 335) / 365 = 186 407 € pour 2026. Dès la deuxième année, le seuil complet s’applique.</p>
 
-<h2>La franchise en base de TVA</h2>
+</div></details><details class="plus"><summary><h2>La franchise en base de TVA</h2></summary><div class="plus-in">
 <p>La franchise en base vous dispense de déclarer et de payer la TVA. Vous écrivez alors « TVA non applicable » sur vos factures (voir le guide sur les <a href="/guides/mentions-obligatoires-facture/">mentions obligatoires</a>). Elle dépend de deux seuils :</p>
 <div class="table-wrap"><table>
 <thead><tr><th scope="col">Activité</th><th scope="col">Seuil de base</th><th scope="col">Seuil majoré</th></tr></thead>
@@ -83,33 +83,32 @@
 <p>Exemple officiel (prestations de services) : 24 000 € de chiffre d’affaires en 2025 (sous 37 500 €), puis 38 500 € en 2026. Le seuil de base est dépassé, mais pas le seuil majoré de 41 250 € : la franchise continue jusqu’au 31 décembre 2026.</p>
 <p>La première année, comme pour le plafond, le chiffre d’affaires est ramené à une année complète au prorata du temps d’activité avant d’être comparé aux seuils. Les seuils de TVA diffèrent aussi pour certaines activités réglementées : consultez la page officielle si vous n’êtes pas dans les cas courants.</p>
 
-<h2>Ne pas confondre les deux</h2>
+</div></details><details class="plus"><summary><h2>Ne pas confondre les deux</h2></summary><div class="plus-in">
 <p>Dépasser le seuil de TVA ne vous fait pas quitter la micro-entreprise : vous continuez à déclarer votre chiffre d’affaires à l’Urssaf, mais vous devez facturer et reverser la TVA. Inversement, vous pouvez rester sous le plafond de la micro-entreprise tout en dépassant le seuil de TVA, surtout en prestations de services, où l’écart entre les deux est grand.</p>
 
-<h2>Questions fréquentes</h2>
-<h3>Le chiffre d’affaires compte-t-il facturé ou encaissé ?</h3>
+</div></details><h2>Questions fréquentes</h2><details class="plus faq"><summary>Le chiffre d’affaires compte-t-il facturé ou encaissé ?</summary><div class="plus-in">
 <p>Pour le plafond de la micro-entreprise, c’est le chiffre d’affaires effectivement encaissé au cours de l’année civile qui compte.</p>
-<h3>Que se passe-t-il si je dépasse le plafond une seule année ?</h3>
+</div></details><details class="plus faq"><summary>Que se passe-t-il si je dépasse le plafond une seule année ?</summary><div class="plus-in">
 <p>Rien ne change : le régime n’est perdu que si le seuil est dépassé deux années consécutives.</p>
-<h3>Le simulateur utilise-t-il ces mêmes chiffres ?</h3>
+</div></details><details class="plus faq"><summary>Le simulateur utilise-t-il ces mêmes chiffres ?</summary><div class="plus-in">
 <p>Oui. Il lit les mêmes données que cette page, listées avec leur source sur la page <a href="/sources/">Sources</a>.</p>
-<h2>Sources</h2><ul class="sources"><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F32353" rel="noopener">Conséquences du dépassement des seuils de chiffre d’affaires d’un micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 21 février 2026)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F21746" rel="noopener">Franchise en base de TVA, service-public.gouv.fr (page vérifiée par la DILA le 1er janvier 2026)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F23267" rel="noopener">Régime fiscal de la micro-entreprise, service-public.gouv.fr (page vérifiée par la DILA le 13 mai 2026)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F36232" rel="noopener">Cotisations sociales d’un micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 1er janvier 2026)</a></li></ul>
+</div></details><h2>Sources</h2><ul class="sources"><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F32353" rel="noopener">Conséquences du dépassement des seuils de chiffre d’affaires d’un micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 21 février 2026)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F21746" rel="noopener">Franchise en base de TVA, service-public.gouv.fr (page vérifiée par la DILA le 1er janvier 2026)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F23267" rel="noopener">Régime fiscal de la micro-entreprise, service-public.gouv.fr (page vérifiée par la DILA le 13 mai 2026)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F36232" rel="noopener">Cotisations sociales d’un micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 1er janvier 2026)</a></li></ul>
 <p class="aide">Page rédigée le 26 octobre 2026, mise à jour le 26 octobre 2026. Les chiffres viennent de la page <a href="/sources/">Sources</a>. Ce guide ne remplace pas l’avis d’un expert-comptable.</p>
-<p class="actions"><a class="btn" href="/outils/simulateur-revenu-net/">Ouvrir l’outil : Simulateur de revenu net</a></p></article><aside class="liens" aria-labelledby="titre-liens"><h2 id="titre-liens">Pour aller plus loin</h2><div class="grid"><article class="card"><p class="eyebrow">Outil</p><h3><a href="/outils/simulateur-revenu-net/">Simulateur : combien me reste-t-il ?</a></h3><p>Estimez vos cotisations et votre revenu net à partir de votre chiffre d’affaires et de votre activité.</p></article><article class="card"><p class="eyebrow">Guide</p><h3><a href="/guides/declarer-son-chiffre-d-affaires/">Déclarer son chiffre d’affaires</a></h3><p>Mensuel ou trimestriel : dates, démarches et erreurs à éviter.</p></article><article class="card"><p class="eyebrow">Outil</p><h3><a href="/outils/livre-des-recettes/">Livre des recettes</a></h3><p>Suivez vos encaissements, votre plafond de chiffre d’affaires et exportez le tout en CSV.</p></article><article class="card"><p class="eyebrow">Guide</p><h3><a href="/guides/creer-sa-micro-entreprise/">Créer sa micro-entreprise pas à pas</a></h3><p>Les démarches, dans l’ordre, pour se lancer en toute sérénité.</p></article></div></aside>
-<aside class="studio-cta no-print" aria-label="À propos de l’éditeur"><strong>Besoin d’un site pour votre activité ?</strong> Ce site est édité par StudioGLSC, studio web en Bretagne. <a href="https://studio.glsc.fr" rel="noopener">Découvrir StudioGLSC</a>.</aside>
+<p class="actions"><a class="btn" href="/outils/simulateur-revenu-net/">Ouvrir l’outil : Simulateur de revenu net</a></p></article><aside class="liens" aria-labelledby="titre-liens"><h2 id="titre-liens"><svg class="ico ico-h2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Pour aller plus loin</h2><div class="grid"><article class="card"><a class="card-lien" href="/outils/simulateur-revenu-net/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M8.5 7.5h7M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/></svg></span><span class="card-k">Outil</span><span class="card-t">Simulateur : combien me reste-t-il ?</span><span class="card-d">Ce qu’il vous reste</span><span class="card-go" aria-hidden="true">→</span></a></article><article class="card"><a class="card-lien" href="/guides/declarer-son-chiffre-d-affaires/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5.5" width="18" height="13" rx="3"/><path d="m4 8 8 5.5L20 8"/></svg></span><span class="card-k">Guide</span><span class="card-t">Déclarer son chiffre d’affaires</span><span class="card-go" aria-hidden="true">→</span></a></article><article class="card"><a class="card-lien" href="/outils/livre-des-recettes/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 7.5h6"/></svg></span><span class="card-k">Outil</span><span class="card-t">Livre des recettes</span><span class="card-d">Vos encaissements, en ordre</span><span class="card-go" aria-hidden="true">→</span></a></article><article class="card"><a class="card-lien" href="/guides/creer-sa-micro-entreprise/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3c3.5 1.5 6 5 6 9l-3 3h-6l-3-3c0-4 2.5-7.5 6-9z"/><circle cx="12" cy="10" r="1.6"/><path d="M9 15l-2.5 4 3.5-1M15 15l2.5 4-3.5-1"/></svg></span><span class="card-k">Guide</span><span class="card-t">Créer sa micro-entreprise pas à pas</span><span class="card-go" aria-hidden="true">→</span></a></article></div></aside>
+<aside class="studio-cta no-print" aria-label="À propos de l’éditeur"><strong>Besoin d’un site ?</strong> Découvrez <a href="https://studio.glsc.fr" rel="noopener">StudioGLSC</a>.</aside>
 </div>
 </main>
 <footer class="footer">
   <div class="wrap">
     <div class="footer-cols">
-      <div><p class="footer-logo"><img src="/assets/favicon.svg" width="32" height="32" alt="">Compta by glsc</p><p>Outils gratuits pour les micro-entrepreneurs. Sans compte, sans publicité, sans cookie : vos chiffres restent dans votre navigateur.</p></div>
+      <div><p class="footer-logo"><img src="/assets/favicon.svg" width="32" height="32" alt="">Compta by glsc</p><p>Outils gratuits pour micro-entrepreneurs. Rien ne quitte votre navigateur.</p></div>
       <div><h2>Le site</h2><ul><li><a href="/outils/">Outils</a></li><li><a href="/guides/">Guides</a></li><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li></ul></div>
       <div><h2>Informations</h2><ul><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/confidentialite/">Confidentialité</a></li><li><a href="/cgu/">Conditions d’utilisation</a></li><li><a href="/sources/">Sources et mises à jour</a></li><li><a href="https://github.com/gabinlsc/compta" rel="noopener">Code source</a></li></ul></div>
     </div>
     <p class="small">Ces outils ne constituent ni un conseil juridique, ni un conseil fiscal, ni un conseil comptable. Édité par Gabin Lescoat (<a href="https://studio.glsc.fr" rel="noopener">StudioGLSC</a>).</p>
   </div>
 </footer>
-<script src="/assets/app.js?v=cfc3cd7e" defer></script>
+<script src="/assets/app.js?v=8d2e74d1" defer></script>
 
 </body>
 </html>

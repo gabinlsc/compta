@@ -2,6 +2,8 @@
 import { esc } from '../../tools/lib/layout.mjs';
 import { OUTILS } from './outils.mjs';
 import { GUIDES } from './guides.mjs';
+import { bulleDe, svg } from './icones.mjs';
+import { COURT } from './courts.mjs';
 
 const o = (slug) => `/outils/${slug}/`, g = (slug) => `/guides/${slug}/`;
 export const LIENS = {
@@ -33,5 +35,5 @@ const trouver = (chemin) => {
 export function blocLiens(chemin) {
   const items = (LIENS[chemin] ?? []).map(trouver).filter(Boolean);
   if (!items.length) return '';
-  return `<aside class="liens" aria-labelledby="titre-liens"><h2 id="titre-liens">Pour aller plus loin</h2><div class="grid">${items.map((i) => `<article class="card"><p class="eyebrow">${i.type}</p><h3><a href="${i.chemin}">${esc(i.titre)}</a></h3><p>${esc(i.resume)}</p></article>`).join('')}</div></aside>`;
+  return `<aside class="liens" aria-labelledby="titre-liens"><h2 id="titre-liens">${svg('arrow', 'ico ico-h2')} Pour aller plus loin</h2><div class="grid">${items.map((i) => `<article class="card"><a class="card-lien" href="${i.chemin}">${bulleDe(i.chemin.split('/').filter(Boolean).at(-1))}<span class="card-k">${i.type}</span><span class="card-t">${esc(i.titre)}</span>${COURT[i.chemin.split('/').filter(Boolean).at(-1)] ? `<span class="card-d">${esc(COURT[i.chemin.split('/').filter(Boolean).at(-1)])}</span>` : ''}<span class="card-go" aria-hidden="true">→</span></a></article>`).join('')}</div></aside>`;
 }

@@ -10,7 +10,7 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/style.css?v=533f3286">
+<link rel="stylesheet" href="/assets/style.css?v=535aaa31">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Compta by glsc">
 <meta property="og:locale" content="fr_FR">
@@ -32,7 +32,7 @@
   <div class="wrap nav-in">
     <a class="brand" href="/"><img src="/assets/favicon.svg" width="36" height="36" alt=""><span>Compta <small>by glsc</small></span></a>
     <nav class="menu" aria-label="Navigation principale">
-      <a href="/outils/">Outils</a><a href="/guides/" aria-current="page">Guides</a><a href="/sources/">Sources</a>
+      <a href="/outils/"><svg class="ico ico-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Outils</a><a href="/guides/" aria-current="page"><svg class="ico ico-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 6.5C10 4.7 7 4 3.5 4.5v13c3.5-.5 6.5.2 8.5 2 2-1.8 5-2.5 8.5-2v-13C17 4 14 4.7 12 6.5z"/><path d="M12 6.5v13"/></svg> Guides</a><a href="/sources/"><svg class="ico ico-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg> Sources</a>
     </nav>
     <form class="search" action="/recherche/" method="get" role="search"><label class="sr-only" for="q">Rechercher sur le site</label><input id="q" name="q" type="search" placeholder="Rechercher…" autocomplete="off" maxlength="80"></form>
     <button class="icon-btn" id="theme-toggle" type="button" aria-label="Changer de thème (clair ou sombre)" title="Changer de thème"><span aria-hidden="true">◐</span></button>
@@ -41,7 +41,7 @@
 <main id="contenu">
 <div class="wrap">
 <nav class="crumbs" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href="/guides/">Guides</a></li><li aria-current="page">Déclarer son chiffre d’affaires</li></ol></nav>
-<article class="prose guide"><p class="eyebrow">Guide · mis à jour le 26 octobre 2026</p><h1>Déclarer son chiffre d’affaires de micro-entrepreneur</h1><p class="lead">Un micro-entrepreneur déclare son chiffre d’affaires à l’Urssaf, chaque mois ou chaque trimestre, et paie ses cotisations en même temps. Voici les dates, la méthode, et ce qui se passe en cas d’oubli.</p>
+<article class="prose guide"><p class="eyebrow">Guide · mis à jour le 26 octobre 2026</p><h1><span class="bulle bulle-h1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5.5" width="18" height="13" rx="3"/><path d="m4 8 8 5.5L20 8"/></svg></span> Déclarer son chiffre d’affaires de micro-entrepreneur</h1><p class="lead">Un micro-entrepreneur déclare son chiffre d’affaires à l’Urssaf, chaque mois ou chaque trimestre, et paie ses cotisations en même temps. Voici les dates, la méthode, et ce qui se passe en cas d’oubli.</p>
 <p class="notice info"><strong>Ne ratez plus une date.</strong> Le <a href="/outils/calendrier-echeances/">calendrier des échéances</a> crée le fichier pour votre agenda, avec des rappels, selon que vous déclarez chaque mois ou chaque trimestre.</p>
 
 <h2>En bref</h2>
@@ -52,10 +52,10 @@
 <li>Un oubli coûte 60,1 € par déclaration manquante, plus une majoration de vos cotisations.</li>
 </ul>
 
-<h2>Mensuel ou trimestriel ?</h2>
+<details class="plus" open><summary><h2>Mensuel ou trimestriel ?</h2></summary><div class="plus-in">
 <p>Par défaut, la déclaration est mensuelle. L’option pour une déclaration tous les 3 mois doit être prise <strong>dans le mois qui suit le début de l’activité</strong> ; elle vaut pour l’année civile et se reconduit tacitement l’année suivante. Pour revenir à la déclaration mensuelle, il faut le demander <strong>avant le 31 octobre</strong> de l’année précédant celle où vous voulez changer : pour modifier la périodicité en 2027, la demande devait être faite avant le 31 octobre 2026.</p>
 
-<h2>Les dates limites</h2>
+</div></details><details class="plus"><summary><h2>Les dates limites</h2></summary><div class="plus-in">
 <p>Les déclarations se font avant la fin du mois suivant le mois ou le trimestre concerné.</p>
 <h3>Déclaration mensuelle</h3>
 <p>Le chiffre d’affaires d’un mois se déclare avant la fin du mois suivant : celui de juin, au plus tard le 31 juillet.</p>
@@ -69,18 +69,18 @@
 <tr><th scope="row">D’octobre à décembre</th><td>31 janvier (de l’année suivante)</td></tr>
 </tbody></table></div>
 
-<h2>Votre première déclaration</h2>
+</div></details><details class="plus"><summary><h2>Votre première déclaration</h2></summary><div class="plus-in">
 <p>La première déclaration peut se faire au plus tôt 3 mois (90 jours) après le début de l’activité. Elle couvre tout le chiffre d’affaires depuis le démarrage.</p>
 <ul>
 <li><strong>En déclaration mensuelle :</strong> avant la fin du mois suivant vos 3 premiers mois d’activité. Exemple officiel : activité démarrée le 6 mars 2026, première déclaration au plus tard le 31 juillet 2026.</li>
 <li><strong>En déclaration trimestrielle :</strong> avant la fin du mois suivant le trimestre qui suit celui du démarrage. Exemple officiel : activité démarrée le 12 avril 2026, première déclaration au plus tard le 31 octobre 2026.</li>
 </ul>
 
-<h2>Que déclarer ?</h2>
+</div></details><details class="plus"><summary><h2>Que déclarer ?</h2></summary><div class="plus-in">
 <p>Le chiffre d’affaires à déclarer est la somme, <strong>hors taxes</strong>, des ventes de biens et des prestations de services <strong>encaissées</strong> pendant la période. Les ventes réalisées mais pas encore payées sont exclues. La TVA payée par vos clients n’est pas incluse et aucune charge (commissions, frais) ne se déduit.</p>
 <p>Si vous avez opté pour le versement libératoire de l’impôt sur le revenu, le montant des cotisations et de l’impôt est calculé automatiquement lors de la déclaration en ligne, selon le taux de votre activité. Vous devez aussi reporter votre chiffre d’affaires dans votre déclaration fiscale annuelle : cela n’entraîne pas de seconde imposition.</p>
 
-<h2>En cas d’oubli ou de retard</h2>
+</div></details><details class="plus"><summary><h2>En cas d’oubli ou de retard</h2></summary><div class="plus-in">
 <p>Une pénalité de <strong>60,1 €</strong> s’applique à chaque déclaration manquante. Vos cotisations sont en plus majorées : de 5 % par déclaration manquante si vous déclarez chaque mois, de 15 % si vous déclarez chaque trimestre. Elles sont alors calculées sur une base forfaitaire :</p>
 <div class="table-wrap"><table>
 <thead><tr><th scope="col">Par déclaration manquante</th><th scope="col">Ventes</th><th scope="col">Prestations de services</th></tr></thead>
@@ -89,30 +89,29 @@
 <tr><th scope="row">Déclaration trimestrielle</th><td>23 375 €</td><td>10 313 €</td></tr>
 </tbody></table></div>
 
-<h2>Questions fréquentes</h2>
-<h3>Dois-je déclarer si je n’ai rien vendu ?</h3>
+</div></details><h2>Questions fréquentes</h2><details class="plus faq"><summary>Dois-je déclarer si je n’ai rien vendu ?</summary><div class="plus-in">
 <p>Oui. La déclaration est obligatoire même si le chiffre d’affaires est nul : écrivez « Néant » à la place du montant. Sans chiffre d’affaires, il n’y a aucune cotisation à payer.</p>
-<h3>Je facture en décembre, un client paie en janvier : dans quelle période ?</h3>
+</div></details><details class="plus faq"><summary>Je facture en décembre, un client paie en janvier : dans quelle période ?</summary><div class="plus-in">
 <p>Dans celle de l’encaissement : c’est le chiffre d’affaires encaissé pendant la période qui est déclaré.</p>
-<h3>Puis-je changer de périodicité en cours d’année ?</h3>
+</div></details><details class="plus faq"><summary>Puis-je changer de périodicité en cours d’année ?</summary><div class="plus-in">
 <p>Non : l’option vaut pour l’année civile. Elle peut être modifiée pour l’année suivante, avant le 31 octobre pour revenir au mensuel.</p>
-<h2>Sources</h2><ul class="sources"><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F23257" rel="noopener">Micro-entrepreneur : quand déclarer son chiffre d’affaires ?, service-public.gouv.fr (page vérifiée par la DILA le 1er janvier 2026)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F36232" rel="noopener">Cotisations sociales d’un micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 1er janvier 2026)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F36244" rel="noopener">Imposition d’un micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 13 mars 2026)</a></li></ul>
+</div></details><h2>Sources</h2><ul class="sources"><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F23257" rel="noopener">Micro-entrepreneur : quand déclarer son chiffre d’affaires ?, service-public.gouv.fr (page vérifiée par la DILA le 1er janvier 2026)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F36232" rel="noopener">Cotisations sociales d’un micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 1er janvier 2026)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F36244" rel="noopener">Imposition d’un micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 13 mars 2026)</a></li></ul>
 <p class="aide">Page rédigée le 26 octobre 2026, mise à jour le 26 octobre 2026. Les chiffres viennent de la page <a href="/sources/">Sources</a>. Ce guide ne remplace pas l’avis d’un expert-comptable.</p>
-<p class="actions"><a class="btn" href="/outils/calendrier-echeances/">Ouvrir l’outil : Calendrier des échéances</a></p></article><aside class="liens" aria-labelledby="titre-liens"><h2 id="titre-liens">Pour aller plus loin</h2><div class="grid"><article class="card"><p class="eyebrow">Outil</p><h3><a href="/outils/calendrier-echeances/">Calendrier des échéances</a></h3><p>Téléchargez un fichier .ics avec vos dates de déclaration et de paiement, rappels compris.</p></article><article class="card"><p class="eyebrow">Outil</p><h3><a href="/outils/livre-des-recettes/">Livre des recettes</a></h3><p>Suivez vos encaissements, votre plafond de chiffre d’affaires et exportez le tout en CSV.</p></article><article class="card"><p class="eyebrow">Guide</p><h3><a href="/guides/plafonds-et-seuils-de-tva/">Plafonds et seuils de TVA</a></h3><p>Jusqu’où rester en micro-entreprise et en franchise de TVA.</p></article><article class="card"><p class="eyebrow">Guide</p><h3><a href="/guides/cfe-qui-la-paie/">CFE : qui la paie ?</a></h3><p>La cotisation foncière des entreprises, exonérations comprises.</p></article></div></aside>
-<aside class="studio-cta no-print" aria-label="À propos de l’éditeur"><strong>Besoin d’un site pour votre activité ?</strong> Ce site est édité par StudioGLSC, studio web en Bretagne. <a href="https://studio.glsc.fr" rel="noopener">Découvrir StudioGLSC</a>.</aside>
+<p class="actions"><a class="btn" href="/outils/calendrier-echeances/">Ouvrir l’outil : Calendrier des échéances</a></p></article><aside class="liens" aria-labelledby="titre-liens"><h2 id="titre-liens"><svg class="ico ico-h2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Pour aller plus loin</h2><div class="grid"><article class="card"><a class="card-lien" href="/outils/calendrier-echeances/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M8 3v4M16 3v4M3.5 10h17M8 14h.01M12 14h.01M16 14h.01"/></svg></span><span class="card-k">Outil</span><span class="card-t">Calendrier des échéances</span><span class="card-d">Échéances dans votre agenda</span><span class="card-go" aria-hidden="true">→</span></a></article><article class="card"><a class="card-lien" href="/outils/livre-des-recettes/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5z"/><path d="M5 19.5A1.5 1.5 0 0 0 6.5 21H19v-3M9 7.5h6"/></svg></span><span class="card-k">Outil</span><span class="card-t">Livre des recettes</span><span class="card-d">Vos encaissements, en ordre</span><span class="card-go" aria-hidden="true">→</span></a></article><article class="card"><a class="card-lien" href="/guides/plafonds-et-seuils-de-tva/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m3.5 16.5 6-6 4 4 7-7.5"/><path d="M15 7h5.5v5.5"/></svg></span><span class="card-k">Guide</span><span class="card-t">Plafonds et seuils de TVA</span><span class="card-go" aria-hidden="true">→</span></a></article><article class="card"><a class="card-lien" href="/guides/cfe-qui-la-paie/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="3" width="10" height="18" rx="1.5"/><path d="M15 9h4v12h-4M8.5 7.5h3M8.5 11h3M8.5 14.5h3"/></svg></span><span class="card-k">Guide</span><span class="card-t">CFE : qui la paie ?</span><span class="card-go" aria-hidden="true">→</span></a></article></div></aside>
+<aside class="studio-cta no-print" aria-label="À propos de l’éditeur"><strong>Besoin d’un site ?</strong> Découvrez <a href="https://studio.glsc.fr" rel="noopener">StudioGLSC</a>.</aside>
 </div>
 </main>
 <footer class="footer">
   <div class="wrap">
     <div class="footer-cols">
-      <div><p class="footer-logo"><img src="/assets/favicon.svg" width="32" height="32" alt="">Compta by glsc</p><p>Outils gratuits pour les micro-entrepreneurs. Sans compte, sans publicité, sans cookie : vos chiffres restent dans votre navigateur.</p></div>
+      <div><p class="footer-logo"><img src="/assets/favicon.svg" width="32" height="32" alt="">Compta by glsc</p><p>Outils gratuits pour micro-entrepreneurs. Rien ne quitte votre navigateur.</p></div>
       <div><h2>Le site</h2><ul><li><a href="/outils/">Outils</a></li><li><a href="/guides/">Guides</a></li><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li></ul></div>
       <div><h2>Informations</h2><ul><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/confidentialite/">Confidentialité</a></li><li><a href="/cgu/">Conditions d’utilisation</a></li><li><a href="/sources/">Sources et mises à jour</a></li><li><a href="https://github.com/gabinlsc/compta" rel="noopener">Code source</a></li></ul></div>
     </div>
     <p class="small">Ces outils ne constituent ni un conseil juridique, ni un conseil fiscal, ni un conseil comptable. Édité par Gabin Lescoat (<a href="https://studio.glsc.fr" rel="noopener">StudioGLSC</a>).</p>
   </div>
 </footer>
-<script src="/assets/app.js?v=cfc3cd7e" defer></script>
+<script src="/assets/app.js?v=8d2e74d1" defer></script>
 
 </body>
 </html>

@@ -4,8 +4,8 @@ import { champ, coche, choisir } from './formulaires.mjs';
 export function pageMentionsSite() {
   return `<p class="eyebrow">Outil gratuit · sans compte</p>
 <h1>Mentions légales et politique de confidentialité de votre site</h1>
-<p class="lead">Un site professionnel doit afficher des mentions légales et, dès qu’il recueille des données personnelles (formulaire de contact, lettre d’information, mesure d’audience), expliquer ce qu’il en fait. Répondez aux questions : les deux textes se composent à partir de vos réponses, prêts à copier dans votre site.</p>
-<p class="notice info"><strong>Ne remplace pas un conseil juridique.</strong> Les mentions suivent la liste de <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F37351" rel="noopener">service-public.gouv.fr</a> ; la politique de confidentialité reprend les informations à donner selon la <a href="https://www.cnil.fr/fr/conformite-rgpd-information-des-personnes-et-transparence" rel="noopener">CNIL</a>. Le texte doit refléter ce que fait réellement votre site. Rien n’est envoyé : tout se compose dans votre navigateur.</p>
+<p class="lead">Quelques questions, et vos mentions légales et votre politique de confidentialité sont prêtes à copier.</p>
+<p class="notice info"><strong>Ne remplace pas un conseil juridique.</strong> Basé sur <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F37351" rel="noopener">service-public.gouv.fr</a> et la <a href="https://www.cnil.fr/fr/conformite-rgpd-information-des-personnes-et-transparence" rel="noopener">CNIL</a>. Rien n’est envoyé.</p>
 <noscript><p class="notice">Cet outil demande JavaScript pour fonctionner dans votre navigateur. Aucune donnée n’est envoyée.</p></noscript>
 
 <div class="outil outil-mentions" id="outil-mentions" hidden>

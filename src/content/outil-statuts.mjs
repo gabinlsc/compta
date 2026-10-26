@@ -15,8 +15,8 @@ export function pageStatuts() {
   const ligne = ([critere, a, b, c]) => `<tr><th scope="row">${critere}</th><td>${a}</td><td>${b}</td><td>${c}</td></tr>`;
   return `<p class="eyebrow">Comparatif · sans compte</p>
 <h1>Micro-entreprise, EURL ou SASU : le comparatif</h1>
-<p class="lead">Un tableau clair pour comparer les trois formes les plus courantes quand on se lance seul : démarches, capital, protection du patrimoine, impôt, protection sociale et comptabilité. Pas de chiffres de revenu net : ils dépendent de trop de paramètres pour être comparés honnêtement.</p>
-<p class="notice info"><strong>À lire avant de choisir.</strong> Ce comparatif est qualitatif et ne remplace ni l’avis d’un expert-comptable ni les simulateurs officiels (notamment celui de l’Urssaf pour comparer les cotisations). Source unique : <a href="https://entreprendre.service-public.gouv.fr/vosdroits/F23844" rel="noopener">service-public.gouv.fr</a>, page vérifiée par la DILA le 10 avril 2026.</p>
+<p class="lead">Micro-entreprise, EURL ou SASU : le comparatif, sans promesse de revenu.</p>
+<p class="notice info"><strong>À lire avant de choisir.</strong> Comparatif qualitatif, sans valeur de conseil. Source : <a href="https://entreprendre.service-public.gouv.fr/vosdroits/F23844" rel="noopener">service-public.gouv.fr</a>, page vérifiée par la DILA le 10 avril 2026.</p>
 
 <div class="table-wrap"><table class="statuts">
 <caption class="sr-only">Comparatif de la micro-entreprise, de l’EURL et de la SASU</caption>

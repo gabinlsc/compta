@@ -10,7 +10,7 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/style.css?v=533f3286">
+<link rel="stylesheet" href="/assets/style.css?v=535aaa31">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Compta by glsc">
 <meta property="og:locale" content="fr_FR">
@@ -32,7 +32,7 @@
   <div class="wrap nav-in">
     <a class="brand" href="/"><img src="/assets/favicon.svg" width="36" height="36" alt=""><span>Compta <small>by glsc</small></span></a>
     <nav class="menu" aria-label="Navigation principale">
-      <a href="/outils/">Outils</a><a href="/guides/" aria-current="page">Guides</a><a href="/sources/">Sources</a>
+      <a href="/outils/"><svg class="ico ico-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Outils</a><a href="/guides/" aria-current="page"><svg class="ico ico-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 6.5C10 4.7 7 4 3.5 4.5v13c3.5-.5 6.5.2 8.5 2 2-1.8 5-2.5 8.5-2v-13C17 4 14 4.7 12 6.5z"/><path d="M12 6.5v13"/></svg> Guides</a><a href="/sources/"><svg class="ico ico-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg> Sources</a>
     </nav>
     <form class="search" action="/recherche/" method="get" role="search"><label class="sr-only" for="q">Rechercher sur le site</label><input id="q" name="q" type="search" placeholder="Rechercher…" autocomplete="off" maxlength="80"></form>
     <button class="icon-btn" id="theme-toggle" type="button" aria-label="Changer de thème (clair ou sombre)" title="Changer de thème"><span aria-hidden="true">◐</span></button>
@@ -41,7 +41,7 @@
 <main id="contenu">
 <div class="wrap">
 <nav class="crumbs" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href="/guides/">Guides</a></li><li aria-current="page">Les mentions obligatoires sur une facture</li></ol></nav>
-<article class="prose guide"><p class="eyebrow">Guide · mis à jour le 26 octobre 2026</p><h1>Mentions obligatoires sur une facture</h1><p class="lead">Une facture sans ses mentions obligatoires n’est pas valable, et son oubli peut être sanctionné. Voici, dans l’ordre, ce qu’il faut y écrire quand on est micro-entrepreneur, avec les changements de 2026.</p>
+<article class="prose guide"><p class="eyebrow">Guide · mis à jour le 26 octobre 2026</p><h1><span class="bulle bulle-h1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="4.5" width="14" height="16.5" rx="2.5"/><path d="M9 4.5V3.5h6v1M9 11h6M9 15h4"/></svg></span> Mentions obligatoires sur une facture</h1><p class="lead">Une facture sans ses mentions obligatoires n’est pas valable, et son oubli peut être sanctionné. Voici, dans l’ordre, ce qu’il faut y écrire quand on est micro-entrepreneur, avec les changements de 2026.</p>
 <p class="notice info"><strong>Gagnez du temps.</strong> L’outil <a href="/outils/facture-auto-entrepreneur/">Devis et factures</a> ajoute automatiquement toutes ces mentions et vérifie votre SIREN, votre IBAN et vos délais.</p>
 
 <h2>En bref</h2>
@@ -52,7 +52,7 @@
 <li>En franchise de TVA, elle porte la mention « TVA non applicable », dont le texte a changé le 1er septembre 2026.</li>
 </ul>
 
-<h2>Les mentions communes à toutes les factures</h2>
+<details class="plus" open><summary><h2>Les mentions communes à toutes les factures</h2></summary><div class="plus-in">
 <p>Elles s’appliquent que votre client soit un particulier, un professionnel ou une entité publique :</p>
 <ul>
 <li><strong>La date d’émission</strong> de la facture et son <strong>numéro unique</strong>.</li>
@@ -67,19 +67,19 @@
 </ul>
 <p>Votre numéro de TVA intracommunautaire n’est pas concerné tant que vous êtes en franchise de TVA : vous n’en avez pas.</p>
 
-<h2>Votre entreprise est en cours d’immatriculation</h2>
+</div></details><details class="plus"><summary><h2>Votre entreprise est en cours d’immatriculation</h2></summary><div class="plus-in">
 <p>La facture doit alors être établie au nom de l’entreprise, avec la mention « Siret en cours d’attribution », et non au nom du créateur. L’outil propose une case à cocher pour ce cas.</p>
 
-<h2>Le délai de paiement, les pénalités et l’indemnité de 40 €</h2>
+</div></details><details class="plus"><summary><h2>Le délai de paiement, les pénalités et l’indemnité de 40 €</h2></summary><div class="plus-in">
 <p>Sans accord, le délai de paiement est de 30 jours après la réception du bien ou la réalisation de la prestation. Entre professionnels, vous pouvez convenir d’un délai plus long, mais il ne peut pas dépasser <strong>60 jours à compter de l’émission de la facture</strong> (ou 45 jours fin de mois). Ce délai doit apparaître sur la facture.</p>
 <p>En cas de retard, des <strong>pénalités</strong> s’appliquent pour chaque jour, dès le lendemain de la date de règlement indiquée, sans qu’il soit nécessaire de relancer le client. Leur taux ne peut pas être inférieur à trois fois le taux de l’intérêt légal. Le code de commerce recommande le taux de refinancement de la Banque centrale européenne, majoré de 10 points. Pour le 2<sup>e</sup> semestre 2026, cela donne 12,4 % (taux de refinancement de 2,4 % au 1<sup>er</sup> juillet 2026).</p>
 <p>S’y ajoute une <strong>indemnité forfaitaire de 40 €</strong> par facture impayée à temps, due une seule fois et non chaque jour de retard, même en cas de paiement partiel. Elle n’est pas soumise à la TVA et ne peut être demandée qu’à un client professionnel. Si vos frais réels sont plus élevés, vous pouvez demander un complément sur justificatifs, sans le mentionner sur la facture.</p>
 
-<h2>La TVA : franchise en base et nouvelle mention</h2>
+</div></details><details class="plus"><summary><h2>La TVA : franchise en base et nouvelle mention</h2></summary><div class="plus-in">
 <p>Si vous êtes en franchise en base de TVA, vous le signalez sur chaque facture. Depuis le 1er septembre 2026, la mention est : <em>« TVA non applicable, art. L. 223 et s. du code des impositions sur les biens et services (CIBS) »</em>. Elle remplace « TVA non applicable, art. 293 B du code général des impôts ». L’ancienne formule reste <strong>tolérée jusqu’au 31 décembre 2027</strong>, mais mieux vaut adopter la nouvelle dès maintenant.</p>
 <p>Les seuils qui vous maintiennent en franchise sont détaillés dans notre page <a href="/sources/">Sources</a>.</p>
 
-<h2>Les mentions qui dépendent de votre situation</h2>
+</div></details><details class="plus"><summary><h2>Les mentions qui dépendent de votre situation</h2></summary><div class="plus-in">
 <ul>
 <li><strong>Membre d’une association agréée</strong> : « Membre d'une association agréée, le règlement par chèque et carte bancaire est accepté ».</li>
 <li><strong>Activité artisanale</strong> : indiquez votre assurance professionnelle quand elle est obligatoire pour votre métier (par exemple la décennale pour un plombier), avec l’assureur et la couverture géographique, sur vos devis comme sur vos factures.</li>
@@ -87,37 +87,36 @@
 <li><strong>Client redevable de la TVA</strong> : « Auto-liquidation ». <strong>Auto-facturation</strong> : la mention correspondante, quand c’est le client qui établit la facture.</li>
 </ul>
 
-<h2>Ce que change la facturation électronique</h2>
+</div></details><details class="plus"><summary><h2>Ce que change la facturation électronique</h2></summary><div class="plus-in">
 <p>La généralisation de la facture électronique ajoute quatre mentions : le <strong>SIREN du client</strong> (s’il s’agit d’une entreprise), l’<strong>adresse de livraison</strong> si elle diffère de celle du client, la <strong>nature de l’opération</strong> (livraison de biens, prestation de services ou les deux) et, le cas échéant, « Option pour le paiement de la taxe d’après les débits ».</p>
 <p>Ces mentions s’imposent aux grandes entreprises et aux entreprises de taille intermédiaire à partir du 1er septembre 2026. Les PME et les <strong>micro-entreprises</strong> sont concernées à partir du <strong>1er septembre 2027</strong>. L’outil vous les fait déjà renseigner.</p>
 
-<h2>Et le devis ?</h2>
+</div></details><details class="plus"><summary><h2>Et le devis ?</h2></summary><div class="plus-in">
 <p>Le devis n’est pas toujours obligatoire : il l’est dans certains secteurs (bâtiment, services à la personne, déménagement…), et ses mentions dépendent alors du secteur. En dehors de ces cas, vous pouvez fournir un autre document d’information avant l’achat, comme vos conditions générales de vente. Dans tous les cas, un devis signé par les deux parties vous engage. Un artisan indique son assurance professionnelle sur ses devis aussi.</p>
 
-<h2>Questions fréquentes</h2>
-<h3>Que risque-t-on en oubliant une mention ?</h3>
+</div></details><h2>Questions fréquentes</h2><details class="plus faq"><summary>Que risque-t-on en oubliant une mention ?</summary><div class="plus-in">
 <p>Une facture incomplète expose à des sanctions, qui varient selon la mention oubliée. Les pénalités de retard et l’indemnité de 40 € doivent, elles, être indiquées à la fois dans vos conditions générales de vente et sur chaque facture.</p>
-<h3>Faut-il conserver les factures ?</h3>
+</div></details><details class="plus faq"><summary>Faut-il conserver les factures ?</summary><div class="plus-in">
 <p>Oui. Les documents commerciaux se conservent entre 5 et 10 ans selon la nature du document.</p>
-<h3>Puis-je modifier une facture déjà envoyée ?</h3>
+</div></details><details class="plus faq"><summary>Puis-je modifier une facture déjà envoyée ?</summary><div class="plus-in">
 <p>Non : on la corrige par un <strong>avoir</strong>, puis on émet une nouvelle facture avec un nouveau numéro. L’outil gère les avoirs.</p>
-<h2>Sources</h2><ul class="sources"><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F31808" rel="noopener">Mentions obligatoires sur une facture, service-public.gouv.fr (vérifiée par la DILA le 11 août 2026)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F36008" rel="noopener">Documents commerciaux d’une micro-entreprise, service-public.gouv.fr (vérifiée le 8 décembre 2025)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F23211" rel="noopener">Délais de paiement entre professionnels et pénalités de retard, service-public.gouv.fr (vérifiée le 7 août 2026)</a></li></ul>
+</div></details><h2>Sources</h2><ul class="sources"><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F31808" rel="noopener">Mentions obligatoires sur une facture, service-public.gouv.fr (vérifiée par la DILA le 11 août 2026)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F36008" rel="noopener">Documents commerciaux d’une micro-entreprise, service-public.gouv.fr (vérifiée le 8 décembre 2025)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F23211" rel="noopener">Délais de paiement entre professionnels et pénalités de retard, service-public.gouv.fr (vérifiée le 7 août 2026)</a></li></ul>
 <p class="aide">Page rédigée le 26 octobre 2026, mise à jour le 26 octobre 2026. Les chiffres viennent de la page <a href="/sources/">Sources</a>. Ce guide ne remplace pas l’avis d’un expert-comptable.</p>
-<p class="actions"><a class="btn" href="/outils/facture-auto-entrepreneur/">Ouvrir l’outil : Devis et factures</a></p></article><aside class="liens" aria-labelledby="titre-liens"><h2 id="titre-liens">Pour aller plus loin</h2><div class="grid"><article class="card"><p class="eyebrow">Guide</p><h3><a href="/guides/checklist-premiere-facture/">Checklist avant votre première facture</a></h3><p>Dix vérifications avant d’envoyer votre première facture.</p></article><article class="card"><p class="eyebrow">Guide</p><h3><a href="/guides/facturation-electronique/">Facturation électronique : ce qui change</a></h3><p>Le calendrier et ce que cela implique pour un micro-entrepreneur.</p></article><article class="card"><p class="eyebrow">Outil</p><h3><a href="/outils/facture-auto-entrepreneur/">Devis et factures</a></h3><p>Créez un devis, une facture, un acompte ou un avoir avec toutes les mentions obligatoires, puis imprimez-le en PDF.</p></article><article class="card"><p class="eyebrow">Guide</p><h3><a href="/guides/creer-sa-micro-entreprise/">Créer sa micro-entreprise pas à pas</a></h3><p>Les démarches, dans l’ordre, pour se lancer en toute sérénité.</p></article></div></aside>
-<aside class="studio-cta no-print" aria-label="À propos de l’éditeur"><strong>Besoin d’un site pour votre activité ?</strong> Ce site est édité par StudioGLSC, studio web en Bretagne. <a href="https://studio.glsc.fr" rel="noopener">Découvrir StudioGLSC</a>.</aside>
+<p class="actions"><a class="btn" href="/outils/facture-auto-entrepreneur/">Ouvrir l’outil : Devis et factures</a></p></article><aside class="liens" aria-labelledby="titre-liens"><h2 id="titre-liens"><svg class="ico ico-h2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Pour aller plus loin</h2><div class="grid"><article class="card"><a class="card-lien" href="/guides/checklist-premiere-facture/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12.3 2.8 2.8 5.4-5.6"/></svg></span><span class="card-k">Guide</span><span class="card-t">Checklist avant votre première facture</span><span class="card-go" aria-hidden="true">→</span></a></article><article class="card"><a class="card-lien" href="/guides/facturation-electronique/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M13 2.5 5 13.5h6l-1 8 8-11h-6z"/></svg></span><span class="card-k">Guide</span><span class="card-t">Facturation électronique : ce qui change</span><span class="card-go" aria-hidden="true">→</span></a></article><article class="card"><a class="card-lien" href="/outils/facture-auto-entrepreneur/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span><span class="card-k">Outil</span><span class="card-t">Devis et factures</span><span class="card-d">En PDF, mentions incluses</span><span class="card-go" aria-hidden="true">→</span></a></article><article class="card"><a class="card-lien" href="/guides/creer-sa-micro-entreprise/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3c3.5 1.5 6 5 6 9l-3 3h-6l-3-3c0-4 2.5-7.5 6-9z"/><circle cx="12" cy="10" r="1.6"/><path d="M9 15l-2.5 4 3.5-1M15 15l2.5 4-3.5-1"/></svg></span><span class="card-k">Guide</span><span class="card-t">Créer sa micro-entreprise pas à pas</span><span class="card-go" aria-hidden="true">→</span></a></article></div></aside>
+<aside class="studio-cta no-print" aria-label="À propos de l’éditeur"><strong>Besoin d’un site ?</strong> Découvrez <a href="https://studio.glsc.fr" rel="noopener">StudioGLSC</a>.</aside>
 </div>
 </main>
 <footer class="footer">
   <div class="wrap">
     <div class="footer-cols">
-      <div><p class="footer-logo"><img src="/assets/favicon.svg" width="32" height="32" alt="">Compta by glsc</p><p>Outils gratuits pour les micro-entrepreneurs. Sans compte, sans publicité, sans cookie : vos chiffres restent dans votre navigateur.</p></div>
+      <div><p class="footer-logo"><img src="/assets/favicon.svg" width="32" height="32" alt="">Compta by glsc</p><p>Outils gratuits pour micro-entrepreneurs. Rien ne quitte votre navigateur.</p></div>
       <div><h2>Le site</h2><ul><li><a href="/outils/">Outils</a></li><li><a href="/guides/">Guides</a></li><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li></ul></div>
       <div><h2>Informations</h2><ul><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/confidentialite/">Confidentialité</a></li><li><a href="/cgu/">Conditions d’utilisation</a></li><li><a href="/sources/">Sources et mises à jour</a></li><li><a href="https://github.com/gabinlsc/compta" rel="noopener">Code source</a></li></ul></div>
     </div>
     <p class="small">Ces outils ne constituent ni un conseil juridique, ni un conseil fiscal, ni un conseil comptable. Édité par Gabin Lescoat (<a href="https://studio.glsc.fr" rel="noopener">StudioGLSC</a>).</p>
   </div>
 </footer>
-<script src="/assets/app.js?v=cfc3cd7e" defer></script>
+<script src="/assets/app.js?v=8d2e74d1" defer></script>
 
 </body>
 </html>
