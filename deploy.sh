@@ -57,6 +57,14 @@ run() { if [ "$DRY" = 1 ]; then echo "  (dry-run) $*"; else "$@"; fi; }
 ROOT="${ROOT:-/var/www/$DOMAIN}"
 info "Site : $DOMAIN · dossier : $ROOT · version : ${COMPTA_SRC:+copie locale}${COMPTA_SRC:-$REF}"
 
+diagnostic() {
+  c 33 "  Diagnostic (à envoyer si le problème persiste) :"
+  echo "  · Ports 80/443 à l'écoute :"; (ss -ltnp 2>/dev/null || netstat -ltnp 2>/dev/null) | grep -E ':(80|443)\b' | sed 's/^/      /' || true
+  echo "  · État de nginx :"; (systemctl status nginx --no-pager 2>&1 || true) | head -12 | sed 's/^/      /'
+  echo "  · Dernières erreurs nginx :"; tail -n 8 /var/log/nginx/error.log "$LOGDIR/error.log" 2>/dev/null | sed 's/^/      /' || true
+  echo "  · Sites actifs sur le port 80 :"; (nginx -T 2>/dev/null | grep -E 'server_name|listen +(\[::\]:)?80' | sort | uniq -c | head -12) | sed 's/^/      /' || true
+}
+
 # ---- paquets
 need=()
 command -v nginx >/dev/null || need+=(nginx)
@@ -96,9 +104,9 @@ else BK=""; fi
 
 # ---- installation du site (échange atomique)
 rollback() {
-  c 31 "  ↩ retour à la version précédente"
+  if [ -n "$BK" ]; then c 31 "  ↩ retour à la version précédente"; else c 31 "  ↩ premier déploiement : pas de version précédente, fichiers laissés en place pour diagnostic"; exit 1; fi
   rm -rf "$ROOT.failed"; [ -d "$ROOT" ] && mv "$ROOT" "$ROOT.failed"
-  mkdir -p "$ROOT"; [ -n "$BK" ] && tar -xzf "$BK" -C "$ROOT"
+  mkdir -p "$ROOT"; tar -xzf "$BK" -C "$ROOT"
   rm -rf "$ROOT.failed"; exit 1
 }
 if [ "$DRY" = 0 ]; then
@@ -164,15 +172,28 @@ VHOST
   nginx -t 2>/dev/null || { nginx -t; die "Configuration nginx invalide."; }
   if systemctl is-active --quiet nginx 2>/dev/null; then systemctl reload nginx
   elif pgrep -x nginx >/dev/null; then nginx -s reload
-  else systemctl enable --now nginx 2>/dev/null || nginx; fi
+  else { systemctl enable --now nginx 2>/dev/null || nginx; } || { diagnostic; die "nginx ne démarre pas (port 80 déjà utilisé par un autre service ?)"; }; fi
   ok "nginx rechargé"
 else echo "  (dry-run) snippet, logrotate, vhost $VHOST_AVAIL, rechargement de nginx"; fi
 
 # ---- vérification (avant le certificat : en local, avec l'en-tête Host)
+verifier() { # $1 = chemin ; renvoie le code HTTP (000 si la connexion échoue), avec quelques essais le temps que nginx démarre
+  local code="000" i
+  for i in 1 2 3 4 5 6 7 8; do
+    code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 10 -H "Host: $DOMAIN" "http://127.0.0.1$1" 2>/dev/null)" || code="000"
+    [ "$code" != 000 ] && break; sleep 1
+  done
+  echo "$code"
+}
 if [ "$DRY" = 0 ]; then
   for path in / /outils/ /sources/ /mentions-legales/ /assets/style.css /assets/app.js /assets/fonts/inter-400.woff2 /sitemap.xml; do
-    code="$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 -H "Host: $DOMAIN" "http://127.0.0.1$path" || echo 000)"
-    case "$code" in 200) ok "$path → 200" ;; 301|308) ok "$path → $code (redirection HTTPS)" ;; *) c 31 "  ✗ $path → $code"; rollback ;; esac
+    code="$(verifier "$path")"
+    case "$code" in
+      200) ok "$path → 200" ;;
+      301|308) ok "$path → $code (redirection HTTPS)" ;;
+      000) c 31 "  ✗ $path → aucune réponse sur 127.0.0.1:80 (nginx n'écoute pas sur le port 80, ou un autre service l'occupe)"; diagnostic; rollback ;;
+      *) c 31 "  ✗ $path → $code"; diagnostic; rollback ;;
+    esac
   done
   hdr="$(curl -sI --max-time 15 -H "Host: $DOMAIN" http://127.0.0.1/ | tr -d '\r' | grep -i '^content-security-policy' || true)"
   [ -n "$hdr" ] && ok "en-tête Content-Security-Policy présent" || warn "en-tête Content-Security-Policy absent (page servie par un autre vhost ?)"
