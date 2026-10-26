@@ -51,7 +51,7 @@ ${ld.map((o) => `<script type="application/ld+json">${JSON.stringify(o).replace(
 <a class="skip" href="#contenu">Aller au contenu</a>
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="/"><img src="/assets/favicon.svg" width="32" height="32" alt=""><span>Compta <small>by glsc</small></span></a>
+    <a class="brand" href="/"><img src="/assets/favicon.svg" width="36" height="36" alt=""><span>Compta <small>by glsc</small></span></a>
     <nav class="menu" aria-label="Navigation principale">
       ${NAV.map(([h, l]) => `<a href="${h}"${current(h)}>${l}</a>`).join('')}
     </nav>
@@ -69,7 +69,7 @@ ${studio ? encartStudio() : ''}
 <footer class="footer">
   <div class="wrap">
     <div class="footer-cols">
-      <div><h2>${esc(CFG.nom)}</h2><p>Outils gratuits pour les micro-entrepreneurs. Sans compte, sans publicité, sans cookie : vos chiffres restent dans votre navigateur.</p></div>
+      <div><p class="footer-logo"><img src="/assets/favicon.svg" width="32" height="32" alt="">${esc(CFG.nom)}</p><p>Outils gratuits pour les micro-entrepreneurs. Sans compte, sans publicité, sans cookie : vos chiffres restent dans votre navigateur.</p></div>
       <div><h2>Le site</h2><ul><li><a href="/outils/">Outils</a></li><li><a href="/guides/">Guides</a></li><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li></ul></div>
       <div><h2>Informations</h2><ul>${FOOT_LEGAL.map(([h, l]) => `<li><a href="${h}">${l}</a></li>`).join('')}<li><a href="${CFG.depot}" rel="noopener">Code source</a></li></ul></div>
     </div>
