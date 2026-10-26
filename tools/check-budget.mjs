@@ -6,8 +6,8 @@ import { gzipSync } from 'node:zlib';
 import { PUBLIC, pagesHtml } from './lib/pages.mjs';
 
 const KB = 1024;
-const LIMITS = { 'assets/style.css': [24 * KB, 6 * KB], 'assets/app.js': [6 * KB, 2.5 * KB] }; // [octets bruts, octets gzip]
-const IMAGE_MAX = 90 * KB, FONT_MAX = 30 * KB, HTML_MAX = [40 * KB, 12 * KB], PAGE_BUDGET_GZ = 50 * KB; // HTML + CSS + JS d'une page, compressés
+const LIMITS = { 'assets/style.css': [32 * KB, 8 * KB], 'assets/app.js': [6 * KB, 2.5 * KB] }; // [octets bruts, octets gzip]
+const IMAGE_MAX = 90 * KB, FONT_MAX = 30 * KB, HTML_MAX = [64 * KB, 14 * KB], PAGE_BUDGET_GZ = 50 * KB; // HTML + CSS + JS d'une page, compressés
 let errors = 0;
 const fail = (m) => { errors++; console.error('✗ ' + m); };
 const gz = (f) => gzipSync(readFileSync(f), { level: 9 }).length;

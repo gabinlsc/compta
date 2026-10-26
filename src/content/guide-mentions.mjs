@@ -14,7 +14,7 @@ export const GUIDE_MENTIONS = {
 <li>Une facture porte un <strong>numéro unique</strong>, dans une suite chronologique et continue, sans trou.</li>
 <li>Elle indique <strong>qui vend</strong> (vous, avec la mention « Entrepreneur individuel » ou « EI » et votre SIREN) et <strong>qui achète</strong>.</li>
 <li>Elle détaille chaque ligne, le total à payer, la <strong>date de règlement</strong>, les <strong>pénalités de retard</strong> et l’<strong>indemnité de recouvrement de {{indemnite_recouvrement}}</strong> pour un client professionnel.</li>
-<li>En franchise de TVA, elle porte la mention « TVA non applicable », dont le texte a changé le 1<sup>er</sup> septembre 2026.</li>
+<li>En franchise de TVA, elle porte la mention « TVA non applicable », dont le texte a changé le {{mention_franchise_tva_cibs_debut}}.</li>
 </ul>
 
 <h2>Les mentions communes à toutes les factures</h2>
@@ -36,12 +36,12 @@ export const GUIDE_MENTIONS = {
 <p>La facture doit alors être établie au nom de l’entreprise, avec la mention « Siret en cours d’attribution », et non au nom du créateur. L’outil propose une case à cocher pour ce cas.</p>
 
 <h2>Le délai de paiement, les pénalités et l’indemnité de {{indemnite_recouvrement}}</h2>
-<p>Sans accord, le délai de paiement est de 30 jours après la réception du bien ou la réalisation de la prestation. Entre professionnels, vous pouvez convenir d’un délai plus long, mais il ne peut pas dépasser <strong>{{delai_paiement_max_jours}} à compter de l’émission de la facture</strong> (ou 45 jours fin de mois). Ce délai doit apparaître sur la facture.</p>
-<p>En cas de retard, des <strong>pénalités</strong> s’appliquent pour chaque jour, dès le lendemain de la date de règlement indiquée, sans qu’il soit nécessaire de relancer le client. Leur taux ne peut pas être inférieur à trois fois le taux de l’intérêt légal. Le code de commerce recommande le taux de refinancement de la Banque centrale européenne, majoré de {{penalite_majoration_bce}}. Pour le 2<sup>e</sup> semestre 2026, cela donne {{penalite_bce_2026_s2}} (taux de refinancement de 2,40 % au 1<sup>er</sup> juillet 2026).</p>
+<p>Sans accord, le délai de paiement est de {{delai_paiement_defaut_jours}} après la réception du bien ou la réalisation de la prestation. Entre professionnels, vous pouvez convenir d’un délai plus long, mais il ne peut pas dépasser <strong>{{delai_paiement_max_jours}} à compter de l’émission de la facture</strong> (ou {{delai_paiement_fin_de_mois_jours}} fin de mois). Ce délai doit apparaître sur la facture.</p>
+<p>En cas de retard, des <strong>pénalités</strong> s’appliquent pour chaque jour, dès le lendemain de la date de règlement indiquée, sans qu’il soit nécessaire de relancer le client. Leur taux ne peut pas être inférieur à trois fois le taux de l’intérêt légal. Le code de commerce recommande le taux de refinancement de la Banque centrale européenne, majoré de {{penalite_majoration_bce}}. Pour le 2<sup>e</sup> semestre 2026, cela donne {{penalite_bce_2026_s2}} (taux de refinancement de {{penalite_refi_2026_s2}} au 1<sup>er</sup> juillet 2026).</p>
 <p>S’y ajoute une <strong>indemnité forfaitaire de {{indemnite_recouvrement}}</strong> par facture impayée à temps, due une seule fois et non chaque jour de retard, même en cas de paiement partiel. Elle n’est pas soumise à la TVA et ne peut être demandée qu’à un client professionnel. Si vos frais réels sont plus élevés, vous pouvez demander un complément sur justificatifs, sans le mentionner sur la facture.</p>
 
 <h2>La TVA : franchise en base et nouvelle mention</h2>
-<p>Si vous êtes en franchise en base de TVA, vous le signalez sur chaque facture. Depuis le 1<sup>er</sup> septembre 2026, la mention est : <em>« {{mention_franchise_tva_cibs}} »</em>. Elle remplace « TVA non applicable, art. 293 B du code général des impôts ». L’ancienne formule reste <strong>tolérée jusqu’au 31 décembre 2027</strong>, mais mieux vaut adopter la nouvelle dès maintenant.</p>
+<p>Si vous êtes en franchise en base de TVA, vous le signalez sur chaque facture. Depuis le {{mention_franchise_tva_cibs_debut}}, la mention est : <em>« {{mention_franchise_tva_cibs}} »</em>. Elle remplace « TVA non applicable, art. 293 B du code général des impôts ». L’ancienne formule reste <strong>tolérée jusqu’au {{tolerance_mention_293b_fin}}</strong>, mais mieux vaut adopter la nouvelle dès maintenant.</p>
 <p>Les seuils qui vous maintiennent en franchise sont détaillés dans notre page <a href="/sources/">Sources</a>.</p>
 
 <h2>Les mentions qui dépendent de votre situation</h2>
@@ -54,7 +54,7 @@ export const GUIDE_MENTIONS = {
 
 <h2>Ce que change la facturation électronique</h2>
 <p>La généralisation de la facture électronique ajoute quatre mentions : le <strong>SIREN du client</strong> (s’il s’agit d’une entreprise), l’<strong>adresse de livraison</strong> si elle diffère de celle du client, la <strong>nature de l’opération</strong> (livraison de biens, prestation de services ou les deux) et, le cas échéant, « Option pour le paiement de la taxe d’après les débits ».</p>
-<p>Ces mentions s’imposent aux grandes entreprises et aux entreprises de taille intermédiaire à partir du 1<sup>er</sup> septembre 2026. Les PME et les <strong>micro-entreprises</strong> sont concernées à partir du <strong>1<sup>er</sup> septembre 2027</strong>. L’outil vous les fait déjà renseigner.</p>
+<p>Ces mentions s’imposent aux grandes entreprises et aux entreprises de taille intermédiaire à partir du {{fe_emission_grandes_entreprises}}. Les PME et les <strong>micro-entreprises</strong> sont concernées à partir du <strong>{{fe_emission_micro}}</strong>. L’outil vous les fait déjà renseigner.</p>
 
 <h2>Et le devis ?</h2>
 <p>Le devis n’est pas toujours obligatoire : il l’est dans certains secteurs (bâtiment, services à la personne, déménagement…), et ses mentions dépendent alors du secteur. En dehors de ces cas, vous pouvez fournir un autre document d’information avant l’achat, comme vos conditions générales de vente. Dans tous les cas, un devis signé par les deux parties vous engage. Un artisan indique son assurance professionnelle sur ses devis aussi.</p>
@@ -63,12 +63,12 @@ export const GUIDE_MENTIONS = {
 <h3>Que risque-t-on en oubliant une mention ?</h3>
 <p>Une facture incomplète expose à des sanctions, qui varient selon la mention oubliée. Les pénalités de retard et l’indemnité de {{indemnite_recouvrement}} doivent, elles, être indiquées à la fois dans vos conditions générales de vente et sur chaque facture.</p>
 <h3>Faut-il conserver les factures ?</h3>
-<p>Oui. Les documents commerciaux se conservent entre 5 et 10 ans selon leur nature.</p>
+<p>Oui. Les documents commerciaux se conservent {{conservation_documents_commerciaux}}.</p>
 <h3>Puis-je modifier une facture déjà envoyée ?</h3>
 <p>Non : on la corrige par un <strong>avoir</strong>, puis on émet une nouvelle facture avec un nouveau numéro. L’outil gère les avoirs.</p>`,
   faq: [
-    ['Que risque-t-on en oubliant une mention ?', 'Une facture incomplète expose à des sanctions, qui varient selon la mention oubliée. Les pénalités de retard et l’indemnité de 40 € doivent, elles, être indiquées à la fois dans vos conditions générales de vente et sur chaque facture.'],
-    ['Faut-il conserver les factures ?', 'Oui. Les documents commerciaux se conservent entre 5 et 10 ans selon leur nature.'],
+    ['Que risque-t-on en oubliant une mention ?', 'Une facture incomplète expose à des sanctions, qui varient selon la mention oubliée. Les pénalités de retard et l’indemnité de {{indemnite_recouvrement}} doivent, elles, être indiquées à la fois dans vos conditions générales de vente et sur chaque facture.'],
+    ['Faut-il conserver les factures ?', 'Oui. Les documents commerciaux se conservent {{conservation_documents_commerciaux}}.'],
     ['Puis-je modifier une facture déjà envoyée ?', 'Non : on la corrige par un avoir, puis on émet une nouvelle facture avec un nouveau numéro.'],
   ],
   sources: [

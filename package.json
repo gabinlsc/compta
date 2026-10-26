@@ -7,7 +7,7 @@
   "description": "Compta by glsc : la boîte à outils gratuite du micro-entrepreneur français. Site statique, sans cookie, sans traceur, calculs dans le navigateur.",
   "scripts": {
     "build": "node tools/build.mjs",
-    "check": "node tools/build.mjs && git diff --exit-code -- . ':!package-lock.json' && node tools/check-links.mjs && node tools/check-seo.mjs && node tools/check-budget.mjs",
+    "check": "node tools/build.mjs && git diff --exit-code -- . ':!package-lock.json' && node tools/check-links.mjs && node tools/check-seo.mjs && node tools/check-budget.mjs && node tools/check-litteraux.mjs",
     "test:unit": "node --test tests/unit/*.test.mjs",
     "test": "npm run test:unit && node tests/e2e.mjs && node tests/outil-facture.mjs && node tests/outil-simulateur.mjs && node tests/outil-calendrier.mjs && node tests/outil-tjm.mjs && node tests/outil-livre.mjs && node tests/csp.mjs && node tests/a11y.mjs"
   },

@@ -28,6 +28,7 @@ jobs:
       - run: node tools/check-links.mjs
       - run: node tools/check-seo.mjs
       - run: node tools/check-budget.mjs
+      - run: node tools/check-litteraux.mjs
 
   navigateur:
     name: Parcours, CSP, accessibilité

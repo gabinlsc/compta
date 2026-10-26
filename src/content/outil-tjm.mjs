@@ -17,7 +17,7 @@ export function pageTjm() {
     ${champ({ nom: 'fraisMensuels', label: 'Frais professionnels par mois (€)', attrs: 'inputmode="decimal" maxlength="12"', aide: 'Logiciels, matériel, assurance, comptabilité, déplacements…' })}
     ${choisir({ nom: 'activite', label: 'Votre activité *', options: [['bic_services', 'Prestations de services commerciales ou artisanales (BIC)'], ['bnc_ssi', 'Profession libérale non réglementée (BNC, SSI)'], ['bnc_cipav', 'Profession libérale réglementée (BNC, Cipav)'], ['vente', 'Vente de marchandises (BIC)']] })}
     </div>
-    ${coche({ nom: 'acre', label: 'Je bénéficie de l’Acre', aide: 'Taux minoré pour les créations à partir du 1<sup>er</sup> juillet 2026 : il ne dure qu’un temps, pensez à votre tarif une fois l’Acre terminée.' })}
+    ${coche({ nom: 'acre', label: 'Je bénéficie de l’Acre', aide: 'Taux minoré pour les créations à partir du {{acre_debut_regime}} : il ne dure qu’un temps, pensez à votre tarif une fois l’Acre terminée.' })}
     ${champ({ nom: 'debutActivite', label: 'Date de début d’activité (facultatif)', type: 'date', classe: 'si-acre' })}
     ${coche({ nom: 'vl', label: 'J’ai opté pour le versement forfaitaire libératoire de l’impôt' })}
     <h2 class="titre-form">Votre temps de travail</h2>

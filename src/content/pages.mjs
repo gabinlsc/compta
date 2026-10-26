@@ -1,7 +1,7 @@
 // Pages du socle. Les outils et guides s'ajoutent dans src/content/outils.mjs et src/content/guides.mjs au fil des livraisons.
 import CFG from '../../tools/site.config.json' with { type: 'json' };
 import { esc, dateFr, avertissement } from '../../tools/lib/layout.mjs';
-import { formaterValeur } from '../../tools/lib/regles.mjs';
+import { formaterValeur, remplirJetons } from '../../tools/lib/regles.mjs';
 import { OUTILS } from './outils.mjs';
 import { GUIDES } from './guides.mjs';
 import { pageFacture, FAQ_FACTURE } from './outil-facture.mjs';
@@ -9,11 +9,14 @@ import { pageSimulateur, FAQ_SIMULATEUR } from './outil-simulateur.mjs';
 import { pageCalendrier, FAQ_CALENDRIER } from './outil-calendrier.mjs';
 import { pageTjm, FAQ_TJM } from './outil-tjm.mjs';
 import { pageLivre, FAQ_LIVRE } from './outil-livre.mjs';
+import { blocLiens } from './liens.mjs';
 
 const carte = (x, base) => `<article class="card"><h3>${x.pret ? `<a href="${base}${x.slug}/">${esc(x.titre)}</a>` : esc(x.titre)}</h3><p>${esc(x.resume)}</p>${x.pret ? '' : '<span class="tag">Bientôt</span>'}</article>`;
 const HOME = [['/', 'Accueil']];
 
 export function pages(regles) {
+  const tok = (s) => remplirJetons(s, regles);
+  const faq = (liste) => liste.map(([q, r]) => ({ '@type': 'Question', name: tok(q), acceptedAnswer: { '@type': 'Answer', text: tok(r) } }));
   const enVerif = regles.entrees.filter((e) => e.statut === 'a_verifier').length;
   const liste = [];
 
@@ -25,6 +28,7 @@ export function pages(regles) {
 <p class="lead">Faites vos devis et factures, estimez ce qu’il vous reste après cotisations, ne ratez plus une échéance. Vos chiffres restent chez vous : tout se calcule dans votre navigateur, rien n’est envoyé.</p>
 <div class="actions"><a class="btn" href="/outils/">Voir les outils</a><a class="btn ghost" href="/sources/">Sources des chiffres</a></div></section>
 <h2>Les outils</h2><div class="grid">${OUTILS.map((o) => carte(o, '/outils/')).join('')}</div>
+<h2>Les guides</h2><div class="grid">${GUIDES.map((g) => carte(g, '/guides/')).join('')}</div>
 <h2>Pourquoi ce site ?</h2><div class="prose">
 <p><strong>Aucune donnée collectée.</strong> Pas de compte, pas de publicité, pas de cookie, pas de traceur, aucun service tiers : polices, scripts et images sont hébergés sur le site.</p>
 <p><strong>Des chiffres sourcés.</strong> Chaque taux, plafond ou date vient d’un site officiel, avec sa date de vérification, visible sur la page <a href="/sources/">Sources et dernière mise à jour</a>.</p>
@@ -43,7 +47,7 @@ export function pages(regles) {
     crumbs: [...HOME, ['/outils/', 'Outils'], ['/outils/facture-auto-entrepreneur/', 'Devis et factures']], modules: ['/assets/js/outils/facture.js'], studio: true,
     jsonld: [
       { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Devis et factures d’auto-entrepreneur', url: CFG.origin + '/outils/facture-auto-entrepreneur/', applicationCategory: 'BusinessApplication', operatingSystem: 'Web', inLanguage: 'fr', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, description: 'Générateur de devis, factures, acomptes, soldes et avoirs pour micro-entrepreneur, dans le navigateur.' },
-      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_FACTURE.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq(FAQ_FACTURE) },
     ],
     body: pageFacture(),
   });
@@ -54,7 +58,7 @@ export function pages(regles) {
     crumbs: [...HOME, ['/outils/', 'Outils'], ['/outils/simulateur-revenu-net/', 'Simulateur de revenu net']], modules: ['/assets/js/outils/simulateur.js'], studio: true,
     jsonld: [
       { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Simulateur : combien me reste-t-il ?', url: CFG.origin + '/outils/simulateur-revenu-net/', applicationCategory: 'FinanceApplication', operatingSystem: 'Web', inLanguage: 'fr', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, description: 'Simulateur de cotisations et de revenu net pour micro-entrepreneur, dans le navigateur.' },
-      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_SIMULATEUR.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq(FAQ_SIMULATEUR) },
     ],
     body: pageSimulateur(),
   });
@@ -65,7 +69,7 @@ export function pages(regles) {
     crumbs: [...HOME, ['/outils/', 'Outils'], ['/outils/calendrier-echeances/', 'Calendrier des échéances']], modules: ['/assets/js/outils/calendrier.js'], studio: true,
     jsonld: [
       { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Calendrier des échéances du micro-entrepreneur', url: CFG.origin + '/outils/calendrier-echeances/', applicationCategory: 'BusinessApplication', operatingSystem: 'Web', inLanguage: 'fr', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, description: 'Générateur de calendrier .ics des échéances de déclaration, de CFE et de facturation électronique, dans le navigateur.' },
-      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_CALENDRIER.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq(FAQ_CALENDRIER) },
     ],
     body: pageCalendrier(),
   });
@@ -76,7 +80,7 @@ export function pages(regles) {
     crumbs: [...HOME, ['/outils/', 'Outils'], ['/outils/tarif-journalier/', 'Tarif journalier']], modules: ['/assets/js/outils/tjm.js'], studio: true,
     jsonld: [
       { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Calculateur de tarif journalier (TJM) et horaire', url: CFG.origin + '/outils/tarif-journalier/', applicationCategory: 'FinanceApplication', operatingSystem: 'Web', inLanguage: 'fr', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, description: 'Calcul du TJM et du taux horaire d’un indépendant à partir du revenu net visé, dans le navigateur.' },
-      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_TJM.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq(FAQ_TJM) },
     ],
     body: pageTjm(),
   });
@@ -87,7 +91,7 @@ export function pages(regles) {
     crumbs: [...HOME, ['/outils/', 'Outils'], ['/outils/livre-des-recettes/', 'Livre des recettes']], modules: ['/assets/js/outils/livre.js'], studio: true,
     jsonld: [
       { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Livre des recettes du micro-entrepreneur', url: CFG.origin + '/outils/livre-des-recettes/', applicationCategory: 'BusinessApplication', operatingSystem: 'Web', inLanguage: 'fr', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, description: 'Livre des recettes en ligne pour micro-entrepreneur, dans le navigateur, avec export CSV.' },
-      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_LIVRE.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq(FAQ_LIVRE) },
     ],
     body: pageLivre(),
   });
@@ -100,7 +104,7 @@ export function pages(regles) {
       jsonld: [
         { '@context': 'https://schema.org', '@type': 'Article', headline: g.titreLong ?? g.titre, description: g.description, inLanguage: 'fr', datePublished: g.publie, dateModified: g.miseAJour, mainEntityOfPage: url,
           author: { '@type': 'Person', name: CFG.editeur }, publisher: { '@type': 'Organization', name: CFG.nom, url: CFG.origin + '/' } },
-        { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: g.faq.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
+        { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq(g.faq) },
       ],
       body: `<article class="prose guide"><p class="eyebrow">Guide · mis à jour le ${dateFr(g.miseAJour)}</p><h1>${esc(g.titreLong ?? g.titre)}</h1>${g.corps}
 <h2>Sources</h2><ul class="sources">${g.sources.map(([t, u]) => `<li><a href="${esc(u)}" rel="noopener">${esc(t)}</a></li>`).join('')}</ul>
@@ -183,7 +187,7 @@ ${enVerif ? `<p class="notice"><strong>${enVerif} donnée${enVerif > 1 ? 's' : '
 <h2>Signaler une erreur</h2><p>Une erreur dans un chiffre ou un calcul ? Écrivez via la page <a href="/contact/">Contact</a> : elle sera corrigée.</p></div>`,
   });
 
-  return liste;
+  return liste.map((p) => ({ ...p, body: p.body + blocLiens(p.path) }));
 }
 
 export const page404 = {
