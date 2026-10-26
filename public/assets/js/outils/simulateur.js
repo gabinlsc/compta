@@ -1,9 +1,9 @@
 // Outil « Combien me reste-t-il ? » : relie le formulaire à lib/simulateur.js et dessine le résultat.
 // Sécurité : jamais d'innerHTML ; aucune requête réseau ; rien n'est stocké.
-import { creerRegles } from '../lib/facture.js?v=6f339342';
-import { simuler, formaterBp } from '../lib/simulateur.js?v=6f339342';
-import { formaterEuros } from '../lib/money.js?v=6f339342';
-import { dateLongue, aujourdhui } from '../lib/dates.js?v=6f339342';
+import { creerRegles } from '../lib/facture.js?v=bf7e5117';
+import { simuler, formaterBp } from '../lib/simulateur.js?v=bf7e5117';
+import { formaterEuros } from '../lib/money.js?v=bf7e5117';
+import { dateLongue, aujourdhui } from '../lib/dates.js?v=bf7e5117';
 
 const $ = (s, r = document) => r.querySelector(s);
 const AUJ = aujourdhui();

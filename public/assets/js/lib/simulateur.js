@@ -1,7 +1,7 @@
 // Simulateur « combien me reste-t-il ? » : cotisations, versement libératoire, net avant impôt, alertes de plafond.
 // Tous les taux, plafonds et seuils viennent de data/regles.json ; une donnée non vérifiée bloque le calcul au lieu d'être remplacée.
-import { parseMontant } from './money.js?v=6f339342';
-import { dateIsoValide, dernierJourDuMois, dateLongue } from './dates.js?v=6f339342';
+import { parseMontant } from './money.js?v=bf7e5117';
+import { dateIsoValide, dernierJourDuMois, dateLongue } from './dates.js?v=bf7e5117';
 
 export const ACTIVITES = {
   vente: { libelle: 'Vente de marchandises, fourniture de logement (BIC)', taux: 'taux_vente', vl: 'taux_vl_vente', abattement: 'abattement_vente', plafond: 'plafond_ca_vente', tvaBase: 'tva_franchise_vente', tvaMajore: 'tva_majore_vente' },

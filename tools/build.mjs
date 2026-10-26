@@ -9,6 +9,7 @@ import CFG from './site.config.json' with { type: 'json' };
 import { ROOT, chargerRegles, validerRegles, aujourdhui, remplirJetons } from './lib/regles.mjs';
 import { page } from './lib/layout.mjs';
 import { pages, page404 } from '../src/content/pages.mjs';
+import { genererFlux } from '../src/content/ics-flux.mjs';
 
 const OUT = join(ROOT, 'public');
 const regles = chargerRegles();
@@ -44,6 +45,9 @@ for (const p of liste) {
   writeFileSync(file, html);
   if (!p.noindex) index.push({ url: p.path, titre: p.title, description: p.description });
 }
+// Calendriers .ics pré-générés (abonnement)
+mkdirSync(join(OUT, 'ics'), { recursive: true });
+for (const f of genererFlux(regles)) writeFileSync(join(OUT, 'ics', f.fichier), f.contenu);
 writeFileSync(join(OUT, 'assets/search-index.json'), JSON.stringify(index.filter((i) => i.url !== '/')) + '\n');
 const urls = index.map((i) => `  <url><loc>${CFG.origin}${i.url}</loc><lastmod>${CFG.miseAJour}</lastmod></url>`).join('\n');
 writeFileSync(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`);
