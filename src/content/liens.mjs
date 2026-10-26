@@ -18,6 +18,9 @@ export const LIENS = {
   [g('plafonds-et-seuils-de-tva')]: [o('simulateur-revenu-net'), g('declarer-son-chiffre-d-affaires'), o('livre-des-recettes'), g('creer-sa-micro-entreprise')],
   [g('livre-des-recettes-a-quoi-ca-sert')]: [o('livre-des-recettes'), g('declarer-son-chiffre-d-affaires'), g('checklist-premiere-facture'), g('plafonds-et-seuils-de-tva')],
   [g('cfe-qui-la-paie')]: [o('calendrier-echeances'), g('creer-sa-micro-entreprise'), g('declarer-son-chiffre-d-affaires'), o('simulateur-revenu-net')],
+  [o('registre-rgpd')]: [o('mentions-legales-site'), g('creer-sa-micro-entreprise'), g('checklist-premiere-facture'), o('comparateur-statuts')],
+  [o('mentions-legales-site')]: [o('registre-rgpd'), g('creer-sa-micro-entreprise'), g('mentions-obligatoires-facture'), o('comparateur-statuts')],
+  [o('comparateur-statuts')]: [g('creer-sa-micro-entreprise'), o('simulateur-revenu-net'), g('plafonds-et-seuils-de-tva'), o('registre-rgpd')],
 };
 
 const trouver = (chemin) => {

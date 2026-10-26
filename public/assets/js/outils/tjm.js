@@ -1,9 +1,9 @@
 // Outil « Tarif journalier (TJM) et horaire ». Sécurité : jamais d'innerHTML ; aucune requête réseau ; rien n'est stocké.
-import { creerRegles } from '../lib/facture.js?v=4fe9bb99';
-import { calculerTarif, HYPOTHESES } from '../lib/tjm.js?v=4fe9bb99';
-import { formaterBp } from '../lib/simulateur.js?v=4fe9bb99';
-import { formaterEuros } from '../lib/money.js?v=4fe9bb99';
-import { aujourdhui } from '../lib/dates.js?v=4fe9bb99';
+import { creerRegles } from '../lib/facture.js?v=0a2b4039';
+import { calculerTarif, HYPOTHESES } from '../lib/tjm.js?v=0a2b4039';
+import { formaterBp } from '../lib/simulateur.js?v=0a2b4039';
+import { formaterEuros } from '../lib/money.js?v=0a2b4039';
+import { aujourdhui } from '../lib/dates.js?v=0a2b4039';
 
 const $ = (s, r = document) => r.querySelector(s);
 const AUJ = aujourdhui();

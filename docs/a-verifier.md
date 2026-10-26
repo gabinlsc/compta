@@ -32,6 +32,12 @@ Remarques lues sur les pages :
 - Pour 2026, les seuils de TVA sont inchangés ; la proposition d'un seuil unique de 25 000 € a été abandonnée (page F21746).
 - Les seuils de TVA ci-dessus sont ceux de la vente et des prestations de services ; d'autres seuils existent (activités réglementées, auteurs, avocats…) et ne sont pas repris.
 
+## Outils de la version 2
+
+- Comparateur de statuts (qualitatif, sans chiffre de revenu) : coûts de création, libération du capital et charges sociales approximatives de la SASU lus sur la page F23844 de service-public.gouv.fr (vérifiée le 10 avril 2026) ; ils sont dans `regles.json`. Le texte qualitatif (responsabilité, impôt, protection sociale) n'a pas été recoupé avec urssaf.fr ni Légifrance, inaccessibles depuis l'environnement de développement : à relire avant diffusion large.
+- Registre RGPD : contenu minimal tel que décrit par la CNIL (registre des activités de traitement). Les durées proposées dans les modèles viennent de `regles.json` ; l'éditeur reste responsable de les adapter.
+- Mentions légales et confidentialité de site : liste de service-public.gouv.fr F37351 (vérifiée le 13 octobre 2026) et page CNIL « information des personnes » (mise à jour le 26 juillet 2019, à recontrôler). Texte généré à titre indicatif, sans valeur de conseil juridique.
+
 ## Encore à vérifier avant les outils concernés
 
 À entrer dans `regles.json` au fur et à mesure, avec leur source :

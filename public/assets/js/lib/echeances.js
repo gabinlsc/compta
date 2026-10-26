@@ -1,7 +1,7 @@
 // Échéances d'un micro-entrepreneur : déclaration du chiffre d'affaires, CFE, facturation électronique, options.
 // Toutes les dates réglementaires viennent de data/regles.json (jour et mois « MM-JJ » ou date complète) ; les règles de calcul (fin du mois suivant, première déclaration) sont celles de service-public.gouv.fr (F23257).
-import { ajouterJours, ajouterMois, dateIsoValide, dateLongue, dernierJourDuMois, prochainJourOuvre, MOIS_FR } from './dates.js?v=4fe9bb99';
-import { formaterEuros } from './money.js?v=4fe9bb99';
+import { ajouterJours, ajouterMois, dateIsoValide, dateLongue, dernierJourDuMois, prochainJourOuvre, MOIS_FR } from './dates.js?v=0a2b4039';
+import { formaterEuros } from './money.js?v=0a2b4039';
 
 /** Dernier jour couvert par les données réglementaires de data/regles.json (un test vérifie que chaque donnée utilisée est valable jusque-là). */
 export const FIN_VALIDITE = '2027-12-31';

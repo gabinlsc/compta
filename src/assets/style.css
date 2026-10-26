@@ -212,3 +212,11 @@ input.wide { width: min(100%, 24rem); font: inherit; padding: 10px 12px; border:
 @media print { .outil-livre .colonne-livre, .jauge, .no-print { display: none !important; } .outil-livre { display: block; } .resume { border: 1px solid #999; } .resume th, .resume td { border-bottom: 1px solid #ccc; color: #000; } h3 { break-after: avoid; } }
 .resume thead th { font-weight: 600; background: var(--surface-2); }
 .liens { margin-top: 44px; } .liens h2 { margin-top: 0; } .liens .card .eyebrow { margin: 0 0 4px; font-size: .75rem; } .liens .card h3 { margin: 0 0 6px; } .liens .card a { text-decoration: none; color: var(--ink); } .liens .card a:hover { text-decoration: underline; }
+
+/* ---------- registre RGPD, comparateur de statuts ---------- */
+.outil-registre { grid-template-columns: minmax(0, 1fr); } @media (min-width: 1000px) { .outil-registre { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); } }
+.modeles-actions select { font: inherit; min-height: 44px; padding: 8px 12px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink); max-width: 100%; }
+.traitement { grid-template-columns: minmax(0, 1fr); } .traitement .options { grid-column: 1 / -1; } .traitement .champ.coche { margin-block: 2px; }
+.fiche { margin-top: 16px; padding-top: 10px; border-top: 1px solid #e1e5ed; break-inside: avoid; } .fiche h4 { margin: 0 0 6px; font: 700 1rem var(--font-display); } .fiche dl { margin: 0; display: grid; grid-template-columns: minmax(8rem, 28%) 1fr; gap: 3px 12px; } .fiche dt { color: #566074; font-size: .8rem; } .fiche dd { margin: 0; }
+.statuts th, .statuts td { vertical-align: top; min-width: 12rem; font-size: .94rem; } .statuts tbody th { background: var(--surface-2); min-width: 8rem; }
+.feuille .vide { color: #566074; }

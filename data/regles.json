@@ -1023,6 +1023,102 @@
       "verifie_le": "2026-10-26",
       "valable_du": "2026-01-01",
       "valable_au": "2027-12-31"
+    },
+    {
+      "id": "ei_commerciale_cout",
+      "libelle": "Coût de création d'une entreprise individuelle exerçant une activité commerciale (hors option micro-entreprise)",
+      "unite": "euro",
+      "valeur": 21.74,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23844",
+      "source_titre": "Création d'entreprise : choisir la forme juridique de votre entreprise, service-public.gouv.fr (page vérifiée par la DILA le 10 avril 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2027-12-31"
+    },
+    {
+      "id": "societe_immatriculation_cout",
+      "libelle": "Coût de la formalité d'immatriculation d'une société sur le guichet des formalités des entreprises",
+      "unite": "euro",
+      "valeur": 33.83,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23844",
+      "source_titre": "Création d'entreprise : choisir la forme juridique de votre entreprise, service-public.gouv.fr (page vérifiée par la DILA le 10 avril 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2027-12-31"
+    },
+    {
+      "id": "beneficiaires_effectifs_cout",
+      "libelle": "Coût de la déclaration des bénéficiaires effectifs d'une société",
+      "unite": "euro",
+      "valeur": 19.33,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23844",
+      "source_titre": "Création d'entreprise : choisir la forme juridique de votre entreprise, service-public.gouv.fr (page vérifiée par la DILA le 10 avril 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2027-12-31"
+    },
+    {
+      "id": "eurl_liberation_numeraire",
+      "libelle": "EURL et SARL : part minimale des apports en numéraire à verser à la création",
+      "unite": "pourcent",
+      "valeur": 20,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23844",
+      "source_titre": "Création d'entreprise : choisir la forme juridique de votre entreprise, service-public.gouv.fr (page vérifiée par la DILA le 10 avril 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2027-12-31"
+    },
+    {
+      "id": "sas_liberation_numeraire",
+      "libelle": "SAS et SASU : part des apports en numéraire à verser à la création",
+      "unite": "pourcent",
+      "valeur": 50,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23844",
+      "source_titre": "Création d'entreprise : choisir la forme juridique de votre entreprise, service-public.gouv.fr (page vérifiée par la DILA le 10 avril 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2027-12-31"
+    },
+    {
+      "id": "capital_liberation_delai_ans",
+      "libelle": "Délai pour verser le solde du capital social après l'immatriculation",
+      "unite": "ans",
+      "valeur": 5,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23844",
+      "source_titre": "Création d'entreprise : choisir la forme juridique de votre entreprise, service-public.gouv.fr (page vérifiée par la DILA le 10 avril 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2027-12-31"
+    },
+    {
+      "id": "sasu_charges_sociales_approx",
+      "libelle": "Charges sociales d'un dirigeant assimilé salarié (président de SAS ou de SASU), environ, en pourcentage de la rémunération brute",
+      "unite": "pourcent",
+      "valeur": 60,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23844",
+      "source_titre": "Création d'entreprise : choisir la forme juridique de votre entreprise, service-public.gouv.fr (page vérifiée par la DILA le 10 avril 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2027-12-31"
+    },
+    {
+      "id": "sante_ti_jours_sans_cotisation",
+      "libelle": "Sécurité sociale des indépendants : durée minimale sans paiement de cotisations après le début d'activité",
+      "unite": "jours",
+      "valeur": 90,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23844",
+      "source_titre": "Création d'entreprise : choisir la forme juridique de votre entreprise, service-public.gouv.fr (page vérifiée par la DILA le 10 avril 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2027-12-31"
     }
   ]
 }
