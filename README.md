@@ -27,8 +27,18 @@ npm test             # unitaires + parcours, CSP, accessibilité
 | `data/regles.json` | source unique des chiffres réglementaires (+ `regles.schema.json`) |
 | `tools/` | build, contrôles (liens, SEO, poids), gabarit |
 | `tests/` | tests unitaires et de navigateur |
-| `deploy/` | en-têtes nginx (CSP, cache) |
+| `deploy.sh`, `deploy/` | script de déploiement, en-têtes nginx (CSP, cache) |
 | `docs/` | procédures (mise à jour annuelle, données à vérifier) |
+
+## Déployer
+
+Sur un serveur Debian ou Ubuntu, en une commande (nginx, HTTPS, en-têtes, sauvegarde, retour arrière) :
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/gabinlsc/compta/main/deploy.sh | sudo bash
+```
+
+Détails et options : [`docs/deploiement.md`](docs/deploiement.md).
 
 ## Données réglementaires
 

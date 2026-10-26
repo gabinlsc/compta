@@ -18,6 +18,8 @@ jobs:
         with: { node-version: 22, cache: npm }
       - run: npm ci --ignore-scripts
       - run: npm run test:unit
+      - name: Script de déploiement (syntaxe)
+        run: bash -n deploy.sh
       - name: Le site généré est à jour
         run: |
           node tools/build.mjs
