@@ -29,7 +29,7 @@ export const GUIDE_PLAFONDS = {
 <p>Si vous vendez des marchandises <em>et</em> vous réalisez des prestations de services, le chiffre d’affaires global ne doit pas dépasser le plafond de la vente, et la part des prestations ne doit pas dépasser celui des services. Il faut donc tenir une comptabilité qui sépare les deux.</p>
 
 <h3>La première année</h3>
-<p>Si vous créez votre activité en cours d’année, le seuil est ajusté au prorata de votre temps d’exploitation : (seuil de l’année × nombre de jours d’existence) / 365. Exemple officiel : une activité de vente créée le 31 janvier 2026 dispose de 335 jours, soit (203 100 € × 335) / 365 = 186 407 € pour 2026. Dès la deuxième année, le seuil complet s’applique.</p>
+<p>Si vous créez votre activité en cours d’année, le seuil est ajusté au prorata de votre temps d’exploitation : (seuil de l’année × nombre de jours d’existence) / 365. Exemple officiel : une activité de vente créée le 31 janvier 2026 dispose de 335 jours, soit ({{plafond_ca_vente}} × 335) / 365 = 186 407 € pour 2026. Dès la deuxième année, le seuil complet s’applique.</p>
 
 <h2>La franchise en base de TVA</h2>
 <p>La franchise en base vous dispense de déclarer et de payer la TVA. Vous écrivez alors « TVA non applicable » sur vos factures (voir le guide sur les <a href="/guides/mentions-obligatoires-facture/">mentions obligatoires</a>). Elle dépend de deux seuils :</p>
@@ -45,7 +45,7 @@ export const GUIDE_PLAFONDS = {
 <li>Si vous dépassez le seuil majoré, vous êtes soumis à la TVA <strong>dès le jour du dépassement</strong>.</li>
 <li>Si le seuil de base a été dépassé sur l’année précédente, la TVA s’applique dès le 1<sup>er</sup> janvier suivant.</li>
 </ul>
-<p>Exemple officiel (prestations de services) : 24 000 € de chiffre d’affaires en 2025 (sous 37 500 €), puis 38 500 € en 2026. Le seuil de base est dépassé, mais pas le seuil majoré de 41 250 € : la franchise continue jusqu’au 31 décembre 2026.</p>
+<p>Exemple officiel (prestations de services) : 24 000 € de chiffre d’affaires en 2025 (sous {{tva_franchise_services}}), puis 38 500 € en 2026. Le seuil de base est dépassé, mais pas le seuil majoré de {{tva_majore_services}} : la franchise continue jusqu’au 31 décembre 2026.</p>
 <p>La première année, comme pour le plafond, le chiffre d’affaires est ramené à une année complète au prorata du temps d’activité avant d’être comparé aux seuils. Les seuils de TVA diffèrent aussi pour certaines activités réglementées : consultez la page officielle si vous n’êtes pas dans les cas courants.</p>
 
 <h2>Ne pas confondre les deux</h2>

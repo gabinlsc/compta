@@ -17,7 +17,7 @@ export function pageSimulateur() {
     ${choisir({ nom: 'activite', label: 'Votre activité *', options: [['vente', 'Vente de marchandises, fourniture de logement (BIC)'], ['bic_services', 'Prestations de services commerciales ou artisanales (BIC)'], ['bnc_ssi', 'Profession libérale non réglementée (BNC, SSI)'], ['bnc_cipav', 'Profession libérale réglementée (BNC, Cipav)']], aide: 'Le taux de cotisations dépend de la nature de l’activité.' })}
     ${champ({ nom: 'depenses', label: 'Vos dépenses professionnelles sur la période (€, facultatif)', attrs: 'inputmode="decimal" maxlength="14"', aide: 'Elles ne réduisent pas vos cotisations (calculées sur le chiffre d’affaires) mais votre revenu réel.' })}
     </div>
-    ${coche({ nom: 'acre', label: 'Je bénéficie de l’Acre', aide: 'Taux minoré à 75 % du taux normal (exonération de {{acre_exoneration_micro}}) pour les micro-entreprises créées ou reprises à partir du 1<sup>er</sup> juillet 2026, jusqu’à la fin du {{acre_trimestres_suivants}} suivant le début d’activité. Demande à faire dans les {{acre_delai_demande_jours}} suivant l’ouverture de l’activité.' })}
+    ${coche({ nom: 'acre', label: 'Je bénéficie de l’Acre', aide: 'Taux minoré à 75 % du taux normal (exonération de {{acre_exoneration_micro}}) pour les micro-entreprises créées ou reprises à partir du {{acre_debut_regime}}, jusqu’à la fin du {{acre_trimestres_suivants}} suivant le début d’activité. Demande à faire dans les {{acre_delai_demande_jours}} suivant l’ouverture de l’activité.' })}
     ${champ({ nom: 'debutActivite', label: 'Date de début d’activité (facultatif)', type: 'date', classe: 'si-acre', aide: 'Pour calculer la date de fin de votre Acre.' })}
     ${coche({ nom: 'vl', label: 'J’ai opté pour le versement forfaitaire libératoire de l’impôt', aide: 'Vous payez l’impôt avec vos cotisations, en pourcentage du chiffre d’affaires. Possible si le revenu fiscal de référence du foyer (année N-2) ne dépasse pas {{vfl_rfr_seul}} pour une personne seule, {{vfl_rfr_couple}} pour un couple, {{vfl_rfr_couple_1_enfant}} avec 1 enfant, {{vfl_rfr_couple_2_enfants}} avec 2 enfants. Option avant le 30 septembre de l’année précédente.' })}
   </div>
@@ -39,8 +39,8 @@ export function pageSimulateur() {
 <p>Sans versement libératoire, l’administration fiscale applique un abattement forfaitaire à votre chiffre d’affaires : {{abattement_vente}} pour la vente, {{abattement_bic_services}} pour les prestations de services BIC, {{abattement_bnc}} pour les activités libérales (minimum {{abattement_minimum}}). Le reste est ajouté aux autres revenus de votre foyer et soumis au barème. Le simulateur affiche ce revenu imposable estimé, pas le montant de l’impôt, qui dépend de toute votre situation.</p>
 <h3>Mon chiffre d’affaires dépasse le plafond, que se passe-t-il ?</h3>
 <p>Le plafond est de {{plafond_ca_vente}} pour la vente et de {{plafond_ca_services}} pour les prestations de services. Le régime de la micro-entreprise ne s’applique plus si vous le dépassez deux années consécutives. Voir le guide <a href="/guides/plafonds-et-seuils-de-tva/">Plafonds et seuils de TVA</a>.</p>
-<h3>L’Acre est-elle toujours à 50 % ?</h3>
-<p>Non. Pour les micro-entreprises créées ou reprises à partir du 1<sup>er</sup> juillet 2026, l’exonération est de {{acre_exoneration_micro}} (décret du 6 février 2026). Pour une création antérieure, l’exonération était de 50 % : le simulateur ne calcule pas ce cas, utilisez le simulateur de l’Urssaf.</p>
+<h3>L’Acre est-elle toujours à {{acre_exoneration_avant_juillet_2026}} ?</h3>
+<p>Non. Pour les micro-entreprises créées ou reprises à partir du {{acre_debut_regime}}, l’exonération est de {{acre_exoneration_micro}} (décret du 6 février 2026). Pour une création antérieure, l’exonération était de {{acre_exoneration_avant_juillet_2026}} : le simulateur ne calcule pas ce cas, utilisez le simulateur de l’Urssaf.</p>
 <h3>Mes données sont-elles enregistrées ?</h3>
 <p>Non : les calculs se font dans votre navigateur et rien n’est conservé. Si vous fermez la page, la saisie disparaît.</p>
 </div>`;
@@ -48,6 +48,6 @@ export function pageSimulateur() {
 
 export const FAQ_SIMULATEUR = [
   ['Que contient le taux de cotisations d’un micro-entrepreneur ?', 'Un pourcentage fixe du chiffre d’affaires qui inclut toutes les cotisations et contributions sociales : maladie, retraite, allocations familiales, formation professionnelle, CSG et CRDS.'],
-  ['L’Acre est-elle toujours à 50 % ?', 'Non. Pour les micro-entreprises créées ou reprises à partir du 1er juillet 2026, l’exonération est de 25 % (taux minoré à 75 % du taux normal). Pour une création antérieure, elle était de 50 %.'],
+  ['L’Acre est-elle toujours à {{acre_exoneration_avant_juillet_2026}} ?', 'Non. Pour les micro-entreprises créées ou reprises à partir du {{acre_debut_regime}}, l’exonération est de {{acre_exoneration_micro}} (taux minoré à 75 % du taux normal). Pour une création antérieure, elle était de {{acre_exoneration_avant_juillet_2026}}.'],
   ['Mes données sont-elles enregistrées ?', 'Non : les calculs se font dans votre navigateur et rien n’est conservé.'],
 ];

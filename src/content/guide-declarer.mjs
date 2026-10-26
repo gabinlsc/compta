@@ -35,7 +35,7 @@ export const GUIDE_DECLARER = {
 </tbody></table></div>
 
 <h2>Votre première déclaration</h2>
-<p>La première déclaration peut se faire au plus tôt 3 mois (90 jours) après le début de l’activité. Elle couvre tout le chiffre d’affaires depuis le démarrage.</p>
+<p>La première déclaration peut se faire au plus tôt 3 mois ({{premiere_declaration_delai_jours}}) après le début de l’activité. Elle couvre tout le chiffre d’affaires depuis le démarrage.</p>
 <ul>
 <li><strong>En déclaration mensuelle :</strong> avant la fin du mois suivant vos 3 premiers mois d’activité. Exemple officiel : activité démarrée le 6 mars 2026, première déclaration au plus tard le 31 juillet 2026.</li>
 <li><strong>En déclaration trimestrielle :</strong> avant la fin du mois suivant le trimestre qui suit celui du démarrage. Exemple officiel : activité démarrée le 12 avril 2026, première déclaration au plus tard le 31 octobre 2026.</li>

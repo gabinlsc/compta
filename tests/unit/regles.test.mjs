@@ -62,3 +62,13 @@ test('cohérence des seuils : majoré supérieur au seuil de base, taux global a
   assert.ok(v.tva_majore_vente > v.tva_franchise_vente && v.tva_majore_services > v.tva_franchise_services);
   for (const a of ['vente', 'bic_services', 'bnc_ssi', 'bnc_cipav']) assert.ok(v['taux_vl_' + a] > v['taux_' + a], a);
 });
+
+test('formats : dates complètes, jour et mois, jours, ans', () => {
+  assert.equal(formaterValeur(verifie({ unite: 'date', valeur: '2026-09-01' })), '1er septembre 2026');
+  assert.equal(formaterValeur(verifie({ unite: 'date', valeur: '2027-12-31' })), '31 décembre 2027');
+  assert.equal(formaterValeur(verifie({ unite: 'jour_mois', valeur: '04-30' })), '30 avril');
+  assert.equal(formaterValeur(verifie({ unite: 'jour_mois', valeur: '01-31' })), '31 janvier');
+  assert.equal(formaterValeur(verifie({ unite: 'jours', valeur: 60 })), '60 jours');
+  assert.equal(formaterValeur(verifie({ unite: 'ans', valeur: 10 })), '10 ans');
+  assert.match(validerRegles(jeu(verifie({ unite: 'jour_mois', valeur: '13-45' })), '2026-10-26').erreurs[0], /MM-JJ/);
+});

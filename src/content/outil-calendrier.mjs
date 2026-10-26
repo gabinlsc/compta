@@ -47,7 +47,7 @@ export function pageCalendrier() {
 <h2>Ajouter le fichier à votre agenda</h2>
 <p>Ouvrez le fichier téléchargé : votre application d’agenda propose de l’importer. Les échéances apparaissent comme des événements sur la journée entière, avec les rappels choisis. Le fichier est un instantané : pour recevoir automatiquement les mises à jour, abonnez-vous plutôt à un calendrier ci-dessous.</p>
 <h2 id="abonnement">S’abonner à un calendrier</h2>
-<p>Ces calendriers sont régénérés à chaque mise à jour des données et contiennent les échéances jusqu’au 31 décembre 2027, avec des rappels 7 jours avant et la veille. Dans votre agenda, ajoutez un calendrier « à partir d’une adresse » (URL) et collez le lien.</p>
+<p>Ces calendriers sont régénérés à chaque mise à jour des données et contiennent les échéances jusqu’à la fin de 2027, avec des rappels 7 jours avant et la veille. Dans votre agenda, ajoutez un calendrier « à partir d’une adresse » (URL) et collez le lien.</p>
 <div class="table-wrap"><table class="flux"><thead><tr><th scope="col">Calendrier</th><th scope="col">Lien</th></tr></thead><tbody>
 ${FLUX.map((f) => `<tr><th scope="row">${esc(f.titre)}</th><td><a href="webcal://${host}/ics/${f.fichier}">S’abonner</a> · <a href="/ics/${f.fichier}" download>Télécharger</a> · <button type="button" class="lien copier" data-url="${CFG.origin}/ics/${f.fichier}">Copier le lien</button></td></tr>`).join('\n')}
 </tbody></table></div>

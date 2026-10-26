@@ -45,7 +45,7 @@ export function pageFacture() {
     ${champ({ nom: 'client.adresse', label: 'Adresse', attrs: 'maxlength="160"', classe: 'large' })}
     ${champ({ nom: 'client.cp', label: 'Code postal', attrs: 'maxlength="10" inputmode="numeric"' })}
     ${champ({ nom: 'client.ville', label: 'Ville', attrs: 'maxlength="80"' })}
-    ${champ({ nom: 'client.siren', label: 'SIREN du client', client: 'pro', attrs: 'maxlength="14" inputmode="numeric"', aide: 'Obligatoire sur vos factures à partir du 1<sup>er</sup> septembre 2027 ; utile dès maintenant.' })}
+    ${champ({ nom: 'client.siren', label: 'SIREN du client', client: 'pro', attrs: 'maxlength="14" inputmode="numeric"', aide: 'Obligatoire sur vos factures à partir du {{siren_client_obligatoire_micro}} ; utile dès maintenant.' })}
     ${champ({ nom: 'client.tvaIntra', label: 'N° de TVA intracommunautaire du client (facultatif)', client: 'pro', attrs: 'maxlength="20"' })}
     ${champ({ nom: 'client.adresseLivraison', label: 'Adresse de livraison, si elle est différente', attrs: 'maxlength="300"', classe: 'large' })}
     ${champ({ nom: 'client.mediateur', label: 'Médiateur de la consommation (facultatif)', client: 'particulier', type: 'textarea', aide: 'Nom et coordonnées de votre médiateur, si vous en avez un.', classe: 'large' })}
@@ -77,10 +77,10 @@ export function pageFacture() {
 
   <details class="bloc" id="bloc-reglement"><summary>6. Règlement et mentions</summary>
     <div class="grille">
-    ${champ({ nom: 'reglement.delai', label: 'Délai de paiement (jours) *', attrs: 'inputmode="numeric" maxlength="3"', pour: TYPES_FACTURIERS, aide: 'Entre professionnels : 60 jours au maximum à compter de l’émission. 0 = à réception.' })}
+    ${champ({ nom: 'reglement.delai', label: 'Délai de paiement (jours) *', attrs: 'inputmode="numeric" maxlength="3"', pour: TYPES_FACTURIERS, aide: 'Entre professionnels : {{delai_paiement_max_jours}} au maximum à compter de l’émission. 0 = à réception.' })}
     ${choisir({ nom: 'reglement.penalites', label: 'Taux des pénalités de retard', options: [['bce', 'Taux de refinancement de la BCE + 10 points (recommandé)'], ['legal3', 'Trois fois le taux de l’intérêt légal'], ['fixe', 'Un taux annuel que je fixe']], pour: TYPES_FACTURIERS })}
     ${champ({ nom: 'reglement.tauxFixe', label: 'Taux annuel des pénalités (%)', attrs: 'inputmode="decimal" maxlength="6"', pour: TYPES_FACTURIERS, classe: 'si-fixe' })}
-    ${choisir({ nom: 'tvaMention', label: 'Mention de franchise de TVA', options: [['cibs', 'Art. L. 223 et s. du CIBS (en vigueur depuis le 1er septembre 2026)'], ['cgi', 'Art. 293 B du CGI (encore toléré jusqu’au 31 décembre 2027)']], aide: 'La première est la mention à utiliser désormais.' })}
+    ${choisir({ nom: 'tvaMention', label: 'Mention de franchise de TVA', options: [['cibs', 'Art. L. 223 et s. du CIBS (en vigueur depuis le {{mention_franchise_tva_cibs_debut}})'], ['cgi', 'Art. 293 B du CGI (encore toléré jusqu’au {{tolerance_mention_293b_fin}})']], aide: 'La première est la mention à utiliser désormais.' })}
     </div>
     ${coche({ nom: 'garantieConformite', label: 'Ajouter la mention de garantie légale de conformité', pour: TYPES_FACTURIERS, client: 'particulier', aide: 'Obligatoire pour certains biens vendus à un particulier (appareils électroménagers, informatique, téléphonie, jouets, articles de sport…).' })}
     ${champ({ nom: 'notes', label: 'Autre mention ou remarque (facultatif)', type: 'textarea', aide: 'Par exemple vos conditions générales de vente ou un délai de réalisation.' })}
@@ -119,11 +119,11 @@ export function pageFacture() {
 </ol>
 <h2>Questions fréquentes</h2>
 <h3>Pourquoi la mention de TVA a-t-elle changé ?</h3>
-<p>Depuis le 1<sup>er</sup> septembre 2026, la mention de franchise en base de TVA fait référence au code des impositions sur les biens et services (CIBS). L’ancienne mention (article 293 B du CGI) reste tolérée jusqu’au 31 décembre 2027. Source : <a href="https://entreprendre.service-public.gouv.fr/vosdroits/F36008" rel="noopener">service-public.gouv.fr</a>.</p>
+<p>Depuis le {{mention_franchise_tva_cibs_debut}}, la mention de franchise en base de TVA fait référence au code des impositions sur les biens et services (CIBS). L’ancienne mention (article 293 B du CGI) reste tolérée jusqu’au {{tolerance_mention_293b_fin}}. Source : <a href="https://entreprendre.service-public.gouv.fr/vosdroits/F36008" rel="noopener">service-public.gouv.fr</a>.</p>
 <h3>Le SIREN du client est-il obligatoire ?</h3>
-<p>Il le devient sur les factures des micro-entreprises à partir du 1<sup>er</sup> septembre 2027 (les grandes entreprises et les ETI y sont tenues dès le 1<sup>er</sup> septembre 2026). L’outil le signale et l’exige à partir de cette date.</p>
+<p>Il le devient sur les factures des micro-entreprises à partir du {{siren_client_obligatoire_micro}} (les grandes entreprises et les ETI y sont tenues dès le {{fe_emission_grandes_entreprises}}). L’outil le signale et l’exige à partir de cette date.</p>
 <h3>Quel taux de pénalités de retard indiquer ?</h3>
-<p>Le taux ne peut pas être inférieur à trois fois le taux de l’intérêt légal. Le code de commerce recommande le taux de refinancement de la BCE majoré de 10 points, c’est le choix par défaut. L’indemnité forfaitaire de 40 € ne peut être demandée qu’à un client professionnel. Source : <a href="https://entreprendre.service-public.gouv.fr/vosdroits/F23211" rel="noopener">service-public.gouv.fr</a>.</p>
+<p>Le taux ne peut pas être inférieur à trois fois le taux de l’intérêt légal. Le code de commerce recommande le taux de refinancement de la BCE majoré de 10 points, c’est le choix par défaut. L’indemnité forfaitaire de {{indemnite_recouvrement}} ne peut être demandée qu’à un client professionnel. Source : <a href="https://entreprendre.service-public.gouv.fr/vosdroits/F23211" rel="noopener">service-public.gouv.fr</a>.</p>
 <h3>Un devis est-il obligatoire ?</h3>
 <p>Pas dans tous les cas : il l’est dans certains secteurs (bâtiment, services à la personne, déménagement…). Les mentions d’un devis dépendent alors du secteur. Source : <a href="https://entreprendre.service-public.gouv.fr/vosdroits/F36008" rel="noopener">service-public.gouv.fr</a>.</p>
 <h3>Mes données sont-elles envoyées quelque part ?</h3>
@@ -134,7 +134,7 @@ export function pageFacture() {
 }
 
 export const FAQ_FACTURE = [
-  ['Pourquoi la mention de TVA a-t-elle changé ?', 'Depuis le 1er septembre 2026, la mention de franchise en base de TVA fait référence au code des impositions sur les biens et services (CIBS). L’ancienne mention (article 293 B du CGI) reste tolérée jusqu’au 31 décembre 2027.'],
-  ['Le SIREN du client est-il obligatoire ?', 'Il le devient sur les factures des micro-entreprises à partir du 1er septembre 2027 (grandes entreprises et ETI : dès le 1er septembre 2026).'],
+  ['Pourquoi la mention de TVA a-t-elle changé ?', 'Depuis le {{mention_franchise_tva_cibs_debut}}, la mention de franchise en base de TVA fait référence au code des impositions sur les biens et services (CIBS). L’ancienne mention (article 293 B du CGI) reste tolérée jusqu’au {{tolerance_mention_293b_fin}}.'],
+  ['Le SIREN du client est-il obligatoire ?', 'Il le devient sur les factures des micro-entreprises à partir du {{siren_client_obligatoire_micro}} (grandes entreprises et ETI : dès le {{fe_emission_grandes_entreprises}}).'],
   ['Mes données sont-elles envoyées quelque part ?', 'Non. Les calculs et la mise en page se font dans votre navigateur ; rien n’est enregistré sans votre action.'],
 ];

@@ -56,6 +56,7 @@ export const formaterValeur = (e) => {
   if (e.valeur === null) return 'en cours de vérification';
   if (e.unite === 'pourcent') return e.valeur.toLocaleString('fr-FR', { maximumFractionDigits: 2 }).replace(/ /g, ' ') + ' %';
   if (e.unite === 'jours') return `${e.valeur}\u00a0jours`;
+  if (e.unite === 'date' && /^\d{4}-\d{2}-\d{2}$/.test(String(e.valeur))) { const [a, m, j] = e.valeur.split('-').map(Number); return `${j === 1 ? '1er' : j} ${['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'][m - 1]} ${a}`; }
   if (e.unite === 'jour_mois') { const [m, j] = e.valeur.split('-').map(Number); return `${j === 1 ? '1er' : j} ${['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'][m - 1]}`; }
   if (e.unite === 'trimestres') return `${e.valeur}\u00a0trimestres`;
   if (e.unite === 'ans') return `${e.valeur}\u00a0ans`;
