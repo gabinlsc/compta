@@ -2,7 +2,7 @@
 
 État au 26 octobre 2026. Règle : aucun chiffre n'est publié tant qu'il n'a pas été **lu sur une source officielle** (voir `docs/mise-a-jour-annuelle.md`).
 
-## Vérifié le 26 octobre 2026 (17 données de `data/regles.json`)
+## Vérifié le 26 octobre 2026 (31 données de `data/regles.json`)
 
 Lues directement sur les pages de service-public.gouv.fr (Direction de l'information légale et administrative) :
 
@@ -12,6 +12,10 @@ Lues directement sur les pages de service-public.gouv.fr (Direction de l'informa
 | Plafonds de chiffre d'affaires de la micro-entreprise (203 100 € / 83 600 €) | https://entreprendre.service-public.gouv.fr/vosdroits/F32353 | 21 février 2026 |
 | Seuils de franchise en base de TVA, base et majoré (85 000 € / 93 500 € ; 37 500 € / 41 250 €) | https://entreprendre.service-public.gouv.fr/vosdroits/F21746 | 1er janvier 2026 |
 | Abattements forfaitaires de l'impôt (71 / 50 / 34 %) | https://entreprendre.service-public.gouv.fr/vosdroits/F23267 | 13 mai 2026 |
+
+| Mentions de facture : mention de franchise de TVA (nouveau texte CIBS depuis le 1er septembre 2026 et ancien texte tolérée jusqu'au 31 décembre 2027), mention EI, « Siret en cours d'attribution », escompte « néant », association agréée, garantie de conformité (2 ans), date d'exigibilité du SIREN du client pour les micro-entreprises (1er septembre 2027) | https://entreprendre.service-public.gouv.fr/vosdroits/F36008 | 8 décembre 2025 |
+| Pénalités de retard : minimum légal (8,25 %), majoration de 10 points, taux des semestres 2026 (12,15 % et 12,40 %), indemnité de 40 €, délai de paiement maximal de 60 jours | https://entreprendre.service-public.gouv.fr/vosdroits/F23211 | 7 août 2026 |
+| Liste des mentions obligatoires d'une facture et nouvelles mentions de la facturation électronique | https://entreprendre.service-public.gouv.fr/vosdroits/F31808 | 11 août 2026 |
 
 Contrôle croisé impossible à ce jour avec urssaf.fr : les domaines `urssaf.fr` et `autoentrepreneur.urssaf.fr` sont refusés par le réseau de l'environnement de développement. À faire dès qu'ils sont accessibles, et pour les valeurs de référence des tests (simulateur officiel de l'Urssaf).
 
@@ -24,9 +28,14 @@ Remarques lues sur les pages :
 
 À entrer dans `regles.json` au fur et à mesure, avec leur source :
 
-- Textes des mentions légales de facture et de devis. Base lue (https://entreprendre.service-public.gouv.fr/vosdroits/F31808, vérifiée le 11 août 2026) ; à compléter par Légifrance (art. L441-9 et L441-10 du code de commerce, D441-5 pour l'indemnité de 40 €) et le BOFiP.
-- Facturation électronique : la page F31808 indique 4 nouvelles mentions obligatoires à compter du 1er septembre 2026 (SIREN du client, adresse de livraison, nature de l'opération, option pour la taxe d'après les débits) et une extension aux micro-entreprises à partir du 1er septembre 2027. À préciser sur impots.gouv.fr avant d'écrire le guide.
+- Mentions de facture : recoupement avec Légifrance (art. L441-9 et L441-10 du code de commerce, D441-5 pour l'indemnité de 40 €), dont l'accès est encore refusé (403) depuis l'environnement de développement.
+- Taux de refinancement de la BCE pour les semestres suivants : à ajouter dans `regles.json` (série `penalite_bce`) au 1er janvier et au 1er juillet.
+- Facturation électronique : calendrier complet à préciser sur impots.gouv.fr avant d'écrire le guide dédié (la page F31808 indique 4 nouvelles mentions à partir du 1er septembre 2026 pour les grandes entreprises et ETI, et du 1er septembre 2027 pour les micro-entreprises).
 - ACRE (conditions et taux réduits), échéances de déclaration, date limite de la CFE.
+
+## Écarts avec le cahier des charges initial
+
+- Le cahier des charges citait l'article 293 B du CGI et le 1er septembre 2026 pour le SIREN du client. Les pages officielles indiquent que la mention est désormais « art. L. 223 et s. du CIBS » (293 B toléré jusqu'au 31 décembre 2027) et que le SIREN du client n'est obligatoire pour les micro-entreprises qu'à partir du 1er septembre 2027. L'outil suit les pages officielles.
 
 ## Aussi à confirmer par l'éditeur
 

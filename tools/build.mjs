@@ -2,7 +2,7 @@
 //   node tools/build.mjs
 // Sources : src/ (contenu et fichiers statiques) · data/regles.json (chiffres réglementaires) · tools/site.config.json (réglages).
 // Garde-fou : le build échoue si une donnée vérifiée est périmée (COMPTA_ALLOW_STALE=1 pour publier malgré tout, avec bandeau).
-import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, readdirSync, statSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { createHash as hash } from 'node:crypto';
 import CFG from './site.config.json' with { type: 'json' };
@@ -24,9 +24,17 @@ rmSync(OUT, { recursive: true, force: true });
 mkdirSync(join(OUT, 'assets'), { recursive: true });
 cpSync(join(ROOT, 'src/assets'), join(OUT, 'assets'), { recursive: true });
 const empreinte = (f) => hash('sha1').update(readFileSync(join(OUT, 'assets', f))).digest('hex').slice(0, 8);
-const assets = { css: empreinte('style.css'), js: empreinte('app.js') };
+// Modules ES (assets/js) : une seule empreinte pour tous, ajoutée à chaque import, pour que le navigateur ne mélange jamais deux versions.
+const fichiersJs = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? fichiersJs(join(d, f)) : f.endsWith('.js') ? [join(d, f)] : []));
+const jsDir = join(OUT, 'assets/js');
+const modulesJs = existsSync(jsDir) ? fichiersJs(jsDir).sort() : [];
+const jsv = hash('sha1').update(modulesJs.map((f) => readFileSync(f)).join('\n')).digest('hex').slice(0, 8);
+for (const f of modulesJs) writeFileSync(f, readFileSync(f, 'utf8').replace(/(from\s+['"])(\.{1,2}\/[^'"?]+\.js)(['"])/g, `$1$2?v=${jsv}$3`));
+const assets = { css: empreinte('style.css'), js: empreinte('app.js'), jsv };
 
-const liste = [...pages(regles), page404].map((p) => ({ ...p, body: remplirJetons(p.body, regles) }));
+// Données réglementaires embarquées dans les pages d'outils (lues par le script, jamais écrites en dur dans le code).
+const donnees = regles.entrees.map(({ id, unite, valeur, statut }) => ({ id, unite, valeur, statut }));
+const liste = [...pages(regles), page404].map((p) => ({ ...p, body: remplirJetons(p.body, regles), donnees: p.outil ? donnees : null }));
 const index = [];
 for (const p of liste) {
   let html = page({ ...p, assets });

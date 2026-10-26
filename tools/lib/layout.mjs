@@ -16,7 +16,7 @@ const ldBreadcrumb = (items) => ({ '@context': 'https://schema.org', '@type': 'B
 export const encartStudio = () => `<aside class="studio-cta no-print" aria-label="À propos de l’éditeur"><strong>Besoin d’un site pour votre activité ?</strong> Ce site est édité par StudioGLSC, studio web en Bretagne. <a href="${CFG.studio}" rel="noopener">Découvrir StudioGLSC</a>.</aside>`;
 export const avertissement = () => '<p class="notice info"><strong>Estimation indicative.</strong> Ce site ne remplace pas l’avis d’un comptable ni les informations officielles.</p>';
 
-export function page({ path, title, description, body, crumbs = null, jsonld = [], noindex = false, assets, studio = false }) {
+export function page({ path, title, description, body, crumbs = null, jsonld = [], noindex = false, assets, studio = false, modules = [], donnees = null, outil = false }) {
   const url = CFG.origin + path;
   const full = path === '/' ? `${CFG.nom} : ${CFG.slogan}` : `${title} · ${CFG.nom}`;
   const ld = [...(crumbs ? [ldBreadcrumb(crumbs)] : []), ...jsonld];
@@ -60,7 +60,7 @@ ${ld.map((o) => `<script type="application/ld+json">${JSON.stringify(o).replace(
   </div>
 </header>
 <main id="contenu">
-<div class="wrap">
+<div class="wrap${outil ? ' wrap-outil' : ''}">
 ${crumbs ? fil(crumbs) : ''}
 ${body}
 ${studio ? encartStudio() : ''}
@@ -76,7 +76,8 @@ ${studio ? encartStudio() : ''}
     <p class="small">Ces outils ne constituent ni un conseil juridique, ni un conseil fiscal, ni un conseil comptable. Édité par ${esc(CFG.editeur)} (<a href="${CFG.studio}" rel="noopener">StudioGLSC</a>).</p>
   </div>
 </footer>
-<script src="/assets/app.js?v=${assets.js}" defer></script>
+${donnees ? `<script type="application/json" id="regles-data">${JSON.stringify(donnees).replace(/</g, '\\u003c')}</script>\n` : ''}<script src="/assets/app.js?v=${assets.js}" defer></script>
+${modules.map((m) => `<script type="module" src="${m}?v=${assets.jsv}"></script>`).join('\n')}
 </body>
 </html>
 `;

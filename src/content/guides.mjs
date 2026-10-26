@@ -1,7 +1,9 @@
-// Guides du site (même convention que outils.mjs).
+import { GUIDE_MENTIONS } from './guide-mentions.mjs';
+
+// Guides du site (même convention que outils.mjs). Un guide prêt vient de son propre fichier (src/content/guide-*.mjs).
 export const GUIDES = [
   { slug: 'creer-sa-micro-entreprise', titre: 'Créer sa micro-entreprise pas à pas', resume: 'Les démarches, dans l’ordre, pour se lancer en toute sérénité.', pret: false },
-  { slug: 'mentions-obligatoires-facture', titre: 'Les mentions obligatoires sur une facture', resume: 'Ce qui doit figurer sur vos factures et vos devis.', pret: false },
+  { ...GUIDE_MENTIONS, pret: true },
   { slug: 'facturation-electronique', titre: 'Facturation électronique : ce qui change', resume: 'Le calendrier et ce que cela implique pour un micro-entrepreneur.', pret: false },
   { slug: 'declarer-son-chiffre-d-affaires', titre: 'Déclarer son chiffre d’affaires', resume: 'Mensuel ou trimestriel : dates, démarches et erreurs à éviter.', pret: false },
   { slug: 'plafonds-et-seuils-de-tva', titre: 'Plafonds et seuils de TVA', resume: 'Jusqu’où rester en micro-entreprise et en franchise de TVA.', pret: false },
