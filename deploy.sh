@@ -162,7 +162,9 @@ VHOST
     grep -q 'snippets/compta-security.conf' "$VHOST_AVAIL" && ok "vhost existant : inchangé (snippet déjà inclus)" || warn "vhost existant sans « include snippets/compta-security.conf; » : à ajouter dans le bloc server de $VHOST_AVAIL"
   fi
   nginx -t 2>/dev/null || { nginx -t; die "Configuration nginx invalide."; }
-  if systemctl is-active --quiet nginx 2>/dev/null; then systemctl reload nginx; else systemctl enable --now nginx 2>/dev/null || nginx; fi
+  if systemctl is-active --quiet nginx 2>/dev/null; then systemctl reload nginx
+  elif pgrep -x nginx >/dev/null; then nginx -s reload
+  else systemctl enable --now nginx 2>/dev/null || nginx; fi
   ok "nginx rechargé"
 else echo "  (dry-run) snippet, logrotate, vhost $VHOST_AVAIL, rechargement de nginx"; fi
 
