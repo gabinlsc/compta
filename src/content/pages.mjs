@@ -5,6 +5,7 @@ import { formaterValeur } from '../../tools/lib/regles.mjs';
 import { OUTILS } from './outils.mjs';
 import { GUIDES } from './guides.mjs';
 import { pageFacture, FAQ_FACTURE } from './outil-facture.mjs';
+import { pageSimulateur, FAQ_SIMULATEUR } from './outil-simulateur.mjs';
 
 const carte = (x, base) => `<article class="card"><h3>${x.pret ? `<a href="${base}${x.slug}/">${esc(x.titre)}</a>` : esc(x.titre)}</h3><p>${esc(x.resume)}</p>${x.pret ? '' : '<span class="tag">Bientôt</span>'}</article>`;
 const HOME = [['/', 'Accueil']];
@@ -42,6 +43,17 @@ export function pages(regles) {
       { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_FACTURE.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
     ],
     body: pageFacture(),
+  });
+
+  liste.push({
+    path: '/outils/simulateur-revenu-net/', title: 'Simulateur de revenu net auto-entrepreneur', outil: true,
+    description: 'Estimez vos cotisations et ce qu’il vous reste après cotisations selon votre activité, avec l’Acre et le versement libératoire. Gratuit, sans compte.',
+    crumbs: [...HOME, ['/outils/', 'Outils'], ['/outils/simulateur-revenu-net/', 'Simulateur de revenu net']], modules: ['/assets/js/outils/simulateur.js'], studio: true,
+    jsonld: [
+      { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Simulateur : combien me reste-t-il ?', url: CFG.origin + '/outils/simulateur-revenu-net/', applicationCategory: 'FinanceApplication', operatingSystem: 'Web', inLanguage: 'fr', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, description: 'Simulateur de cotisations et de revenu net pour micro-entrepreneur, dans le navigateur.' },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_SIMULATEUR.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
+    ],
+    body: pageSimulateur(),
   });
 
   for (const g of GUIDES.filter((x) => x.pret)) {

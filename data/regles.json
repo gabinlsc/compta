@@ -375,6 +375,114 @@
       "verifie_le": "2026-10-26",
       "valable_du": "2026-01-01",
       "valable_au": "2027-12-31"
+    },
+    {
+      "id": "acre_exoneration_micro",
+      "libelle": "Exonération de cotisations sociales de l'Acre pour un micro-entrepreneur créé à partir du 1er juillet 2026 (taux minoré = 75 % du taux normal)",
+      "unite": "pourcent",
+      "valeur": 25,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F11677",
+      "source_titre": "Aide à la création ou à la reprise d'une entreprise (Acre), service-public.gouv.fr (page vérifiée par la DILA le 1er juillet 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-07-01",
+      "valable_au": "2027-06-30"
+    },
+    {
+      "id": "acre_debut_regime",
+      "libelle": "Date de début de l'Acre à 25 % pour les micro-entreprises (créations ou reprises à compter de cette date)",
+      "unite": "date",
+      "valeur": "2026-07-01",
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F11677",
+      "source_titre": "Aide à la création ou à la reprise d'une entreprise (Acre), service-public.gouv.fr (page vérifiée par la DILA le 1er juillet 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-07-01",
+      "valable_au": "2027-06-30"
+    },
+    {
+      "id": "acre_trimestres_suivants",
+      "libelle": "Durée de l'Acre : jusqu'à la fin de ce nombre de trimestres civils suivant celui du début d'activité",
+      "unite": "trimestres",
+      "valeur": 3,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F11677",
+      "source_titre": "Aide à la création ou à la reprise d'une entreprise (Acre), service-public.gouv.fr (page vérifiée par la DILA le 1er juillet 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-07-01",
+      "valable_au": "2027-06-30"
+    },
+    {
+      "id": "acre_delai_demande_jours",
+      "libelle": "Délai pour demander l'Acre, à compter de la date d'ouverture de l'activité",
+      "unite": "jours",
+      "valeur": 60,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F11677",
+      "source_titre": "Aide à la création ou à la reprise d'une entreprise (Acre), service-public.gouv.fr (page vérifiée par la DILA le 1er juillet 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-07-01",
+      "valable_au": "2027-06-30"
+    },
+    {
+      "id": "vfl_rfr_seul",
+      "libelle": "Versement libératoire : revenu fiscal de référence maximal (année N-2), personne seule",
+      "unite": "euro",
+      "valeur": 29579,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F36244",
+      "source_titre": "Imposition d'un micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 13 mars 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2026-12-31"
+    },
+    {
+      "id": "vfl_rfr_couple",
+      "libelle": "Versement libératoire : revenu fiscal de référence maximal (année N-2), couple",
+      "unite": "euro",
+      "valeur": 59158,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F36244",
+      "source_titre": "Imposition d'un micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 13 mars 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2026-12-31"
+    },
+    {
+      "id": "vfl_rfr_couple_1_enfant",
+      "libelle": "Versement libératoire : revenu fiscal de référence maximal (année N-2), couple avec 1 enfant",
+      "unite": "euro",
+      "valeur": 73947.5,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F36244",
+      "source_titre": "Imposition d'un micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 13 mars 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2026-12-31"
+    },
+    {
+      "id": "vfl_rfr_couple_2_enfants",
+      "libelle": "Versement libératoire : revenu fiscal de référence maximal (année N-2), couple avec 2 enfants",
+      "unite": "euro",
+      "valeur": 88737,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F36244",
+      "source_titre": "Imposition d'un micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 13 mars 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2026-12-31"
+    },
+    {
+      "id": "abattement_minimum",
+      "libelle": "Montant minimal de l'abattement forfaitaire de l'impôt sur le revenu",
+      "unite": "euro",
+      "valeur": 305,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23267",
+      "source_titre": "Régime fiscal de la micro-entreprise, service-public.gouv.fr (page vérifiée par la DILA le 13 mai 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2026-12-31"
     }
   ]
 }

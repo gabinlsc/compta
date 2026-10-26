@@ -2,7 +2,7 @@
 
 État au 26 octobre 2026. Règle : aucun chiffre n'est publié tant qu'il n'a pas été **lu sur une source officielle** (voir `docs/mise-a-jour-annuelle.md`).
 
-## Vérifié le 26 octobre 2026 (31 données de `data/regles.json`)
+## Vérifié le 26 octobre 2026 (40 données de `data/regles.json`)
 
 Lues directement sur les pages de service-public.gouv.fr (Direction de l'information légale et administrative) :
 
@@ -16,6 +16,9 @@ Lues directement sur les pages de service-public.gouv.fr (Direction de l'informa
 | Mentions de facture : mention de franchise de TVA (nouveau texte CIBS depuis le 1er septembre 2026 et ancien texte tolérée jusqu'au 31 décembre 2027), mention EI, « Siret en cours d'attribution », escompte « néant », association agréée, garantie de conformité (2 ans), date d'exigibilité du SIREN du client pour les micro-entreprises (1er septembre 2027) | https://entreprendre.service-public.gouv.fr/vosdroits/F36008 | 8 décembre 2025 |
 | Pénalités de retard : minimum légal (8,25 %), majoration de 10 points, taux des semestres 2026 (12,15 % et 12,40 %), indemnité de 40 €, délai de paiement maximal de 60 jours | https://entreprendre.service-public.gouv.fr/vosdroits/F23211 | 7 août 2026 |
 | Liste des mentions obligatoires d'une facture et nouvelles mentions de la facturation électronique | https://entreprendre.service-public.gouv.fr/vosdroits/F31808 | 11 août 2026 |
+| Acre des micro-entreprises créées à partir du 1er juillet 2026 : exonération de 25 % (taux minoré à 75 %), durée (fin du 3e trimestre civil suivant le début d'activité), délai de demande de 60 jours | https://entreprendre.service-public.gouv.fr/vosdroits/F11677 (et l'actualité https://entreprendre.service-public.gouv.fr/actualites/A18795, décret n° 2026-69 du 6 février 2026) | 1er juillet 2026 |
+| Versement libératoire : seuils de revenu fiscal de référence (N-2) et date limite d'option | https://entreprendre.service-public.gouv.fr/vosdroits/F36244 | 13 mars 2026 |
+| Abattement minimal de 305 € | https://entreprendre.service-public.gouv.fr/vosdroits/F23267 | 13 mai 2026 |
 
 Contrôle croisé impossible à ce jour avec urssaf.fr : les domaines `urssaf.fr` et `autoentrepreneur.urssaf.fr` sont refusés par le réseau de l'environnement de développement. À faire dès qu'ils sont accessibles, et pour les valeurs de référence des tests (simulateur officiel de l'Urssaf).
 
@@ -31,7 +34,10 @@ Remarques lues sur les pages :
 - Mentions de facture : recoupement avec Légifrance (art. L441-9 et L441-10 du code de commerce, D441-5 pour l'indemnité de 40 €), dont l'accès est encore refusé (403) depuis l'environnement de développement.
 - Taux de refinancement de la BCE pour les semestres suivants : à ajouter dans `regles.json` (série `penalite_bce`) au 1er janvier et au 1er juillet.
 - Facturation électronique : calendrier complet à préciser sur impots.gouv.fr avant d'écrire le guide dédié (la page F31808 indique 4 nouvelles mentions à partir du 1er septembre 2026 pour les grandes entreprises et ETI, et du 1er septembre 2027 pour les micro-entreprises).
-- ACRE (conditions et taux réduits), échéances de déclaration, date limite de la CFE.
+- Acre des créations **avant le 1er juillet 2026** (exonération de 50 % d'après l'actualité A18795, mais durée et règles non lues sur une page de référence) : le simulateur ne les calcule pas et renvoie vers l'Urssaf.
+- Arrondi appliqué par l'Urssaf aux cotisations déclarées (le simulateur arrondit au centime).
+- Valeurs de référence du simulateur officiel de l'Urssaf pour les tests (accès refusé) : les tests utilisent les exemples chiffrés publiés par service-public.gouv.fr (électricien en Acre : 21,2 % devient 15,9 % ; exemples d'abattements).
+- Échéances de déclaration, date limite de la CFE.
 
 ## Écarts avec le cahier des charges initial
 

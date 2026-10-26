@@ -47,7 +47,8 @@
               "texte",
               "jours",
               "points",
-              "ans"
+              "ans",
+              "trimestres"
             ]
           },
           "valeur": {

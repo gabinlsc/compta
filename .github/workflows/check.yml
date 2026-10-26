@@ -40,5 +40,6 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - run: node tests/e2e.mjs
       - run: node tests/outil-facture.mjs
+      - run: node tests/outil-simulateur.mjs
       - run: node tests/csp.mjs
       - run: node tests/a11y.mjs
