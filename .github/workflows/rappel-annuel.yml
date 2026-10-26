@@ -1,0 +1,23 @@
+name: Rappel de mise à jour annuelle
+
+# Chaque 2 janvier : ouvre une issue pour revoir les chiffres réglementaires (voir docs/mise-a-jour-annuelle.md).
+on:
+  schedule:
+    - cron: '0 8 2 1 *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  rappel:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Créer l'issue de rappel
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          annee="$(date +%Y)"
+          gh issue create --repo "$GITHUB_REPOSITORY" \
+            --title "Mise à jour annuelle des données réglementaires $annee" \
+            --body "Il est temps de revoir \`data/regles.json\` : taux, plafonds, seuils de TVA, échéances, mentions de facture. Suivre la procédure de \`docs/mise-a-jour-annuelle.md\`. Le build échoue tant qu'une donnée vérifiée est périmée (plus de 6 mois, ou période terminée)."
