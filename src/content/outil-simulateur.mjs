@@ -4,8 +4,8 @@ import { champ, coche, choisir, radios } from './formulaires.mjs';
 export function pageSimulateur() {
   return `<p class="eyebrow">Outil gratuit · sans compte</p>
 <h1>Simulateur : combien me reste-t-il après cotisations ?</h1>
-<p class="lead">Indiquez votre chiffre d’affaires de micro-entrepreneur : vous voyez tout de suite vos cotisations, ce qu’il vous reste avant impôt et si vous approchez des plafonds. Rien n’est envoyé, rien n’est conservé.</p>
-<p class="notice info"><strong>Estimation indicative.</strong> Les taux viennent de <a href="/sources/">sources officielles</a> ; seule votre déclaration à l’Urssaf fait foi. Le simulateur ne remplace ni l’avis d’un comptable ni le simulateur de l’Urssaf.</p>
+<p class="lead">Votre chiffre d’affaires, vos cotisations, ce qu’il vous reste.</p>
+<p class="notice info"><strong>Estimation indicative.</strong> Taux issus de <a href="/sources/">sources officielles</a> ; seule votre déclaration fait foi.</p>
 <noscript><p class="notice">Cet outil demande JavaScript pour calculer dans votre navigateur. Aucune donnée n’est envoyée.</p></noscript>
 
 <div class="outil outil-simu" id="outil-simulateur" hidden>

@@ -4,8 +4,8 @@ import { champ, coche, choisir } from './formulaires.mjs';
 export function pageLivre() {
   return `<p class="eyebrow">Outil gratuit · sans compte</p>
 <h1>Livre des recettes et suivi du chiffre d’affaires</h1>
-<p class="lead">Notez chaque encaissement : le livre se tient dans l’ordre, calcule vos totaux par mois et par période de déclaration, vous dit combien déclarer et vous prévient quand vous approchez du plafond. Export CSV et impression inclus.</p>
-<p class="notice info"><strong>Vos données restent chez vous.</strong> Rien n’est envoyé. Par défaut, rien n’est même conservé : pour retrouver votre livre la prochaine fois, enregistrez-le dans ce navigateur (vous pouvez activer l’enregistrement automatique) ou exportez-le en fichier.</p>
+<p class="lead">Vos encaissements, vos totaux, le montant à déclarer et l’alerte plafond.</p>
+<p class="notice info"><strong>Vos données restent chez vous.</strong> Rien n’est conservé sans votre action : enregistrez dans ce navigateur ou exportez.</p>
 <noscript><p class="notice">Cet outil demande JavaScript pour fonctionner dans votre navigateur. Aucune donnée n’est envoyée.</p></noscript>
 
 <div class="outil outil-livre" id="outil-livre" hidden>

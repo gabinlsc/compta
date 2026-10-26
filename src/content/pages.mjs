@@ -13,9 +13,46 @@ import { pageRegistre, FAQ_REGISTRE } from './outil-registre.mjs';
 import { pageMentionsSite, FAQ_MENTIONS } from './outil-mentions-site.mjs';
 import { pageStatuts, FAQ_STATUTS } from './outil-statuts.mjs';
 import { blocLiens } from './liens.mjs';
+import { bulle, bulleDe, svg, ICONE_DE } from './icones.mjs';
+import { COURT } from './courts.mjs';
 
-const carte = (x, base) => `<article class="card"><h3>${x.pret ? `<a href="${base}${x.slug}/">${esc(x.titre)}</a>` : esc(x.titre)}</h3><p>${esc(x.resume)}</p>${x.pret ? '' : '<span class="tag">Bientôt</span>'}</article>`;
+const carte = (x, base) => x.pret
+  ? `<article class="card"><a class="card-lien" href="${base}${x.slug}/">${bulleDe(x.slug)}<span class="card-t">${esc(x.titre)}</span>${COURT[x.slug] ? `<span class="card-d">${esc(COURT[x.slug])}</span>` : ''}<span class="card-go" aria-hidden="true">→</span></a></article>`
+  : `<article class="card card-bientot">${bulleDe(x.slug)}<span class="card-t">${esc(x.titre)}</span><span class="tag">Bientôt</span></article>`;
 const HOME = [['/', 'Accueil']];
+
+
+// Emoji devant le titre des outils et des guides, et sections d'aide repliables (le texte reste dans la page : lisible par les moteurs de recherche et sans JavaScript).
+const ICO_SECTION = { 'Comment ça marche': 'sliders', 'Questions fréquentes': 'message' };
+const plier = (html) => html.replace(/<div class="prose aide-page">([\s\S]*)<\/div>\s*$/, (_, inner) => {
+  const [avant, ...blocs] = inner.split('<h2>');
+  const sections = blocs.map((b) => {
+    const [titre, ...reste] = b.split('</h2>'); const contenu = reste.join('</h2>');
+    if (!ICO_SECTION[titre]) return `<h2>${titre}</h2>${contenu}`; // seules l'explication et la FAQ se replient : le reste (flux, liens) reste visible
+    const e = ICO_SECTION[titre];
+    const faqs = titre === 'Questions fréquentes' ? contenu.split('<h3>').slice(1).map((q) => { const [t, ...r] = q.split('</h3>'); return `<details class="plus faq"><summary>${t}</summary><div class="plus-in">${r.join('</h3>')}</div></details>`; }).join('') : null;
+    return `<details class="plus"><summary>${svg(e, 'ico ico-s')}<h2>${titre}</h2></summary><div class="plus-in">${faqs ?? contenu}</div></details>`;
+  });
+  return `<div class="prose aide-page">${avant}${sections.join('')}</div>`;
+});
+const pliGuide = (html) => html.replace(/(<h2>[\s\S]*?)(?=<p class="aide">)/, (_, corps) => {
+  const [avant, ...blocs] = corps.split('<h2>'); let premiere = true;
+  return avant + blocs.map((b) => {
+    const [titre, ...r] = b.split('</h2>'); const c = r.join('</h2>');
+    if (titre === 'En bref' || titre === 'Sources' || /^Sources/.test(titre)) return `<h2>${titre}</h2>${c}`;
+    if (titre === 'Questions fréquentes') return `<h2>${titre}</h2>${c.split('<h3>').slice(1).map((q) => { const [t, ...x] = q.split('</h3>'); return `<details class="plus faq"><summary>${t}</summary><div class="plus-in">${x.join('</h3>')}</div></details>`; }).join('')}`;
+    const ouvert = premiere ? ' open' : ''; premiere = false;
+    return `<details class="plus"${ouvert}><summary><h2>${titre}</h2></summary><div class="plus-in">${c}</div></details>`;
+  }).join('');
+});
+const decorer = (p) => {
+  const slug = p.path.split('/').filter(Boolean).at(-1);
+  let b = p.body;
+  if (ICONE_DE[slug] && /^\/(outils|guides)\/[^/]+\/$/.test(p.path)) b = b.replace('<h1>', `<h1>${bulle(ICONE_DE[slug]).replace('bulle', 'bulle bulle-h1')} `);
+  if (p.path.startsWith('/outils/') && b.includes('aide-page')) b = plier(b);
+  if (p.path.startsWith('/guides/') && p.path !== '/guides/') b = pliGuide(b);
+  return b;
+};
 
 export function pages(regles) {
   const tok = (s) => remplirJetons(s, regles);
@@ -26,22 +63,23 @@ export function pages(regles) {
   liste.push({
     path: '/', title: CFG.nom, description: 'Facture, cotisations, échéances, tarif journalier : les outils gratuits du micro-entrepreneur. Sans compte ni cookie, tout se calcule dans votre navigateur.',
     jsonld: [{ '@context': 'https://schema.org', '@type': 'WebSite', name: CFG.nom, url: CFG.origin + '/', inLanguage: 'fr' }],
-    body: `<section class="hero"><p class="eyebrow">Gratuit · sans compte · sans cookie</p>
-<h1>La boîte à outils du micro-entrepreneur</h1>
-<p class="lead">Faites vos devis et factures, estimez ce qu’il vous reste après cotisations, ne ratez plus une échéance. Vos chiffres restent chez vous : tout se calcule dans votre navigateur, rien n’est envoyé.</p>
-<div class="actions"><a class="btn" href="/outils/">Voir les outils</a><a class="btn ghost" href="/sources/">Sources des chiffres</a></div></section>
-<h2>Les outils</h2><div class="grid">${OUTILS.map((o) => carte(o, '/outils/')).join('')}</div>
-<h2>Les guides</h2><div class="grid">${GUIDES.map((g) => carte(g, '/guides/')).join('')}</div>
-<h2>Pourquoi ce site ?</h2><div class="prose">
-<p><strong>Aucune donnée collectée.</strong> Pas de compte, pas de publicité, pas de cookie, pas de traceur, aucun service tiers : polices, scripts et images sont hébergés sur le site.</p>
-<p><strong>Des chiffres sourcés.</strong> Chaque taux, plafond ou date vient d’un site officiel, avec sa date de vérification, visible sur la page <a href="/sources/">Sources et dernière mise à jour</a>.</p>
-<p><strong>Code ouvert.</strong> Le code source est public sur <a href="${CFG.depot}" rel="noopener">GitHub</a> : vous pouvez vérifier ce que font les outils.</p></div>`,
+    body: `<section class="hero"><p class="eyebrow">${svg('sparkles')} Gratuit · sans compte · sans cookie</p>
+<h1 aria-label="La boîte à outils du micro-entrepreneur"><span class="mot" aria-hidden="true">La</span> <span class="mot" aria-hidden="true">boîte</span> <span class="mot" aria-hidden="true">à</span> <span class="mot" aria-hidden="true">outils</span> <span class="mot" aria-hidden="true">du</span> <span class="mot surligne" aria-hidden="true">micro-entrepreneur</span></h1>
+<p class="lead">Facturez, simulez, anticipez. Tout reste dans votre navigateur.</p>
+<div class="actions"><a class="btn" href="/outils/">${svg('wrench')} Voir les outils</a><a class="btn ghost" href="/sources/">${svg('search')} Sources</a></div>
+<div class="hero-visuel" aria-hidden="true"><span class="flot f1">${svg('receipt')}</span><span class="flot f2">${svg('calculator')}</span><span class="flot f3">${svg('calendar')}</span><span class="flot f4">${svg('timer')}</span></div></section>
+<section class="bloc-accueil"><h2>${svg('wrench', 'ico ico-h2')} Les outils</h2><div class="grid">${OUTILS.map((o) => carte(o, '/outils/')).join('')}</div></section>
+<section class="bloc-accueil"><h2>${svg('book-open', 'ico ico-h2')} Les guides</h2><div class="grid grid-guides">${GUIDES.map((g) => carte(g, '/guides/')).join('')}</div></section>
+<section class="bloc-accueil"><h2>${svg('heart', 'ico ico-h2')} Pourquoi ce site ?</h2><ul class="atouts">
+<li>${bulle('lock')}<div><strong>Rien n’est collecté</strong><p>Ni compte, ni cookie.</p></div></li>
+<li>${bulle('check')}<div><strong>Chiffres sourcés</strong><p>Chaque règle cite sa <a href="/sources/">source</a>.</p></div></li>
+<li>${bulle('code')}<div><strong>Code ouvert</strong><p>Vérifiable sur <a href="${CFG.depot}" rel="noopener">GitHub</a>.</p></div></li></ul></section>`,
   });
 
   liste.push({
     path: '/outils/', title: 'Outils pour micro-entrepreneur', description: 'Générateur de devis et factures, simulateur de revenu net, calendrier des échéances, tarif journalier, livre des recettes : tous les outils, gratuits.',
     crumbs: [...HOME, ['/outils/', 'Outils']],
-    body: `<h1>Outils pour micro-entrepreneur</h1><p class="lead">Chaque outil fonctionne dans votre navigateur, sans inscription.</p>${avertissement()}<div class="grid">${OUTILS.map((o) => carte(o, '/outils/')).join('')}</div>`,
+    body: `<h1>Outils pour micro-entrepreneur</h1><p class="lead">Gratuits, sans inscription.</p>${avertissement()}<div class="grid">${OUTILS.map((o) => carte(o, '/outils/')).join('')}</div>`,
   });
 
   liste.push({
@@ -201,7 +239,7 @@ ${enVerif ? `<p class="notice"><strong>${enVerif} donnée${enVerif > 1 ? 's' : '
 <h2>Signaler une erreur</h2><p>Une erreur dans un chiffre ou un calcul ? Écrivez via la page <a href="/contact/">Contact</a> : elle sera corrigée.</p></div>`,
   });
 
-  return liste.map((p) => ({ ...p, body: p.body + blocLiens(p.path) }));
+  return liste.map((p) => ({ ...p, body: decorer(p) + blocLiens(p.path) }));
 }
 
 export const page404 = {

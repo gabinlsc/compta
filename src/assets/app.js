@@ -7,6 +7,13 @@
     root.dataset.theme = dark ? 'light' : 'dark';
   });
 
+  // Résultats chiffrés : petit rebond quand la valeur change (les outils réécrivent le texte, rien n'est envoyé).
+  const zone = document.querySelector('.resultat');
+  if (zone) new MutationObserver(() => zone.querySelectorAll('.grand').forEach((el) => {
+    if (el.dataset.v === el.textContent) return;
+    el.dataset.v = el.textContent; el.classList.remove('maj'); void el.offsetWidth; el.classList.add('maj');
+  })).observe(zone, { childList: true, subtree: true, characterData: true });
+
   const out = document.getElementById('resultats');
   if (!out) return;
   const q = (new URLSearchParams(location.search).get('q') || '').trim().slice(0, 80);

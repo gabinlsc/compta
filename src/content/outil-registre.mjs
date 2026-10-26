@@ -4,8 +4,8 @@ import { champ } from './formulaires.mjs';
 export function pageRegistre() {
   return `<p class="eyebrow">Outil gratuit · sans compte</p>
 <h1>Registre RGPD simplifié pour micro-entrepreneur</h1>
-<p class="lead">Un registre des traitements de données personnelles est obligatoire pour tout organisme qui en traite de façon régulière, quelle que soit sa taille. Choisissez des modèles courants (facturation, contact, lettre d’information, prospection), complétez-les et imprimez votre registre.</p>
-<p class="notice info"><strong>Ne remplace pas un conseil juridique.</strong> Cet outil suit le contenu minimal décrit par la <a href="https://www.cnil.fr/fr/RGPD-le-registre-des-activites-de-traitement" rel="noopener">CNIL</a>. Vos données restent dans votre navigateur : rien n’est envoyé, rien n’est conservé sans votre action.</p>
+<p class="lead">Vos fiches de traitement à partir de modèles, prêtes à imprimer.</p>
+<p class="notice info"><strong>Ne remplace pas un conseil juridique.</strong> Contenu minimal décrit par la <a href="https://www.cnil.fr/fr/RGPD-le-registre-des-activites-de-traitement" rel="noopener">CNIL</a>. Rien n’est envoyé.</p>
 <noscript><p class="notice">Cet outil demande JavaScript pour fonctionner dans votre navigateur. Aucune donnée n’est envoyée.</p></noscript>
 
 <div class="outil outil-registre" id="outil-registre" hidden>

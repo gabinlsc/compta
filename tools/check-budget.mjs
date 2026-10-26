@@ -6,7 +6,7 @@ import { gzipSync } from 'node:zlib';
 import { PUBLIC, pagesHtml } from './lib/pages.mjs';
 
 const KB = 1024;
-const LIMITS = { 'assets/style.css': [32 * KB, 8 * KB], 'assets/app.js': [6 * KB, 2.5 * KB] }; // [octets bruts, octets gzip]
+const LIMITS = { 'assets/style.css': [56 * KB, 11 * KB], 'assets/app.js': [6 * KB, 2.5 * KB] }; // [octets bruts, octets gzip]
 const IMAGE_MAX = 90 * KB, FONT_MAX = 30 * KB, HTML_MAX = [64 * KB, 14 * KB], PAGE_BUDGET_GZ = 50 * KB; // HTML + CSS + JS d'une page, compressés
 let errors = 0;
 const fail = (m) => { errors++; console.error('✗ ' + m); };

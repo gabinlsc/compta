@@ -37,7 +37,7 @@ for (const page of pagesHtml()) {
     if (mots < 700 || mots > 1400) fail(page, `guide de ${mots} mots (700 à 1 400 attendus)`);
     if (!/<ul class="sources">/.test(src) || !/application\/ld\+json[^<]*Article/.test(src.replace(/\s+/g, ' ') ) && !/"@type":"Article"/.test(src)) fail(page, 'sources ou données structurées Article absentes');
   }
-  if (/^\/(outils|guides)\/[^/]+\/$/.test(rel) && (src.match(/<article class="card"><p class="eyebrow">/g) || []).length < 3) fail(page, 'maillage interne : moins de 3 pages liées en bas de page');
+  if (/^\/(outils|guides)\/[^/]+\/$/.test(rel) && (src.match(/<article class="card"><a class="card-lien"/g) || []).length < 3) fail(page, 'maillage interne : moins de 3 pages liées en bas de page');
   const ids = [...src.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
   const dup = ids.filter((x, i) => ids.indexOf(x) !== i);
   if (dup.length) fail(page, `identifiants en double : ${[...new Set(dup)].join(', ')}`);

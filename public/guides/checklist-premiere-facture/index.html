@@ -10,7 +10,7 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/style.css?v=533f3286">
+<link rel="stylesheet" href="/assets/style.css?v=535aaa31">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Compta by glsc">
 <meta property="og:locale" content="fr_FR">
@@ -32,7 +32,7 @@
   <div class="wrap nav-in">
     <a class="brand" href="/"><img src="/assets/favicon.svg" width="36" height="36" alt=""><span>Compta <small>by glsc</small></span></a>
     <nav class="menu" aria-label="Navigation principale">
-      <a href="/outils/">Outils</a><a href="/guides/" aria-current="page">Guides</a><a href="/sources/">Sources</a>
+      <a href="/outils/"><svg class="ico ico-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Outils</a><a href="/guides/" aria-current="page"><svg class="ico ico-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 6.5C10 4.7 7 4 3.5 4.5v13c3.5-.5 6.5.2 8.5 2 2-1.8 5-2.5 8.5-2v-13C17 4 14 4.7 12 6.5z"/><path d="M12 6.5v13"/></svg> Guides</a><a href="/sources/"><svg class="ico ico-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg> Sources</a>
     </nav>
     <form class="search" action="/recherche/" method="get" role="search"><label class="sr-only" for="q">Rechercher sur le site</label><input id="q" name="q" type="search" placeholder="Rechercher…" autocomplete="off" maxlength="80"></form>
     <button class="icon-btn" id="theme-toggle" type="button" aria-label="Changer de thème (clair ou sombre)" title="Changer de thème"><span aria-hidden="true">◐</span></button>
@@ -41,10 +41,10 @@
 <main id="contenu">
 <div class="wrap">
 <nav class="crumbs" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href="/guides/">Guides</a></li><li aria-current="page">Checklist avant votre première facture</li></ol></nav>
-<article class="prose guide"><p class="eyebrow">Guide · mis à jour le 26 octobre 2026</p><h1>Checklist avant d’envoyer votre première facture</h1><p class="lead">Une facture se prépare avant de se rédiger. Voici dix vérifications, dans l’ordre, pour que votre première facture soit complète, claire pour votre client et conforme aux règles de 2026.</p>
+<article class="prose guide"><p class="eyebrow">Guide · mis à jour le 26 octobre 2026</p><h1><span class="bulle bulle-h1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8 12.3 2.8 2.8 5.4-5.6"/></svg></span> Checklist avant d’envoyer votre première facture</h1><p class="lead">Une facture se prépare avant de se rédiger. Voici dix vérifications, dans l’ordre, pour que votre première facture soit complète, claire pour votre client et conforme aux règles de 2026.</p>
 <p class="notice info"><strong>Les cases à cocher, automatiquement.</strong> L’outil <a href="/outils/facture-auto-entrepreneur/">Devis et factures</a> contrôle la plupart de ces points pour vous et refuse d’imprimer un document incomplet.</p>
 
-<h2>La checklist</h2>
+<details class="plus" open><summary><h2>La checklist</h2></summary><div class="plus-in">
 <ol class="checklist">
 <li><h3>Mon entreprise est bien immatriculée</h3>
 <p>Vous avez votre numéro <strong>SIREN</strong>. Si vous êtes encore en cours d’immatriculation, la facture porte la mention « Siret en cours d'attribution » et elle est établie au nom de l’entreprise, pas à celui du créateur.</p></li>
@@ -68,45 +68,44 @@
 <p>Votre IBAN et votre BIC, la référence à rappeler, et la façon de vous joindre. Pensez ensuite à noter l’encaissement dans votre <a href="/outils/livre-des-recettes/">livre des recettes</a>.</p></li>
 </ol>
 
-<h2>Selon votre situation</h2>
+</div></details><details class="plus"><summary><h2>Selon votre situation</h2></summary><div class="plus-in">
 <ul>
 <li><strong>Artisan</strong> : indiquez votre assurance professionnelle sur vos devis et vos factures si elle est obligatoire pour votre métier.</li>
 <li><strong>Client particulier</strong> : pour certains biens, rappelez la garantie légale de conformité (au moins 2 ans). Pas d’indemnité de recouvrement.</li>
 <li><strong>Association agréée</strong> : « Membre d'une association agréée, le règlement par chèque et carte bancaire est accepté ».</li>
 </ul>
 
-<h2>Si votre client ne paie pas à l’échéance</h2>
+</div></details><details class="plus"><summary><h2>Si votre client ne paie pas à l’échéance</h2></summary><div class="plus-in">
 <p>Les pénalités de retard s’appliquent dès le lendemain de la date de règlement indiquée sur la facture, sans que vous ayez à relancer ni à envoyer une mise en demeure. L’indemnité forfaitaire de 40 € est due une seule fois par facture impayée à temps, y compris en cas de paiement partiel. Si vos frais de recouvrement dépassent ce montant, vous pouvez demander une indemnisation complémentaire sur justificatifs, sans la mentionner sur la facture.</p>
 
-<h2>Après l’envoi</h2>
+</div></details><details class="plus"><summary><h2>Après l’envoi</h2></summary><div class="plus-in">
 <ul>
 <li>Conservez la facture : les documents commerciaux se conservent entre 5 et 10 ans selon la nature du document.</li>
 <li>Reportez le montant encaissé dans le livre des recettes, puis déclarez-le à l’Urssaf avant la date limite (voir le guide <a href="/guides/declarer-son-chiffre-d-affaires/">Déclarer son chiffre d’affaires</a>).</li>
 <li>Gardez un œil sur vos plafonds (voir <a href="/guides/plafonds-et-seuils-de-tva/">Plafonds et seuils de TVA</a>).</li>
 </ul>
 
-<h2>Questions fréquentes</h2>
-<h3>Ai-je besoin d’un numéro de TVA ?</h3>
+</div></details><h2>Questions fréquentes</h2><details class="plus faq"><summary>Ai-je besoin d’un numéro de TVA ?</summary><div class="plus-in">
 <p>Pas en franchise en base de TVA : la mention « TVA non applicable » suffit. Votre numéro de TVA intracommunautaire n’est requis que si vous facturez la TVA.</p>
-<h3>Puis-je facturer avant d’avoir mon SIREN ?</h3>
+</div></details><details class="plus faq"><summary>Puis-je facturer avant d’avoir mon SIREN ?</summary><div class="plus-in">
 <p>Mieux vaut attendre : si l’entreprise est en cours d’immatriculation, la facture doit porter la mention « Siret en cours d'attribution » et être établie au nom de l’entreprise.</p>
-<h2>Sources</h2><ul class="sources"><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F31808" rel="noopener">Mentions obligatoires sur une facture, service-public.gouv.fr (page vérifiée par la DILA le 11 août 2026)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F36008" rel="noopener">Documents commerciaux d’une micro-entreprise, service-public.gouv.fr (page vérifiée par la DILA le 8 décembre 2025)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F23211" rel="noopener">Délais de paiement entre professionnels et pénalités de retard, service-public.gouv.fr (page vérifiée par la DILA le 7 août 2026)</a></li></ul>
+</div></details><h2>Sources</h2><ul class="sources"><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F31808" rel="noopener">Mentions obligatoires sur une facture, service-public.gouv.fr (page vérifiée par la DILA le 11 août 2026)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F36008" rel="noopener">Documents commerciaux d’une micro-entreprise, service-public.gouv.fr (page vérifiée par la DILA le 8 décembre 2025)</a></li><li><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F23211" rel="noopener">Délais de paiement entre professionnels et pénalités de retard, service-public.gouv.fr (page vérifiée par la DILA le 7 août 2026)</a></li></ul>
 <p class="aide">Page rédigée le 26 octobre 2026, mise à jour le 26 octobre 2026. Les chiffres viennent de la page <a href="/sources/">Sources</a>. Ce guide ne remplace pas l’avis d’un expert-comptable.</p>
-<p class="actions"><a class="btn" href="/outils/facture-auto-entrepreneur/">Ouvrir l’outil : Devis et factures</a></p></article><aside class="liens" aria-labelledby="titre-liens"><h2 id="titre-liens">Pour aller plus loin</h2><div class="grid"><article class="card"><p class="eyebrow">Guide</p><h3><a href="/guides/mentions-obligatoires-facture/">Les mentions obligatoires sur une facture</a></h3><p>Ce qui doit figurer sur vos factures et vos devis.</p></article><article class="card"><p class="eyebrow">Guide</p><h3><a href="/guides/livre-des-recettes-a-quoi-ca-sert/">Le livre des recettes : à quoi ça sert</a></h3><p>Une obligation simple à comprendre et à tenir.</p></article><article class="card"><p class="eyebrow">Outil</p><h3><a href="/outils/facture-auto-entrepreneur/">Devis et factures</a></h3><p>Créez un devis, une facture, un acompte ou un avoir avec toutes les mentions obligatoires, puis imprimez-le en PDF.</p></article><article class="card"><p class="eyebrow">Guide</p><h3><a href="/guides/declarer-son-chiffre-d-affaires/">Déclarer son chiffre d’affaires</a></h3><p>Mensuel ou trimestriel : dates, démarches et erreurs à éviter.</p></article></div></aside>
-<aside class="studio-cta no-print" aria-label="À propos de l’éditeur"><strong>Besoin d’un site pour votre activité ?</strong> Ce site est édité par StudioGLSC, studio web en Bretagne. <a href="https://studio.glsc.fr" rel="noopener">Découvrir StudioGLSC</a>.</aside>
+<p class="actions"><a class="btn" href="/outils/facture-auto-entrepreneur/">Ouvrir l’outil : Devis et factures</a></p></article><aside class="liens" aria-labelledby="titre-liens"><h2 id="titre-liens"><svg class="ico ico-h2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg> Pour aller plus loin</h2><div class="grid"><article class="card"><a class="card-lien" href="/guides/mentions-obligatoires-facture/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="4.5" width="14" height="16.5" rx="2.5"/><path d="M9 4.5V3.5h6v1M9 11h6M9 15h4"/></svg></span><span class="card-k">Guide</span><span class="card-t">Les mentions obligatoires sur une facture</span><span class="card-go" aria-hidden="true">→</span></a></article><article class="card"><a class="card-lien" href="/guides/livre-des-recettes-a-quoi-ca-sert/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 6.5C10 4.7 7 4 3.5 4.5v13c3.5-.5 6.5.2 8.5 2 2-1.8 5-2.5 8.5-2v-13C17 4 14 4.7 12 6.5z"/><path d="M12 6.5v13"/></svg></span><span class="card-k">Guide</span><span class="card-t">Le livre des recettes : à quoi ça sert</span><span class="card-go" aria-hidden="true">→</span></a></article><article class="card"><a class="card-lien" href="/outils/facture-auto-entrepreneur/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg></span><span class="card-k">Outil</span><span class="card-t">Devis et factures</span><span class="card-d">En PDF, mentions incluses</span><span class="card-go" aria-hidden="true">→</span></a></article><article class="card"><a class="card-lien" href="/guides/declarer-son-chiffre-d-affaires/"><span class="bulle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5.5" width="18" height="13" rx="3"/><path d="m4 8 8 5.5L20 8"/></svg></span><span class="card-k">Guide</span><span class="card-t">Déclarer son chiffre d’affaires</span><span class="card-go" aria-hidden="true">→</span></a></article></div></aside>
+<aside class="studio-cta no-print" aria-label="À propos de l’éditeur"><strong>Besoin d’un site ?</strong> Découvrez <a href="https://studio.glsc.fr" rel="noopener">StudioGLSC</a>.</aside>
 </div>
 </main>
 <footer class="footer">
   <div class="wrap">
     <div class="footer-cols">
-      <div><p class="footer-logo"><img src="/assets/favicon.svg" width="32" height="32" alt="">Compta by glsc</p><p>Outils gratuits pour les micro-entrepreneurs. Sans compte, sans publicité, sans cookie : vos chiffres restent dans votre navigateur.</p></div>
+      <div><p class="footer-logo"><img src="/assets/favicon.svg" width="32" height="32" alt="">Compta by glsc</p><p>Outils gratuits pour micro-entrepreneurs. Rien ne quitte votre navigateur.</p></div>
       <div><h2>Le site</h2><ul><li><a href="/outils/">Outils</a></li><li><a href="/guides/">Guides</a></li><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li></ul></div>
       <div><h2>Informations</h2><ul><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/confidentialite/">Confidentialité</a></li><li><a href="/cgu/">Conditions d’utilisation</a></li><li><a href="/sources/">Sources et mises à jour</a></li><li><a href="https://github.com/gabinlsc/compta" rel="noopener">Code source</a></li></ul></div>
     </div>
     <p class="small">Ces outils ne constituent ni un conseil juridique, ni un conseil fiscal, ni un conseil comptable. Édité par Gabin Lescoat (<a href="https://studio.glsc.fr" rel="noopener">StudioGLSC</a>).</p>
   </div>
 </footer>
-<script src="/assets/app.js?v=cfc3cd7e" defer></script>
+<script src="/assets/app.js?v=8d2e74d1" defer></script>
 
 </body>
 </html>

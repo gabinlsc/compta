@@ -6,8 +6,8 @@ const TYPES_FACTURIERS = 'facture acompte solde';
 export function pageFacture() {
   return `<p class="eyebrow">Outil gratuit · sans compte</p>
 <h1>Devis et factures d’auto-entrepreneur</h1>
-<p class="lead">Créez un devis, une facture, un acompte, un solde ou un avoir avec toutes les mentions obligatoires, puis enregistrez-le en PDF. Rien n’est envoyé : tout reste dans votre navigateur.</p>
-<p class="notice info"><strong>Estimation indicative.</strong> Cet outil applique les règles publiées par l’administration (voir <a href="/sources/">les sources</a>) mais ne remplace ni l’avis d’un comptable ni les informations officielles. Relisez toujours votre document avant de l’envoyer.</p>
+<p class="lead">Devis, facture, acompte ou avoir avec toutes les mentions obligatoires, en PDF.</p>
+<p class="notice info"><strong>Estimation indicative.</strong> Règles officielles (<a href="/sources/">sources</a>) : relisez avant d’envoyer.</p>
 <noscript><p class="notice">Cet outil demande JavaScript pour calculer et afficher le document dans votre navigateur. Aucune donnée n’est envoyée.</p></noscript>
 
 <div class="outil" id="outil-facture" hidden>

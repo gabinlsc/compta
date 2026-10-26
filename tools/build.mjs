@@ -5,6 +5,7 @@
 import { cpSync, existsSync, readdirSync, statSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { createHash as hash } from 'node:crypto';
+import { cssIcones } from './lib/icones-css.mjs';
 import CFG from './site.config.json' with { type: 'json' };
 import { ROOT, chargerRegles, validerRegles, aujourdhui, remplirJetons } from './lib/regles.mjs';
 import { page } from './lib/layout.mjs';
@@ -24,6 +25,7 @@ if (bandeau && !process.env.COMPTA_ALLOW_STALE) {
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(join(OUT, 'assets'), { recursive: true });
 cpSync(join(ROOT, 'src/assets'), join(OUT, 'assets'), { recursive: true });
+{ const f = join(OUT, 'assets/style.css'); writeFileSync(f, readFileSync(f, 'utf8').replace('/* ICONES */', cssIcones())); }
 const empreinte = (f) => hash('sha1').update(readFileSync(join(OUT, 'assets', f))).digest('hex').slice(0, 8);
 // Modules ES (assets/js) : une seule empreinte pour tous, ajoutée à chaque import, pour que le navigateur ne mélange jamais deux versions.
 const fichiersJs = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? fichiersJs(join(d, f)) : f.endsWith('.js') ? [join(d, f)] : []));

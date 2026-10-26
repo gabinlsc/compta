@@ -9,7 +9,7 @@ const { base, close } = await serve({ csp: false });
 const browser = await launch();
 const bad = [];
 for (const theme of ['light', 'dark']) {
-  const ctx = await browser.newContext({ colorScheme: theme, viewport: { width: 1280, height: 900 } });
+  const ctx = await browser.newContext({ colorScheme: theme, reducedMotion: 'reduce', viewport: { width: 1280, height: 900 } });
   for (const path of PAGES) {
     const page = await ctx.newPage();
     await page.goto(base + path, { waitUntil: 'networkidle' });
