@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Compta by glsc · film promotionnel</title>
+<meta name="viewport" content="width=1920">
+<style>
+@font-face { font-family: "Inter"; font-weight: 400; src: url("/src/assets/fonts/inter-400.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 500; src: url("/src/assets/fonts/inter-500.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; src: url("/src/assets/fonts/inter-600.woff2") format("woff2"); }
+@font-face { font-family: "Inter Display"; font-weight: 700; src: url("/src/assets/fonts/inter-display-700.woff2") format("woff2"); }
+:root { --bg:#f6f7f9; --surface:#fff; --soft:#e9eefe; --ink:#0b1220; --muted:#566074; --line:#e1e5ed; --blue:#2447d6; --blue-2:#1b37b0; --pale:#9db3ff; --ok:#107a57; --dm:#9aa6bd; }
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: #0b1220; font-family: Inter, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+#stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; }
+.sc, .wv { position: absolute; inset: 0; overflow: hidden; visibility: hidden; }
+.sc .in { position: absolute; inset: 0; transform-origin: 50% 50%; }
+.disp { font-family: "Inter Display", Inter, sans-serif; font-weight: 700; letter-spacing: -.035em; }
+.ln { overflow: hidden; padding: .06em .04em .16em; margin: -.06em -.04em -.16em; white-space: nowrap; }
+.ln > span { display: inline-block; will-change: transform; }
+.dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(36,71,214,.16) 2px, transparent 2.5px); background-size: 56px 56px; }
+.dots.dk { background-image: radial-gradient(rgba(157,179,255,.16) 2px, transparent 2.5px); }
+.ring { position: absolute; border-radius: 50%; border: 3px solid rgba(36,71,214,.18); }
+.eyebrow { position: absolute; display: flex; align-items: center; gap: 16px; font: 600 28px/1 Inter; letter-spacing: .16em; text-transform: uppercase; color: var(--blue); }
+.eyebrow b { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 16px; background: var(--blue); color: #fff; font: 700 26px "Inter Display"; letter-spacing: 0; }
+.h2 { position: absolute; left: 150px; font-size: 104px; line-height: 1.02; color: var(--ink); }
+.h2 em { font-style: normal; color: var(--blue); }
+.sub { position: absolute; left: 150px; width: 820px; font: 500 36px/1.4 Inter; color: var(--muted); }
+.chips { position: absolute; left: 150px; display: flex; gap: 14px; }
+.chip { padding: 14px 26px; border-radius: 999px; background: #fff; border: 2px solid var(--line); font: 600 26px Inter; color: var(--ink); box-shadow: 0 8px 24px -12px rgba(11,18,32,.25); }
+.chip i { font-style: normal; color: var(--blue); }
+
+/* téléphone */
+#phoneLayer { position: absolute; inset: 0; pointer-events: none; visibility: hidden; perspective: 2600px; perspective-origin: 70% 50%; }
+#phone { position: absolute; left: 1400px; top: 560px; width: 400px; height: 820px; margin: -410px 0 0 -200px; transform-style: preserve-3d; }
+#phone .body { position: absolute; inset: 0; border-radius: 68px; background: linear-gradient(145deg, #2a3350, #0d1424 45%, #1a2240); box-shadow: 0 0 0 2px #3a4670 inset, 0 60px 90px -30px rgba(11,18,32,.55), 0 20px 40px -10px rgba(11,18,32,.35); }
+#phone .btn { position: absolute; width: 6px; border-radius: 3px; background: #1a2240; }
+#phone .screen { position: absolute; inset: 12px; border-radius: 56px; overflow: hidden; background: var(--bg); transform: translateZ(1px); }
+#phone .island { position: absolute; z-index: 20; left: 50%; top: 12px; width: 118px; height: 34px; margin-left: -59px; border-radius: 20px; background: #05080f; }
+#phone .status { position: absolute; z-index: 15; left: 0; right: 0; top: 0; height: 58px; padding: 16px 32px 0; display: flex; justify-content: space-between; font: 600 15px Inter; color: var(--ink); }
+#phone .glare { position: absolute; z-index: 25; inset: 0; border-radius: 56px; background: linear-gradient(115deg, rgba(255,255,255,.28) 0%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 70%, rgba(255,255,255,.08) 100%); }
+.scr { position: absolute; inset: 0; padding: 60px 18px 18px; background: var(--bg); zoom: 1.1; }
+.app-head { display: flex; align-items: center; gap: 10px; font: 700 21px "Inter Display"; color: var(--ink); height: 40px; }
+.app-head img { width: 30px; height: 30px; }
+.app-head .pill { margin-left: auto; font: 600 12px Inter; padding: 5px 10px; border-radius: 99px; background: var(--soft); color: var(--blue); }
+.seg { display: flex; gap: 4px; margin: 14px 0 12px; padding: 4px; border-radius: 12px; background: #e4e8f1; font: 600 13px Inter; color: var(--muted); }
+.seg span { flex: 1; text-align: center; padding: 8px 0; border-radius: 9px; }
+.seg .on { background: #fff; color: var(--ink); box-shadow: 0 1px 3px rgba(11,18,32,.18); }
+.card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 13px 14px; margin-bottom: 10px; box-shadow: 0 1px 2px rgba(11,18,32,.05); }
+.card label { display: block; font: 600 11px Inter; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+.inp { height: 40px; border: 2px solid var(--blue); border-radius: 10px; padding: 0 12px; display: flex; align-items: center; font: 500 16px Inter; color: var(--ink); background: #fff; }
+.caret { width: 2px; height: 20px; background: var(--blue); margin-left: 1px; }
+.row { display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-top: 1px solid var(--line); font: 500 14px Inter; color: var(--ink); }
+.row:first-of-type { border-top: 0; }
+.row b { font-weight: 600; font-variant-numeric: tabular-nums; }
+.total { display: flex; justify-content: space-between; align-items: baseline; padding: 14px 16px; border-radius: 16px; background: var(--ink); color: #fff; margin-bottom: 10px; }
+.total span { font: 500 14px Inter; color: var(--dm); }
+.total b { font: 700 30px "Inter Display"; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
+.okk { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 12px; background: #e6f6ef; color: var(--ok); font: 600 14px Inter; margin-bottom: 10px; }
+.okk svg { width: 18px; height: 18px; }
+.cta { display: grid; place-items: center; height: 52px; border-radius: 14px; background: var(--blue); color: #fff; font: 600 17px Inter; position: relative; overflow: hidden; box-shadow: 0 10px 22px -10px rgba(36,71,214,.8); }
+.cta .rp { position: absolute; border-radius: 50%; background: rgba(255,255,255,.4); width: 30px; height: 30px; margin: -15px 0 0 -15px; }
+.toast { position: absolute; left: 20px; right: 20px; bottom: 22px; display: flex; gap: 10px; align-items: center; padding: 13px 14px; border-radius: 16px; background: var(--ink); color: #fff; font: 600 14px Inter; box-shadow: 0 16px 30px -10px rgba(11,18,32,.6); }
+.toast i { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; background: var(--blue); font: 700 11px Inter; font-style: normal; }
+.small { font: 500 12px Inter; color: var(--muted); }
+.big-val { font: 700 44px "Inter Display"; letter-spacing: -.03em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.trk { position: relative; height: 8px; border-radius: 4px; background: #dfe5f4; margin: 18px 6px 10px; }
+.trk b { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 4px; background: var(--blue); }
+.trk i { position: absolute; top: 50%; width: 28px; height: 28px; margin: -14px 0 0 -14px; border-radius: 50%; background: #fff; border: 3px solid var(--blue); box-shadow: 0 4px 10px rgba(36,71,214,.4); }
+.stack { display: flex; height: 26px; border-radius: 9px; overflow: hidden; background: #dfe5f4; }
+.stack i { display: block; height: 100%; }
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+.tile { border-radius: 16px; padding: 13px 14px; background: #fff; border: 1px solid var(--line); }
+.tile.bl { background: var(--blue); border-color: var(--blue); color: #fff; }
+.tile .k { font: 600 11px Inter; letter-spacing: .08em; text-transform: uppercase; opacity: .7; }
+.tile .v { font: 700 28px "Inter Display"; letter-spacing: -.03em; margin-top: 4px; font-variant-numeric: tabular-nums; }
+.act { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0 12px; font: 600 12.5px Inter; }
+.act span { padding: 7px 11px; border-radius: 99px; background: #e4e8f1; color: var(--muted); }
+.act .on { background: var(--ink); color: #fff; }
+.mhead { display: flex; justify-content: space-between; align-items: center; margin: 14px 4px 10px; font: 700 20px "Inter Display"; color: var(--ink); }
+.mhead s { text-decoration: none; color: var(--muted); font: 500 22px Inter; }
+.grid7 { display: grid; grid-template-columns: repeat(7, 1fr); row-gap: 4px; text-align: center; font: 600 14px Inter; color: var(--ink); }
+.grid7 .wd { font: 600 11px Inter; color: var(--muted); padding-bottom: 6px; }
+.grid7 .d { position: relative; height: 38px; display: grid; place-items: center; }
+.grid7 .d.mute { color: #b7bfcf; }
+.grid7 .d.hit span { position: relative; z-index: 2; }
+.grid7 .d .blob { position: absolute; width: 38px; height: 38px; border-radius: 12px; background: var(--blue); z-index: 1; }
+.grid7 .d.hit { color: #fff; }
+.ev { display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 14px; background: #fff; border: 1px solid var(--line); margin-top: 8px; font: 600 13.5px Inter; color: var(--ink); }
+.ev em { font-style: normal; display: grid; place-items: center; min-width: 46px; height: 46px; border-radius: 12px; background: var(--soft); color: var(--blue); font: 700 13px Inter; text-align: center; line-height: 1.1; }
+.ev small { display: block; font: 500 12px Inter; color: var(--muted); margin-top: 2px; }
+
+.warnc { margin-top: 10px; padding: 12px 14px; border-radius: 14px; background: #fff6df; border: 1px solid #ecd48b; color: #5b4300; font: 500 12.5px/1.35 Inter; } .warnc b { display: block; font: 700 14px Inter; margin-bottom: 2px; }
+/* flottants */
+.fl { position: absolute; left: 0; top: 0; will-change: transform; }
+.sheet { width: 300px; height: 392px; border-radius: 18px; background: #fff; padding: 26px; box-shadow: 0 40px 70px -24px rgba(11,18,32,.45), 0 0 0 1px var(--line); }
+.sheet .bar { height: 12px; border-radius: 6px; background: #e4e8f1; margin-bottom: 14px; }
+.sheet .bar.bl { background: var(--blue); width: 44%; height: 16px; }
+.sheet .tot { margin-top: 26px; height: 44px; border-radius: 12px; background: var(--ink); }
+.badge { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; border-radius: 18px; background: #fff; box-shadow: 0 24px 50px -18px rgba(11,18,32,.5), 0 0 0 1px var(--line); font: 700 30px "Inter Display"; color: var(--ink); letter-spacing: -.02em; white-space: nowrap; }
+.badge small { font: 600 22px Inter; color: var(--muted); letter-spacing: 0; }
+.badge.bl { background: var(--blue); color: #fff; box-shadow: 0 24px 50px -18px rgba(36,71,214,.8); }
+.notif { width: 520px; display: flex; gap: 16px; align-items: center; padding: 20px 22px; border-radius: 28px; background: rgba(255,255,255,.92); box-shadow: 0 30px 60px -20px rgba(11,18,32,.5), 0 0 0 1px var(--line); backdrop-filter: blur(6px); }
+.notif .ic { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 16px; background: #fff; border: 2px solid var(--line); flex: none; font: 700 16px Inter; color: #d63a2f; text-align: center; line-height: 1; }
+.notif b { display: block; font: 700 22px Inter; color: var(--ink); }
+.notif span { display: block; font: 500 20px/1.3 Inter; color: var(--muted); margin-top: 3px; }
+
+/* scène 5 (bleu) */
+#s5 { background: linear-gradient(135deg, #2447d6 0%, #1b37b0 100%); color: #fff; }
+.big5 { position: absolute; left: 150px; font-size: 144px; line-height: 1; color: #fff; display: flex; align-items: center; gap: 30px; }
+.big5 .tick { width: 84px; height: 84px; border-radius: 50%; background: #fff; display: grid; place-items: center; flex: none; }
+.big5 .tick svg { width: 48px; height: 48px; }
+.win { position: absolute; left: 1160px; top: 220px; width: 640px; height: 500px; border-radius: 28px; background: rgba(255,255,255,.1); border: 2px solid rgba(255,255,255,.35); box-shadow: 0 50px 90px -30px rgba(0,0,0,.45); backdrop-filter: blur(10px); }
+.win .tb { height: 64px; border-bottom: 2px solid rgba(255,255,255,.25); display: flex; align-items: center; gap: 10px; padding: 0 22px; }
+.win .tb i { width: 16px; height: 16px; border-radius: 50%; background: rgba(255,255,255,.55); }
+.win .url { margin-left: 18px; flex: 1; height: 36px; border-radius: 18px; background: rgba(255,255,255,.18); color: #fff; font: 600 20px/36px Inter; padding: 0 18px; display: flex; gap: 10px; align-items: center; }
+.cloud { position: absolute; left: 1790px; top: 150px; }
+.lbl5 { position: absolute; left: 1160px; width: 640px; text-align: center; font: 600 32px/1.35 Inter; color: #fff; }
+
+/* logo */
+#s6 { background: #0b1220; }
+#mono { position: absolute; left: 0; top: 0; transform-origin: 50% 50%; will-change: transform; filter: drop-shadow(0 30px 50px rgba(36,71,214,.5)); }
+.wm { position: absolute; font-size: 176px; color: #fff; line-height: 1; }
+.by { position: absolute; font: 500 56px Inter; color: var(--dm); letter-spacing: .01em; }
+.tag { position: absolute; left: 0; width: 1920px; text-align: center; font: 500 44px/1.3 Inter; color: #dfe5f4; }
+.url6 { position: absolute; left: 50%; display: inline-flex; padding: 18px 40px; border-radius: 999px; border: 2px solid #2c3857; background: #111829; color: #fff; font: 600 36px Inter; letter-spacing: .01em; white-space: nowrap; }
+.url6 i { font-style: normal; color: var(--pale); }
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 · accroche -->
+<section class="sc" id="s1" style="background:#0b1220"><div class="in">
+  <div style="position:absolute;inset:0;background:radial-gradient(1100px 800px at 80% 20%,rgba(36,71,214,.45),transparent 70%),radial-gradient(900px 700px at 0% 100%,rgba(36,71,214,.22),transparent 70%)"></div>
+  <div class="dots dk" id="h-dots"></div>
+  <div class="eyebrow" id="h-eye" style="left:160px;top:190px;color:var(--pale)"><b style="background:var(--blue)">?</b>Micro-entrepreneur</div>
+  <div id="h-words" class="disp" style="position:absolute;left:160px;top:290px;color:#fff;font-size:200px;line-height:1.02">
+    <div class="ln"><span>Factures.</span></div><div class="ln"><span>Cotisations.</span></div><div class="ln"><span>Échéances.</span></div>
+  </div>
+  <div id="h-q" class="disp" style="position:absolute;left:160px;top:330px;color:#fff;font-size:208px;line-height:1.04">
+    <div class="ln"><span>Et si tout</span></div>
+    <div class="ln"><span>était <b id="h-pill" style="position:relative;display:inline-block;z-index:0;font-weight:700"><u id="h-pillbg" style="position:absolute;z-index:-1;left:-26px;right:-26px;top:14px;bottom:0;border-radius:44px;background:var(--blue);transform-origin:0 50%;text-decoration:none"></u>simple</b> ?</span></div>
+  </div>
+  <div class="fl" id="h-c1"><div style="width:230px;height:230px;border-radius:56px;background:linear-gradient(145deg,#2447d6,#1b37b0);display:grid;place-items:center;font:700 128px 'Inter Display';color:#fff;box-shadow:0 40px 80px -20px rgba(36,71,214,.7)">€</div></div>
+  <div class="fl" id="h-c2"><div style="width:230px;height:230px;border-radius:56px;background:#fff;display:grid;place-items:center;font:700 118px 'Inter Display';color:var(--blue);box-shadow:0 40px 80px -20px rgba(0,0,0,.6)">%</div></div>
+  <div class="fl" id="h-c3"><div style="width:230px;height:230px;border-radius:56px;background:#172037;border:3px solid #2c3857;display:grid;place-items:center;color:#fff;box-shadow:0 40px 80px -20px rgba(0,0,0,.6);text-align:center"><div style="font:600 30px Inter;color:var(--pale);letter-spacing:.14em">NOV.</div><div style="font:700 112px/0.9 'Inter Display'">30</div></div></div>
+</div></section>
+
+<!-- 2 · facture -->
+<div class="wv" id="w2" style="background:#2447d6"></div>
+<section class="sc" id="s2" style="background:#f6f7f9"><div class="in">
+  <div class="dots"></div>
+  <div class="ring" style="left:-300px;top:480px;width:900px;height:900px"></div><div class="ring" style="left:900px;top:-420px;width:1100px;height:1100px"></div>
+  <div class="eyebrow" id="f-eye" style="left:150px;top:210px"><b>1</b>Facture</div>
+  <div class="h2 disp" id="f-h" style="top:300px"><div class="ln"><span>Une facture</span></div><div class="ln"><span>avec les bonnes</span></div><div class="ln"><span><em>mentions.</em></span></div></div>
+  <div class="sub" id="f-sub" style="top:650px">Devis, facture, acompte, avoir. Enregistrés en PDF en quelques clics.</div>
+  <div class="chips" id="f-chips" style="top:830px"><span class="chip"><i>●</i> Numérotation</span><span class="chip"><i>●</i> Mentions légales</span><span class="chip"><i>●</i> Export PDF</span></div>
+</div></section>
+
+<!-- 3 · simulateur -->
+<div class="wv" id="w3" style="background:#2447d6"></div>
+<section class="sc" id="s3" style="background:#e9eefe"><div class="in">
+  <div class="dots"></div>
+  <div class="ring" style="left:-200px;top:-500px;width:1100px;height:1100px"></div><div class="ring" style="left:1000px;top:560px;width:1000px;height:1000px"></div>
+  <div class="eyebrow" id="s-eye" style="left:150px;top:210px"><b>2</b>Simulateur</div>
+  <div class="h2 disp" id="s-h" style="top:300px"><div class="ln"><span>Ce qu’il vous</span></div><div class="ln"><span><em>reste vraiment.</em></span></div></div>
+  <div class="sub" id="s-sub" style="top:560px">Cotisations, net, plafonds et seuils de TVA. Taux issus de sources officielles.</div>
+  <div class="chips" id="s-chips" style="top:760px"><span class="chip"><i>●</i> Estimation indicative</span><span class="chip"><i>●</i> Rien n’est envoyé</span></div>
+</div></section>
+
+<!-- 4 · calendrier -->
+<div class="wv" id="w4" style="background:#2447d6"></div>
+<section class="sc" id="s4" style="background:#f6f7f9"><div class="in">
+  <div class="dots"></div>
+  <div class="ring" style="left:-400px;top:300px;width:1000px;height:1000px"></div><div class="ring" style="left:800px;top:-500px;width:900px;height:900px"></div>
+  <div class="eyebrow" id="c-eye" style="left:150px;top:210px"><b>3</b>Calendrier</div>
+  <div class="h2 disp" id="c-h" style="top:300px"><div class="ln"><span>Aucune échéance</span></div><div class="ln"><span><em>ne vous échappe.</em></span></div></div>
+  <div class="sub" id="c-sub" style="top:560px">Déclaration du chiffre d’affaires, CFE, rappels à ajouter à votre agenda.</div>
+  <div class="chips" id="c-chips" style="top:760px"><span class="chip"><i>●</i> Fichier .ics</span><span class="chip"><i>●</i> Mensuel ou trimestriel</span></div>
+</div></section>
+
+<!-- téléphone et flottants -->
+<div id="phoneLayer">
+  <div id="phone">
+    <div class="body"></div>
+    <div class="btn" style="left:-4px;top:150px;height:48px"></div><div class="btn" style="left:-4px;top:216px;height:78px"></div><div class="btn" style="left:-4px;top:312px;height:78px"></div><div class="btn" style="right:-4px;top:250px;height:110px"></div>
+    <div class="screen">
+      <div class="island"></div>
+      <div class="status"><span>9:41</span><span>●●● 5G ▮</span></div>
+      <!-- facture -->
+      <div class="scr" id="scrF">
+        <div class="app-head"><img src="/src/assets/favicon.svg" alt="">Facture<span class="pill">Brouillon</span></div>
+        <div class="seg"><span>Devis</span><span class="on">Facture</span><span>Acompte</span><span>Avoir</span></div>
+        <div class="card"><label>Client</label><div class="inp"><span id="fCl"></span><i class="caret" id="fCaret"></i></div></div>
+        <div class="card" id="fLines" style="min-height:112px"><label>Prestations</label>
+          <div class="row" id="fR1"><span>Création de site vitrine</span><b>1 200,00 €</b></div>
+          <div class="row" id="fR2"><span>Hébergement, 1 an</span><b>120,00 €</b></div></div>
+        <div class="card" id="fPay"><label>Règlement</label><div class="row"><span>Mode de règlement</span><b>Virement</b></div><div class="row"><span>Échéance</span><b>30 jours</b></div></div>
+        <div class="total" id="fTot"><span>Total à payer</span><b id="fTotV">0,00 €</b></div>
+        <div class="okk" id="fOk"><svg viewBox="0 0 24 24" fill="none" stroke="#107a57" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Mentions obligatoires incluses</div>
+        <div class="cta" id="fBtn">Enregistrer en PDF<i class="rp" id="fRp"></i></div>
+        <div class="toast" id="fToast"><i>PDF</i><span>Facture F-2026-001 prête</span></div>
+      </div>
+      <!-- simulateur -->
+      <div class="scr" id="scrS">
+        <div class="app-head"><img src="/src/assets/favicon.svg" alt="">Simulateur<span class="pill">Estimation</span></div>
+        <div class="act"><span class="on">Services (BIC)</span><span>Vente</span><span>Libéral</span></div>
+        <div class="card"><label>Chiffre d’affaires par mois</label><div class="big-val" id="sCa">2 000 €</div>
+          <div class="trk"><b id="sFill"></b><i id="sKnob"></i></div><div class="small" style="display:flex;justify-content:space-between"><span>0 €</span><span>5 000 €</span></div></div>
+        <div class="card"><label>Répartition</label><div class="stack"><i id="sNetBar" style="background:var(--blue)"></i><i id="sCotBar" style="background:var(--ink)"></i></div>
+          <div class="small" style="display:flex;justify-content:space-between;margin-top:8px"><span><u style="text-decoration:none;color:var(--blue)">■</u> Net estimé</span><span><u style="text-decoration:none;color:var(--ink)">■</u> Cotisations</span></div></div>
+        <div class="tiles"><div class="tile"><div class="k">Cotisations</div><div class="v" id="sCot">424 €</div><div class="small">taux 21,2 %</div></div>
+        <div class="tile bl"><div class="k">Il vous reste</div><div class="v" id="sNet">1 576 €</div><div class="small" style="color:#dfe5f4">avant impôt</div></div></div>
+        <div class="okk" style="margin-top:12px;background:#e9eefe;color:var(--blue)" id="sNote">Estimation indicative · par mois</div>
+        <div class="warnc" id="sWarn"><b>Seuil de TVA en vue</b><span>36 000 € projetés sur l’année, seuil à 37 500 €.</span></div>
+      </div>
+      <!-- calendrier -->
+      <div class="scr" id="scrC">
+        <div class="app-head"><img src="/src/assets/favicon.svg" alt="">Calendrier<span class="pill">Mensuel</span></div>
+        <div class="mhead"><s>‹</s><span>Novembre 2026</span><s>›</s></div>
+        <div class="grid7" id="cGrid"></div>
+        <div class="ev" id="cE1"><em>30<br>nov.</em><div>Déclarer le chiffre d’affaires<small>Déclaration mensuelle</small></div></div>
+        <div class="ev" id="cE2"><em>15<br>déc.</em><div>Payer la CFE<small>Cotisation foncière des entreprises</small></div></div>
+        <div class="ev" id="cE3"><em>J-1</em><div>Rappel la veille<small>Alerte dans votre agenda</small></div></div>
+        <div class="cta" id="cBtn" style="margin-top:12px;height:48px;font-size:15px">Ajouter à mon agenda (.ics)<i class="rp" id="cRp"></i></div>
+      </div>
+      <div class="glare"></div>
+    </div>
+  </div>
+  <!-- flottants facture -->
+  <div class="fl" id="fl-sheet"><div class="sheet"><div class="bar bl"></div><div class="bar" style="width:70%"></div><div class="bar" style="width:90%"></div><div class="bar" style="width:55%"></div><div class="bar" style="width:80%"></div><div class="bar" style="width:40%"></div><div class="tot"></div></div></div>
+  <div class="fl" id="fl-pdf"><div class="badge bl">PDF <small style="color:#dfe5f4">prêt</small></div></div>
+  <div class="fl" id="fl-num"><div class="badge"><span style="color:var(--ok)">✓</span> N° F-2026-001</div></div>
+  <!-- flottants simulateur -->
+  <div class="fl" id="fl-rate"><div class="badge">21,2 % <small>de cotisations</small></div></div>
+  <div class="fl" id="fl-net"><div class="badge bl">2 364 € <small style="color:#dfe5f4">qui restent</small></div></div>
+  <!-- flottants calendrier -->
+  <div class="fl" id="fl-notif"><div class="notif"><div class="ic">AGENDA</div><div><b>Rappel · demain</b><span>Déclarer votre chiffre d’affaires</span></div></div></div>
+  <div class="fl" id="fl-ics"><div class="badge">.ics <small>ajouté à l’agenda</small></div></div>
+</div>
+
+<!-- 5 · confiance -->
+<div class="wv" id="w5" style="background:#fff"></div>
+<section class="sc" id="s5"><div class="in">
+  <div class="dots dk" style="background-image:radial-gradient(rgba(255,255,255,.14) 2px,transparent 2.5px)"></div>
+  <div class="ring" style="left:-380px;top:520px;width:1000px;height:1000px;border-color:rgba(255,255,255,.14)"></div><div class="ring" style="left:1100px;top:-480px;width:1000px;height:1000px;border-color:rgba(255,255,255,.14)"></div>
+  <div class="big5 disp" id="p1" style="top:190px"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#2447d6" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></div><div class="ln"><span>Gratuit.</span></div></div>
+  <div class="big5 disp" id="p2" style="top:390px"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#2447d6" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></div><div class="ln"><span>Sans compte.</span></div></div>
+  <div class="big5 disp" id="p3" style="top:590px"><div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#2447d6" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg></div><div class="ln"><span>Sans cookie.</span></div></div>
+  <div class="sub" id="p-sub" style="top:880px;left:150px;width:1650px;color:#dfe5f4;font-size:38px">Tout se calcule dans votre navigateur. Chaque règle cite sa source officielle.</div>
+  <div class="win" id="p-win">
+    <div class="tb"><i></i><i></i><i></i><div class="url"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>compta.glsc.fr</div></div>
+    <div id="p-lock" style="position:absolute;left:0;right:0;top:64px;bottom:0;display:grid;place-items:center">
+      <svg width="190" height="190" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" id="p-lsvg"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.6" fill="rgba(255,255,255,.14)"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15.5" r="1.4" fill="#fff"/></svg>
+    </div>
+    <div class="fl" id="p-d1" style="left:50px;top:330px"><div class="badge" style="font-size:26px;padding:10px 18px">1 320,00 €</div></div>
+    <div class="fl" id="p-d2" style="left:340px;top:360px"><div class="badge" style="font-size:26px;padding:10px 18px">Atelier Lumière</div></div>
+    <div class="fl" id="p-d3" style="left:60px;top:120px"><div class="badge" style="font-size:26px;padding:10px 18px">CA 3 000 €</div></div>
+  </div>
+  <div class="lbl5" id="p-l1" style="top:760px">Vos données restent ici.</div>
+  <svg class="cloud" id="p-cloud" width="150" height="110" viewBox="0 0 150 110" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" style="left:1740px;top:70px"><path d="M40 90a26 26 0 0 1-2-51 36 36 0 0 1 69-6 30 30 0 0 1 6 57z" opacity=".55"/><path id="p-cut" d="M30 100L120 14" stroke="#fff" stroke-width="8"/></svg>
+</div></section>
+
+<!-- 6 · logo -->
+<div class="wv" id="w6" style="background:#2447d6"></div>
+<section class="sc" id="s6"><div class="in">
+  <div style="position:absolute;inset:0;background:radial-gradient(1000px 700px at 50% 45%,rgba(36,71,214,.34),transparent 70%)"></div>
+  <div class="dots dk"></div>
+  <div id="l-ring1" style="position:absolute;left:660px;top:480px;width:200px;height:200px;margin:-100px 0 0 -100px;border-radius:50%;border:6px solid #2447d6"></div>
+  <div id="l-ring2" style="position:absolute;left:660px;top:480px;width:200px;height:200px;margin:-100px 0 0 -100px;border-radius:50%;border:3px solid #9db3ff"></div>
+  <div id="l-clip" style="position:absolute;left:0;top:0;width:1920px;height:1080px">
+    <div class="wm disp" id="l-wm"><div class="ln"><span id="l-wm-t">Compta</span></div></div>
+  </div>
+  <div class="by" id="l-by">by glsc</div>
+  <svg id="mono" viewBox="0 0 64 64" width="200" height="200" aria-hidden="true">
+    <defs><mask id="gm" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><path id="sweep" d="" stroke="#fff" stroke-width="24" fill="none" pathLength="1"/></mask>
+    <linearGradient id="shg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <clipPath id="sqc"><rect width="64" height="64" rx="16"/></clipPath></defs>
+    <rect width="64" height="64" rx="16" fill="#2447D6"/>
+    <g id="gg" style="transform-origin:32px 32px"><path mask="url(#gm)" fill="#FFFFFF" d="M32.541612483745126 49.0C41.074772431729514 49.0 47.131989596879066 43.340702210663196 47.131989596879066 35.161248374512354V30.960988296488946H33.29323797139142V36.133940182054616H40.4778933680104C40.41157347204161 40.22366710013004 37.250325097529256 42.98699609882965 32.7184655396619 42.98699609882965C27.10338101430429 42.98699609882965 23.721066319895968 38.786736020806245 23.721066319895968 32.0221066319896C23.721066319895968 25.235370611183356 27.081274382314696 21.01300390117035 32.630039011703516 21.01300390117035C36.56501950585175 21.01300390117035 39.28413524057217 23.201560468140443 40.01365409622887 26.561768530559167H46.9109232769831C46.070871261378414 19.66449934980494 39.991547464239275 15.0 32.431079323797135 15.0C23.544213263979195 15.0 16.868010403120937 21.49934980494148 16.868010403120937 32.0221066319896C16.868010403120937 42.19115734720416 23.212613784135243 49.0 32.541612483745126 49.0Z"/></g>
+    <g clip-path="url(#sqc)"><rect id="shine" x="-40" y="-10" width="30" height="90" fill="url(#shg)" transform="skewX(-18)"/></g>
+    <circle id="tip" r="2.6" fill="#fff" opacity="0"/><circle id="tip2" r="6" fill="#9db3ff" opacity="0"/>
+  </svg>
+  <div class="tag" id="l-tag" style="top:690px">La boîte à outils gratuite du micro-entrepreneur.</div>
+  <div class="url6" id="l-url" style="top:810px">compta<i>.glsc.fr</i></div>
+</div></section>
+
+</div>
+<script src="/promo/engine.js"></script>
+</body>
+</html>
