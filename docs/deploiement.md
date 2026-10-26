@@ -45,6 +45,14 @@ Relancer la même commande. Pour revenir en arrière à la main : `tar -xzf /var
 - **Certificat refusé** : presque toujours un DNS pas encore propagé. Le site reste en HTTP ; relancer le script plus tard.
 - **Lieu du serveur** : à confirmer dans l'espace IONOS avant d'écrire « hébergé en France » quelque part.
 
-## Déploiement automatique au merge (étape 8 du plan)
+## Déploiement automatique au merge
 
-Prévu ensuite : ajouter `gabinlsc/compta` à la liste blanche du webhook de `gabinlsc/portfolio` (PR séparée sur ce dépôt), pour déployer à chaque merge sur `main`.
+Le serveur qui héberge déjà glsc.fr sait se mettre à jour tout seul quand un dépôt reçoit un push sur `main` : GitHub appelle un webhook signé (`https://admin.glsc.fr/hooks/github`), qui dépose une demande traitée par `glsc-deploy.service`. Le dépôt `gabinlsc/compta` rejoint cette liste via la pull request [gabinlsc/portfolio#52](https://github.com/gabinlsc/portfolio/pull/52). Une fois cette PR fusionnée :
+
+1. **Créer le webhook** dans le dépôt `gabinlsc/compta` : *Settings → Webhooks → Add webhook*. URL `https://admin.glsc.fr/hooks/github`, type de contenu `application/json`, secret : celui de `/etc/glsc-admin/github-webhook.secret`, événement « Just the push event ».
+2. **Mettre le serveur à jour** pour qu'il connaisse la nouvelle cible : lancer « Déployer maintenant » dans l'admin (GitHub & déploiements), ou `deploy5`.
+3. **Vérifier** : le `ping` du webhook apparaît dans l'admin ; au merge suivant sur `main` de compta, un déploiement « compta » démarre, avec son journal et, en cas d'échec, le retour arrière.
+
+Le script `deploy/deploy-compta.sh` du dépôt portfolio télécharge la branche `main` de compta et lance son `deploy.sh`. Le domaine par défaut est `compta.glsc.fr` (variable `GLSC_COMPTA_DOMAIN`). **Le premier lancement reste manuel** (commande du début de cette page) : il crée le vhost nginx et le certificat ; les suivants sont automatiques. Code de sortie 3 : la nouvelle version ne répondait pas et l'ancienne a été remise en service.
+
+Aucune commande ne transite par le webhook : seules les cibles de la liste blanche sont exécutées.

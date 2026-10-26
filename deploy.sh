@@ -18,6 +18,7 @@
 # Ce que fait le script : installe nginx et certbot si besoin ; télécharge la version demandée ; sauvegarde l'existant (5 dernières) ;
 # installe le site par échange atomique ; vérifie que les pages répondent et remet l'ancienne version sinon ; installe le snippet d'en-têtes
 # (CSP stricte, HSTS, cache) ; crée le vhost nginx au premier lancement ; obtient le certificat ; limite les journaux à 35 jours.
+# Codes de sortie : 0 réussi · 1 échec (rien à restaurer ou erreur) · 3 échec, ancienne version remise en service.
 set -euo pipefail
 
 DOMAIN="${COMPTA_DOMAIN:-compta.glsc.fr}"
@@ -107,7 +108,7 @@ rollback() {
   if [ -n "$BK" ]; then c 31 "  ↩ retour à la version précédente"; else c 31 "  ↩ premier déploiement : pas de version précédente, fichiers laissés en place pour diagnostic"; exit 1; fi
   rm -rf "$ROOT.failed"; [ -d "$ROOT" ] && mv "$ROOT" "$ROOT.failed"
   mkdir -p "$ROOT"; tar -xzf "$BK" -C "$ROOT"
-  rm -rf "$ROOT.failed"; exit 1
+  rm -rf "$ROOT.failed"; exit 3   # 3 : la nouvelle version a échoué, l'ancienne est remise en service (convention du déploiement automatique du dépôt portfolio)
 }
 if [ "$DRY" = 0 ]; then
   rm -rf "$ROOT.new" "$ROOT.old"
