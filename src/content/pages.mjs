@@ -6,6 +6,7 @@ import { OUTILS } from './outils.mjs';
 import { GUIDES } from './guides.mjs';
 import { pageFacture, FAQ_FACTURE } from './outil-facture.mjs';
 import { pageSimulateur, FAQ_SIMULATEUR } from './outil-simulateur.mjs';
+import { pageCalendrier, FAQ_CALENDRIER } from './outil-calendrier.mjs';
 
 const carte = (x, base) => `<article class="card"><h3>${x.pret ? `<a href="${base}${x.slug}/">${esc(x.titre)}</a>` : esc(x.titre)}</h3><p>${esc(x.resume)}</p>${x.pret ? '' : '<span class="tag">Bientôt</span>'}</article>`;
 const HOME = [['/', 'Accueil']];
@@ -54,6 +55,17 @@ export function pages(regles) {
       { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_SIMULATEUR.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
     ],
     body: pageSimulateur(),
+  });
+
+  liste.push({
+    path: '/outils/calendrier-echeances/', title: 'Calendrier des échéances auto-entrepreneur', outil: true,
+    description: 'Téléchargez un fichier .ics (Google Agenda, Apple, Outlook) avec vos dates de déclaration, de CFE et de facturation électronique, rappels compris.',
+    crumbs: [...HOME, ['/outils/', 'Outils'], ['/outils/calendrier-echeances/', 'Calendrier des échéances']], modules: ['/assets/js/outils/calendrier.js'], studio: true,
+    jsonld: [
+      { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Calendrier des échéances du micro-entrepreneur', url: CFG.origin + '/outils/calendrier-echeances/', applicationCategory: 'BusinessApplication', operatingSystem: 'Web', inLanguage: 'fr', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, description: 'Générateur de calendrier .ics des échéances de déclaration, de CFE et de facturation électronique, dans le navigateur.' },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_CALENDRIER.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
+    ],
+    body: pageCalendrier(),
   });
 
   for (const g of GUIDES.filter((x) => x.pret)) {

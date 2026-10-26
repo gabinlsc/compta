@@ -48,7 +48,8 @@
               "jours",
               "points",
               "ans",
-              "trimestres"
+              "trimestres",
+              "jour_mois"
             ]
           },
           "valeur": {

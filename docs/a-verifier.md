@@ -2,7 +2,7 @@
 
 État au 26 octobre 2026. Règle : aucun chiffre n'est publié tant qu'il n'a pas été **lu sur une source officielle** (voir `docs/mise-a-jour-annuelle.md`).
 
-## Vérifié le 26 octobre 2026 (40 données de `data/regles.json`)
+## Vérifié le 26 octobre 2026 (59 données de `data/regles.json`)
 
 Lues directement sur les pages de service-public.gouv.fr (Direction de l'information légale et administrative) :
 
@@ -19,6 +19,10 @@ Lues directement sur les pages de service-public.gouv.fr (Direction de l'informa
 | Acre des micro-entreprises créées à partir du 1er juillet 2026 : exonération de 25 % (taux minoré à 75 %), durée (fin du 3e trimestre civil suivant le début d'activité), délai de demande de 60 jours | https://entreprendre.service-public.gouv.fr/vosdroits/F11677 (et l'actualité https://entreprendre.service-public.gouv.fr/actualites/A18795, décret n° 2026-69 du 6 février 2026) | 1er juillet 2026 |
 | Versement libératoire : seuils de revenu fiscal de référence (N-2) et date limite d'option | https://entreprendre.service-public.gouv.fr/vosdroits/F36244 | 13 mars 2026 |
 | Abattement minimal de 305 € | https://entreprendre.service-public.gouv.fr/vosdroits/F23267 | 13 mai 2026 |
+| Dates de déclaration du chiffre d'affaires (30 avril, 31 juillet, 31 octobre, 31 janvier ; fin du mois suivant), première déclaration, option et retour au mensuel avant le 31 octobre, pénalité de 60,10 €, majorations de 5 % et 15 %, bases forfaitaires | https://entreprendre.service-public.gouv.fr/vosdroits/F23257 | 1er janvier 2026 |
+| CFE : paiement au 15 décembre (reporté au jour ouvrable suivant), acompte au-delà de 3 000 € | https://entreprendre.service-public.gouv.fr/vosdroits/F23547 | 2 avril 2026 |
+| CFE du micro-entrepreneur : exonération la première année avec déclaration 1447-C-SD avant le 31 décembre, seuil de 5 000 €, réduction de 50 % l'année suivante | https://entreprendre.service-public.gouv.fr/vosdroits/F23999 | 26 mars 2026 |
+| Facturation électronique : réception pour toutes les entreprises le 1er septembre 2026, émission pour les micro-entreprises le 1er septembre 2027 | https://entreprendre.service-public.gouv.fr/actualites/A15683 | mise à jour du 27 février 2026 |
 
 Contrôle croisé impossible à ce jour avec urssaf.fr : les domaines `urssaf.fr` et `autoentrepreneur.urssaf.fr` sont refusés par le réseau de l'environnement de développement. À faire dès qu'ils sont accessibles, et pour les valeurs de référence des tests (simulateur officiel de l'Urssaf).
 
@@ -37,7 +41,9 @@ Remarques lues sur les pages :
 - Acre des créations **avant le 1er juillet 2026** (exonération de 50 % d'après l'actualité A18795, mais durée et règles non lues sur une page de référence) : le simulateur ne les calcule pas et renvoie vers l'Urssaf.
 - Arrondi appliqué par l'Urssaf aux cotisations déclarées (le simulateur arrondit au centime).
 - Valeurs de référence du simulateur officiel de l'Urssaf pour les tests (accès refusé) : les tests utilisent les exemples chiffrés publiés par service-public.gouv.fr (électricien en Acre : 21,2 % devient 15,9 % ; exemples d'abattements).
-- Échéances de déclaration, date limite de la CFE.
+- Dates de la déclaration annuelle de revenus (publiées chaque printemps sur impots.gouv.fr) : l'outil ne propose qu'un rappel de Compta by glsc, clairement présenté comme tel.
+- Dates de la CFE pour des cas particuliers (CFE supérieure à 3 000 €, acompte de juin) : non gérées, la date de l'avis d'imposition fait foi.
+- Jours fériés : seuls les week-ends sont pris en compte pour reporter la CFE ; le 15 décembre n'est jamais férié en France.
 
 ## Écarts avec le cahier des charges initial
 

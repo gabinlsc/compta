@@ -20,7 +20,7 @@ for (const page of pages) {
   const ids = new Set([...src.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
   for (const m of src.matchAll(/<(?:a|link|script|img|source)\b[^>]*?\s(?:href|src)="([^"]*)"/g)) {
     let u = m[1];
-    if (!u || /^(mailto:|tel:|data:|https?:\/\/(?!compta\.glsc\.fr))/.test(u)) continue;
+    if (!u || /^(mailto:|tel:|data:|webcal:|https?:\/\/(?!compta\.glsc\.fr))/.test(u)) continue;
     checked++;
     u = u.replace(CFG.origin, '');
     if (u.startsWith('#')) { if (u.length > 1 && !ids.has(u.slice(1))) fail(page, `ancre introuvable ${u}`); continue; }

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calendrier des échéances auto-entrepreneur · Compta by glsc</title>
+<meta name="description" content="Téléchargez un fichier .ics (Google Agenda, Apple, Outlook) avec vos dates de déclaration, de CFE et de facturation électronique, rappels compris.">
+<link rel="canonical" href="https://compta.glsc.fr/outils/calendrier-echeances/">
+<meta name="theme-color" content="#2447d6">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=3cdb4e3e">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Compta by glsc">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Calendrier des échéances auto-entrepreneur · Compta by glsc">
+<meta property="og:description" content="Téléchargez un fichier .ics (Google Agenda, Apple, Outlook) avec vos dates de déclaration, de CFE et de facturation électronique, rappels compris.">
+<meta property="og:url" content="https://compta.glsc.fr/outils/calendrier-echeances/">
+<meta property="og:image" content="https://compta.glsc.fr/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Compta by glsc : La boîte à outils gratuite du micro-entrepreneur">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://compta.glsc.fr/"},{"@type":"ListItem","position":2,"name":"Outils","item":"https://compta.glsc.fr/outils/"},{"@type":"ListItem","position":3,"name":"Calendrier des échéances","item":"https://compta.glsc.fr/outils/calendrier-echeances/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Calendrier des échéances du micro-entrepreneur","url":"https://compta.glsc.fr/outils/calendrier-echeances/","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Générateur de calendrier .ics des échéances de déclaration, de CFE et de facturation électronique, dans le navigateur."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Mon chiffre d’affaires est nul, dois-je déclarer ?","acceptedAnswer":{"@type":"Answer","text":"Oui : la déclaration est obligatoire même si votre chiffre d’affaires est nul. Il suffit d’indiquer « Néant »."}},{"@type":"Question","name":"Quelle est ma première échéance ?","acceptedAnswer":{"@type":"Answer","text":"En déclaration mensuelle, avant la fin du mois suivant vos 3 premiers mois d’activité. En déclaration trimestrielle, avant la fin du mois suivant le trimestre qui suit celui du démarrage."}},{"@type":"Question","name":"Mes données sont-elles envoyées ?","acceptedAnswer":{"@type":"Answer","text":"Non. Le fichier est créé dans votre navigateur et rien n’est conservé."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/"><img src="/assets/favicon.svg" width="36" height="36" alt=""><span>Compta <small>by glsc</small></span></a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="/outils/" aria-current="page">Outils</a><a href="/guides/">Guides</a><a href="/sources/">Sources</a>
+    </nav>
+    <form class="search" action="/recherche/" method="get" role="search"><label class="sr-only" for="q">Rechercher sur le site</label><input id="q" name="q" type="search" placeholder="Rechercher…" autocomplete="off" maxlength="80"></form>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Changer de thème (clair ou sombre)" title="Changer de thème"><span aria-hidden="true">◐</span></button>
+  </div>
+</header>
+<main id="contenu">
+<div class="wrap wrap-outil">
+<nav class="crumbs" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href="/outils/">Outils</a></li><li aria-current="page">Calendrier des échéances</li></ol></nav>
+<p class="eyebrow">Outil gratuit · sans compte</p>
+<h1>Calendrier des échéances du micro-entrepreneur</h1>
+<p class="lead">Téléchargez un fichier pour votre agenda (Google Agenda, Apple Calendrier, Outlook…) avec toutes vos dates de déclaration et de paiement, et des rappels avant chaque échéance. Il se crée dans votre navigateur : rien n’est envoyé.</p>
+<p class="notice info"><strong>Dates officielles.</strong> Elles viennent de <a href="/sources/">service-public.gouv.fr</a>. Pour la CFE, la date exacte figure sur votre avis d’imposition, qui fait foi.</p>
+<noscript><p class="notice">Le fichier se crée dans votre navigateur : JavaScript est nécessaire. Vous pouvez sinon vous abonner à un calendrier ci-dessous.</p></noscript>
+
+<div class="outil outil-cal" id="outil-calendrier" hidden>
+<form class="outil-form" id="formulaire" novalidate autocomplete="off" aria-label="Paramètres du calendrier">
+  <div class="bloc plein">
+    <fieldset class="radios"><legend>Comment déclarez-vous votre chiffre d’affaires ?</legend><label class="radio"><input type="radio" name="periodicite" value="mois"><span><strong>Chaque mois</strong><small>Avant la fin du mois suivant</small></span></label><label class="radio"><input type="radio" name="periodicite" value="trimestre"><span><strong>Chaque trimestre</strong><small>Avant le 30 avril, 31 juillet, 31 octobre et 31 janvier</small></span></label></fieldset>
+    <div class="grille">
+    <div class="champ"><label for="f-debutActivite">Date de début d’activité (facultatif)</label><input id="f-debutActivite" name="debutActivite" type="date"><p class="aide" id="f-debutActivite-aide">Pour calculer votre première déclaration et la CFE de la première année.</p></div>
+    <div class="champ"><label for="f-depuis">Calendrier à partir du</label><input id="f-depuis" name="depuis" type="date" required></div>
+    <div class="champ"><label for="f-duree">Pour combien de temps ?</label><select id="f-duree" name="duree"><option value="12">12 mois</option><option value="24">24 mois</option></select><p class="aide" id="note-validite"></p></div>
+    </div>
+    <fieldset class="options"><legend>Que voulez-vous dans le calendrier ?</legend>
+      <div class="champ coche"><label><input id="f-cfe" name="cfe" type="checkbox"> <span>La CFE (déclaration la première année, puis paiement)</span></label></div>
+      <div class="champ coche"><label><input id="f-fe" name="fe" type="checkbox"> <span>Les dates de la facturation électronique</span></label></div>
+      <div class="champ coche"><label><input id="f-options" name="options" type="checkbox"> <span>Les dates limites d’option (versement libératoire, retour à la déclaration mensuelle)</span></label></div>
+      <div class="champ coche"><label><input id="f-ir" name="ir" type="checkbox"> <span>Un rappel pour préparer la déclaration annuelle de revenus</span></label><p class="aide">Rappel de Compta by glsc : les dates de cette déclaration sont publiées chaque printemps sur impots.gouv.fr.</p></div>
+    </fieldset>
+    <fieldset class="options"><legend>Rappels dans votre agenda (à 9 h)</legend>
+      <div class="champ coche"><label><input id="f-rappel7" name="rappel7" type="checkbox"> <span>7 jours avant</span></label></div>
+      <div class="champ coche"><label><input id="f-rappel1" name="rappel1" type="checkbox"> <span>La veille</span></label></div>
+      <div class="champ coche"><label><input id="f-rappel0" name="rappel0" type="checkbox"> <span>Le jour même</span></label></div>
+    </fieldset>
+  </div>
+</form>
+
+<section class="resultat" aria-labelledby="titre-resultat">
+  <h2 id="titre-resultat">Votre calendrier</h2>
+  <div id="bilan" role="status" aria-live="polite"></div>
+  <div class="actions"><button type="button" class="btn" id="telecharger" aria-disabled="true">Télécharger le fichier .ics</button></div>
+  <div id="liste-echeances"></div>
+</section>
+</div>
+
+<div class="prose aide-page">
+<h2>Ajouter le fichier à votre agenda</h2>
+<p>Ouvrez le fichier téléchargé : votre application d’agenda propose de l’importer. Les échéances apparaissent comme des événements sur la journée entière, avec les rappels choisis. Le fichier est un instantané : pour recevoir automatiquement les mises à jour, abonnez-vous plutôt à un calendrier ci-dessous.</p>
+<h2 id="abonnement">S’abonner à un calendrier</h2>
+<p>Ces calendriers sont régénérés à chaque mise à jour des données et contiennent les échéances jusqu’au 31 décembre 2027, avec des rappels 7 jours avant et la veille. Dans votre agenda, ajoutez un calendrier « à partir d’une adresse » (URL) et collez le lien.</p>
+<div class="table-wrap"><table class="flux"><thead><tr><th scope="col">Calendrier</th><th scope="col">Lien</th></tr></thead><tbody>
+<tr><th scope="row">Déclaration mensuelle</th><td><a href="webcal://compta.glsc.fr/ics/echeances-mensuel.ics">S’abonner</a> · <a href="/ics/echeances-mensuel.ics" download>Télécharger</a> · <button type="button" class="lien copier" data-url="https://compta.glsc.fr/ics/echeances-mensuel.ics">Copier le lien</button></td></tr>
+<tr><th scope="row">Déclaration mensuelle + facturation électronique</th><td><a href="webcal://compta.glsc.fr/ics/echeances-mensuel-fe.ics">S’abonner</a> · <a href="/ics/echeances-mensuel-fe.ics" download>Télécharger</a> · <button type="button" class="lien copier" data-url="https://compta.glsc.fr/ics/echeances-mensuel-fe.ics">Copier le lien</button></td></tr>
+<tr><th scope="row">Déclaration mensuelle + CFE</th><td><a href="webcal://compta.glsc.fr/ics/echeances-mensuel-cfe.ics">S’abonner</a> · <a href="/ics/echeances-mensuel-cfe.ics" download>Télécharger</a> · <button type="button" class="lien copier" data-url="https://compta.glsc.fr/ics/echeances-mensuel-cfe.ics">Copier le lien</button></td></tr>
+<tr><th scope="row">Déclaration mensuelle + CFE + facturation électronique</th><td><a href="webcal://compta.glsc.fr/ics/echeances-mensuel-cfe-fe.ics">S’abonner</a> · <a href="/ics/echeances-mensuel-cfe-fe.ics" download>Télécharger</a> · <button type="button" class="lien copier" data-url="https://compta.glsc.fr/ics/echeances-mensuel-cfe-fe.ics">Copier le lien</button></td></tr>
+<tr><th scope="row">Déclaration trimestrielle</th><td><a href="webcal://compta.glsc.fr/ics/echeances-trimestriel.ics">S’abonner</a> · <a href="/ics/echeances-trimestriel.ics" download>Télécharger</a> · <button type="button" class="lien copier" data-url="https://compta.glsc.fr/ics/echeances-trimestriel.ics">Copier le lien</button></td></tr>
+<tr><th scope="row">Déclaration trimestrielle + facturation électronique</th><td><a href="webcal://compta.glsc.fr/ics/echeances-trimestriel-fe.ics">S’abonner</a> · <a href="/ics/echeances-trimestriel-fe.ics" download>Télécharger</a> · <button type="button" class="lien copier" data-url="https://compta.glsc.fr/ics/echeances-trimestriel-fe.ics">Copier le lien</button></td></tr>
+<tr><th scope="row">Déclaration trimestrielle + CFE</th><td><a href="webcal://compta.glsc.fr/ics/echeances-trimestriel-cfe.ics">S’abonner</a> · <a href="/ics/echeances-trimestriel-cfe.ics" download>Télécharger</a> · <button type="button" class="lien copier" data-url="https://compta.glsc.fr/ics/echeances-trimestriel-cfe.ics">Copier le lien</button></td></tr>
+<tr><th scope="row">Déclaration trimestrielle + CFE + facturation électronique</th><td><a href="webcal://compta.glsc.fr/ics/echeances-trimestriel-cfe-fe.ics">S’abonner</a> · <a href="/ics/echeances-trimestriel-cfe-fe.ics" download>Télécharger</a> · <button type="button" class="lien copier" data-url="https://compta.glsc.fr/ics/echeances-trimestriel-cfe-fe.ics">Copier le lien</button></td></tr>
+</tbody></table></div>
+<p id="etat-copie" role="status" class="aide"></p>
+<h2>Questions fréquentes</h2>
+<h3>Mon chiffre d’affaires est nul, dois-je déclarer ?</h3>
+<p>Oui : la déclaration est obligatoire même si votre chiffre d’affaires est nul. Il suffit d’indiquer « Néant ». En cas d’oubli, une pénalité de 60,1 € s’applique à chaque déclaration manquante, avec une majoration de vos cotisations de 5 % par déclaration mensuelle manquante ou de 15 % par déclaration trimestrielle manquante.</p>
+<h3>Quelle est ma première échéance ?</h3>
+<p>Indiquez votre date de début d’activité. En déclaration mensuelle, la première déclaration se fait avant la fin du mois suivant vos 3 premiers mois d’activité (début le 6 mars 2026 : au plus tard le 31 juillet 2026). En déclaration trimestrielle, avant la fin du mois suivant le trimestre qui suit celui du démarrage (début le 12 avril 2026 : au plus tard le 31 octobre 2026).</p>
+<h3>Quand payer la CFE ?</h3>
+<p>En général au plus tard le 15 décembre ; la date est reportée au premier jour ouvrable si elle tombe un samedi, un dimanche ou un jour férié. La première année, vous êtes exonéré mais devez déposer la déclaration initiale 1447-C-SD avant le 31 décembre de l’année de création. Voir le guide <a href="/guides/declarer-son-chiffre-d-affaires/">Déclarer son chiffre d’affaires</a>.</p>
+<h3>Mes données sont-elles envoyées ?</h3>
+<p>Non. Le fichier est créé dans votre navigateur et rien n’est conservé.</p>
+</div>
+<aside class="studio-cta no-print" aria-label="À propos de l’éditeur"><strong>Besoin d’un site pour votre activité ?</strong> Ce site est édité par StudioGLSC, studio web en Bretagne. <a href="https://studio.glsc.fr" rel="noopener">Découvrir StudioGLSC</a>.</aside>
+</div>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div><p class="footer-logo"><img src="/assets/favicon.svg" width="32" height="32" alt="">Compta by glsc</p><p>Outils gratuits pour les micro-entrepreneurs. Sans compte, sans publicité, sans cookie : vos chiffres restent dans votre navigateur.</p></div>
+      <div><h2>Le site</h2><ul><li><a href="/outils/">Outils</a></li><li><a href="/guides/">Guides</a></li><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+      <div><h2>Informations</h2><ul><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/confidentialite/">Confidentialité</a></li><li><a href="/cgu/">Conditions d’utilisation</a></li><li><a href="/sources/">Sources et mises à jour</a></li><li><a href="https://github.com/gabinlsc/compta" rel="noopener">Code source</a></li></ul></div>
+    </div>
+    <p class="small">Ces outils ne constituent ni un conseil juridique, ni un conseil fiscal, ni un conseil comptable. Édité par Gabin Lescoat (<a href="https://studio.glsc.fr" rel="noopener">StudioGLSC</a>).</p>
+  </div>
+</footer>
+<script type="application/json" id="regles-data">[{"id":"taux_vente","unite":"pourcent","valeur":12.3,"statut":"verifie"},{"id":"taux_bic_services","unite":"pourcent","valeur":21.2,"statut":"verifie"},{"id":"taux_bnc_ssi","unite":"pourcent","valeur":25.6,"statut":"verifie"},{"id":"taux_bnc_cipav","unite":"pourcent","valeur":23.2,"statut":"verifie"},{"id":"taux_vl_vente","unite":"pourcent","valeur":13.3,"statut":"verifie"},{"id":"taux_vl_bic_services","unite":"pourcent","valeur":22.9,"statut":"verifie"},{"id":"taux_vl_bnc_ssi","unite":"pourcent","valeur":27.8,"statut":"verifie"},{"id":"taux_vl_bnc_cipav","unite":"pourcent","valeur":25.4,"statut":"verifie"},{"id":"plafond_ca_vente","unite":"euro","valeur":203100,"statut":"verifie"},{"id":"plafond_ca_services","unite":"euro","valeur":83600,"statut":"verifie"},{"id":"tva_franchise_vente","unite":"euro","valeur":85000,"statut":"verifie"},{"id":"tva_majore_vente","unite":"euro","valeur":93500,"statut":"verifie"},{"id":"tva_franchise_services","unite":"euro","valeur":37500,"statut":"verifie"},{"id":"tva_majore_services","unite":"euro","valeur":41250,"statut":"verifie"},{"id":"abattement_vente","unite":"pourcent","valeur":71,"statut":"verifie"},{"id":"abattement_bic_services","unite":"pourcent","valeur":50,"statut":"verifie"},{"id":"abattement_bnc","unite":"pourcent","valeur":34,"statut":"verifie"},{"id":"mention_franchise_tva_cibs","unite":"texte","valeur":"TVA non applicable, art. L. 223 et s. du code des impositions sur les biens et services (CIBS)","statut":"verifie"},{"id":"mention_franchise_tva_cgi","unite":"texte","valeur":"TVA non applicable, art. 293 B du code général des impôts","statut":"verifie"},{"id":"mention_entrepreneur_individuel","unite":"texte","valeur":"Entrepreneur individuel (EI)","statut":"verifie"},{"id":"mention_siret_en_cours","unite":"texte","valeur":"Siret en cours d'attribution","statut":"verifie"},{"id":"mention_escompte_neant","unite":"texte","valeur":"Escompte pour paiement anticipé : néant","statut":"verifie"},{"id":"indemnite_recouvrement","unite":"euro","valeur":40,"statut":"verifie"},{"id":"penalite_taux_minimum","unite":"pourcent","valeur":8.25,"statut":"verifie"},{"id":"penalite_majoration_bce","unite":"points","valeur":10,"statut":"verifie"},{"id":"penalite_bce_2026_s1","unite":"pourcent","valeur":12.15,"statut":"verifie"},{"id":"penalite_bce_2026_s2","unite":"pourcent","valeur":12.4,"statut":"verifie"},{"id":"delai_paiement_max_jours","unite":"jours","valeur":60,"statut":"verifie"},{"id":"siren_client_obligatoire_micro","unite":"date","valeur":"2027-09-01","statut":"verifie"},{"id":"garantie_conformite_ans","unite":"ans","valeur":2,"statut":"verifie"},{"id":"mention_association_agreee","unite":"texte","valeur":"Membre d'une association agréée, le règlement par chèque et carte bancaire est accepté","statut":"verifie"},{"id":"acre_exoneration_micro","unite":"pourcent","valeur":25,"statut":"verifie"},{"id":"acre_debut_regime","unite":"date","valeur":"2026-07-01","statut":"verifie"},{"id":"acre_trimestres_suivants","unite":"trimestres","valeur":3,"statut":"verifie"},{"id":"acre_delai_demande_jours","unite":"jours","valeur":60,"statut":"verifie"},{"id":"vfl_rfr_seul","unite":"euro","valeur":29579,"statut":"verifie"},{"id":"vfl_rfr_couple","unite":"euro","valeur":59158,"statut":"verifie"},{"id":"vfl_rfr_couple_1_enfant","unite":"euro","valeur":73947.5,"statut":"verifie"},{"id":"vfl_rfr_couple_2_enfants","unite":"euro","valeur":88737,"statut":"verifie"},{"id":"abattement_minimum","unite":"euro","valeur":305,"statut":"verifie"},{"id":"decl_trimestre_1","unite":"jour_mois","valeur":"04-30","statut":"verifie"},{"id":"decl_trimestre_2","unite":"jour_mois","valeur":"07-31","statut":"verifie"},{"id":"decl_trimestre_3","unite":"jour_mois","valeur":"10-31","statut":"verifie"},{"id":"decl_trimestre_4","unite":"jour_mois","valeur":"01-31","statut":"verifie"},{"id":"decl_retour_mensuel_limite","unite":"jour_mois","valeur":"10-31","statut":"verifie"},{"id":"decl_penalite_euros","unite":"euro","valeur":60.1,"statut":"verifie"},{"id":"decl_majoration_mensuelle","unite":"pourcent","valeur":5,"statut":"verifie"},{"id":"decl_majoration_trimestrielle","unite":"pourcent","valeur":15,"statut":"verifie"},{"id":"cfe_paiement","unite":"jour_mois","valeur":"12-15","statut":"verifie"},{"id":"cfe_declaration_creation","unite":"jour_mois","valeur":"12-31","statut":"verifie"},{"id":"cfe_exoneration_ca_max","unite":"euro","valeur":5000,"statut":"verifie"},{"id":"cfe_reduction_deuxieme_annee","unite":"pourcent","valeur":50,"statut":"verifie"},{"id":"fe_reception_obligatoire","unite":"date","valeur":"2026-09-01","statut":"verifie"},{"id":"fe_emission_micro","unite":"date","valeur":"2027-09-01","statut":"verifie"},{"id":"vfl_option_limite","unite":"jour_mois","valeur":"09-30","statut":"verifie"},{"id":"decl_base_forfaitaire_vente_mensuelle","unite":"euro","valeur":7791.67,"statut":"verifie"},{"id":"decl_base_forfaitaire_services_mensuelle","unite":"euro","valeur":3125,"statut":"verifie"},{"id":"decl_base_forfaitaire_vente_trimestrielle","unite":"euro","valeur":23375,"statut":"verifie"},{"id":"decl_base_forfaitaire_services_trimestrielle","unite":"euro","valeur":10313,"statut":"verifie"}]</script>
+<script src="/assets/app.js?v=cfc3cd7e" defer></script>
+<script type="module" src="/assets/js/outils/calendrier.js?v=bf7e5117"></script>
+</body>
+</html>

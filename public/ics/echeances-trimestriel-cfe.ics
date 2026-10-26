@@ -1,0 +1,237 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Compta by glsc//Echeances micro-entrepreneur//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Échéances micro-entrepreneur (Déclaration trimestrielle + C
+ FE)
+X-WR-CALDESC:Compta by glsc : Déclaration trimestrielle + CFE. Dates lues 
+ sur service-public.gouv.fr\, mises à jour le 2026-10-26.
+X-WR-TIMEZONE:Europe/Paris
+REFRESH-INTERVAL;VALUE=DURATION:P1D
+X-PUBLISHED-TTL:P1D
+BEGIN:VTIMEZONE
+TZID:Europe/Paris
+X-LIC-LOCATION:Europe/Paris
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:027684bad54b5f@compta.glsc.fr
+DTSTAMP:20261026T000000Z
+DTSTART;VALUE=DATE:20261031
+DTEND;VALUE=DATE:20261101
+SUMMARY:Déclarer le chiffre d’affaires du 3e trimestre 2026
+DESCRIPTION:Chiffre d’affaires encaissé de juillet à septembre 2026. À
+  faire au plus tard le 31 octobre 2026. Déclaration en ligne sur autoentr
+ epreneur.urssaf.fr\, obligatoire même si le chiffre d’affaires est nul 
+ (indiquer « Néant »). Chiffre d’affaires encaissé\, hors taxes\, san
+ s déduire de charges. En cas d’oubli\, une pénalité de 60\,10 € s
+ ’applique à chaque déclaration manquante.
+CATEGORIES:declaration
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+SEQUENCE:0
+URL:https://compta.glsc.fr/outils/calendrier-echeances/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dans 7 jours : Déclarer le chiffre d’affaires du 3e trimestr
+ e 2026
+TRIGGER:-P6DT15H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dans 1 jour : Déclarer le chiffre d’affaires du 3e trimestre
+  2026
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:07392b01e13529@compta.glsc.fr
+DTSTAMP:20261026T000000Z
+DTSTART;VALUE=DATE:20261215
+DTEND;VALUE=DATE:20261216
+SUMMARY:Payer la CFE 2026
+DESCRIPTION:Date limite de paiement de la cotisation foncière des entrepri
+ ses en général\, repoussée au premier jour ouvrable si elle tombe un we
+ ek-end ou un jour férié : la date exacte figure sur votre avis d’impos
+ ition (compte fiscal en ligne sur impots.gouv.fr). Vous êtes exonéré si
+  votre chiffre d’affaires de l’année 2024 n’a pas dépassé 5 000
+  €.
+CATEGORIES:cfe
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+SEQUENCE:0
+URL:https://compta.glsc.fr/outils/calendrier-echeances/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dans 7 jours : Payer la CFE 2026
+TRIGGER:-P6DT15H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dans 1 jour : Payer la CFE 2026
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1134efdbb6a5a9@compta.glsc.fr
+DTSTAMP:20261026T000000Z
+DTSTART;VALUE=DATE:20270131
+DTEND;VALUE=DATE:20270201
+SUMMARY:Déclarer le chiffre d’affaires du 4e trimestre 2026
+DESCRIPTION:Chiffre d’affaires encaissé de octobre à décembre 2026. À
+  faire au plus tard le 31 janvier 2027. Déclaration en ligne sur autoentr
+ epreneur.urssaf.fr\, obligatoire même si le chiffre d’affaires est nul 
+ (indiquer « Néant »). Chiffre d’affaires encaissé\, hors taxes\, san
+ s déduire de charges. En cas d’oubli\, une pénalité de 60\,10 € s
+ ’applique à chaque déclaration manquante.
+CATEGORIES:declaration
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+SEQUENCE:0
+URL:https://compta.glsc.fr/outils/calendrier-echeances/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dans 7 jours : Déclarer le chiffre d’affaires du 4e trimestr
+ e 2026
+TRIGGER:-P6DT15H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dans 1 jour : Déclarer le chiffre d’affaires du 4e trimestre
+  2026
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:0bb682bf572fa2@compta.glsc.fr
+DTSTAMP:20261026T000000Z
+DTSTART;VALUE=DATE:20270430
+DTEND;VALUE=DATE:20270501
+SUMMARY:Déclarer le chiffre d’affaires du 1er trimestre 2027
+DESCRIPTION:Chiffre d’affaires encaissé de janvier à mars 2027. À fair
+ e au plus tard le 30 avril 2027. Déclaration en ligne sur autoentrepreneu
+ r.urssaf.fr\, obligatoire même si le chiffre d’affaires est nul (indiqu
+ er « Néant »). Chiffre d’affaires encaissé\, hors taxes\, sans dédu
+ ire de charges. En cas d’oubli\, une pénalité de 60\,10 € s’appliq
+ ue à chaque déclaration manquante.
+CATEGORIES:declaration
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+SEQUENCE:0
+URL:https://compta.glsc.fr/outils/calendrier-echeances/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dans 7 jours : Déclarer le chiffre d’affaires du 1er trimest
+ re 2027
+TRIGGER:-P6DT15H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dans 1 jour : Déclarer le chiffre d’affaires du 1er trimestr
+ e 2027
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:0ffa894773e4c7@compta.glsc.fr
+DTSTAMP:20261026T000000Z
+DTSTART;VALUE=DATE:20270731
+DTEND;VALUE=DATE:20270801
+SUMMARY:Déclarer le chiffre d’affaires du 2e trimestre 2027
+DESCRIPTION:Chiffre d’affaires encaissé de avril à juin 2027. À faire 
+ au plus tard le 31 juillet 2027. Déclaration en ligne sur autoentrepreneu
+ r.urssaf.fr\, obligatoire même si le chiffre d’affaires est nul (indiqu
+ er « Néant »). Chiffre d’affaires encaissé\, hors taxes\, sans dédu
+ ire de charges. En cas d’oubli\, une pénalité de 60\,10 € s’appliq
+ ue à chaque déclaration manquante.
+CATEGORIES:declaration
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+SEQUENCE:0
+URL:https://compta.glsc.fr/outils/calendrier-echeances/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dans 7 jours : Déclarer le chiffre d’affaires du 2e trimestr
+ e 2027
+TRIGGER:-P6DT15H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dans 1 jour : Déclarer le chiffre d’affaires du 2e trimestre
+  2027
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:0a7fa978e70d38@compta.glsc.fr
+DTSTAMP:20261026T000000Z
+DTSTART;VALUE=DATE:20271031
+DTEND;VALUE=DATE:20271101
+SUMMARY:Déclarer le chiffre d’affaires du 3e trimestre 2027
+DESCRIPTION:Chiffre d’affaires encaissé de juillet à septembre 2027. À
+  faire au plus tard le 31 octobre 2027. Déclaration en ligne sur autoentr
+ epreneur.urssaf.fr\, obligatoire même si le chiffre d’affaires est nul 
+ (indiquer « Néant »). Chiffre d’affaires encaissé\, hors taxes\, san
+ s déduire de charges. En cas d’oubli\, une pénalité de 60\,10 € s
+ ’applique à chaque déclaration manquante.
+CATEGORIES:declaration
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+SEQUENCE:0
+URL:https://compta.glsc.fr/outils/calendrier-echeances/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dans 7 jours : Déclarer le chiffre d’affaires du 3e trimestr
+ e 2027
+TRIGGER:-P6DT15H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dans 1 jour : Déclarer le chiffre d’affaires du 3e trimestre
+  2027
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:1f8987e61d5526@compta.glsc.fr
+DTSTAMP:20261026T000000Z
+DTSTART;VALUE=DATE:20271215
+DTEND;VALUE=DATE:20271216
+SUMMARY:Payer la CFE 2027
+DESCRIPTION:Date limite de paiement de la cotisation foncière des entrepri
+ ses en général\, repoussée au premier jour ouvrable si elle tombe un we
+ ek-end ou un jour férié : la date exacte figure sur votre avis d’impos
+ ition (compte fiscal en ligne sur impots.gouv.fr). Vous êtes exonéré si
+  votre chiffre d’affaires de l’année 2025 n’a pas dépassé 5 000
+  €.
+CATEGORIES:cfe
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+SEQUENCE:0
+URL:https://compta.glsc.fr/outils/calendrier-echeances/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dans 7 jours : Payer la CFE 2027
+TRIGGER:-P6DT15H
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Dans 1 jour : Payer la CFE 2027
+TRIGGER:-PT15H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

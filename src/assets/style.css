@@ -193,3 +193,12 @@ input.wide { width: min(100%, 24rem); font: inherit; padding: 10px 12px; border:
 :root[data-theme="dark"] .alerte.danger { border-color: #ff8a80; } @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .alerte.danger { border-color: #ff8a80; } }
 .imposable, .note-acre, .vide { font-size: .95rem; color: var(--muted); max-width: 46rem; } .erreurs { padding-left: 1.2rem; list-style: disc; color: var(--ink); }
 .explication ol { list-style: decimal; padding-left: 1.3rem; margin: 0 0 12px; display: grid; gap: 6px; font-size: .96rem; }
+
+/* ---------- calendrier ---------- */
+.outil-cal { grid-template-columns: minmax(0, 1fr); } @media (min-width: 1000px) { .outil-cal { grid-template-columns: minmax(0, 4fr) minmax(0, 6fr); } }
+.options { border: 0; padding: 0; margin: 12px 0 0; } .options legend { font-weight: 600; font-size: .92rem; padding: 0; margin-bottom: 4px; }
+.mois { margin: 22px 0 8px; font-size: 1rem; color: var(--muted); text-transform: capitalize; } .echeances { display: grid; gap: 8px; }
+.echeance { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; padding: 0 12px; }
+.echeance.cat-cfe { border-left-color: var(--ok); } .echeance.cat-facturation { border-left-color: var(--muted); } .echeance.cat-option, .echeance.cat-impot { border-left-color: var(--line-strong); }
+.echeance summary { cursor: pointer; padding: 10px 0; display: flex; gap: 14px; flex-wrap: wrap; align-items: baseline; list-style: none; } .echeance summary time { font-weight: 700; min-width: 8.5rem; font-variant-numeric: tabular-nums; } .echeance p { margin: 0 0 12px; font-size: .93rem; color: var(--muted); }
+.flux th, .flux td { vertical-align: middle; } .flux .lien { font-size: inherit; }

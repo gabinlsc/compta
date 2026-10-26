@@ -23,11 +23,16 @@ const shared = gz(join(PUBLIC, 'assets/style.css')) + gz(join(PUBLIC, 'assets/ap
 // Modules des outils (assets/js) : poids total limité, et ajouté au budget des pages qui les chargent.
 const jsFichiers = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? jsFichiers(join(d, f)) : f.endsWith('.js') ? [join(d, f)] : []));
 const modules = existsSync(join(PUBLIC, 'assets/js')) ? jsFichiers(join(PUBLIC, 'assets/js')) : [];
-const modulesBruts = modules.reduce((a, f) => a + statSync(f).size, 0), modulesGz = modules.reduce((a, f) => a + gz(f), 0);
-if (modulesBruts > 90 * KB || modulesGz > 28 * KB) fail(`assets/js : ${fmt(modulesBruts)} / ${fmt(modulesGz)} compressé (limites 90 Ko / 28 Ko)`);
+const modulesBruts = modules.reduce((a, f) => a + statSync(f).size, 0);
+if (modulesBruts > 160 * KB) fail(`assets/js : ${fmt(modulesBruts)} au total (limite 160 Ko)`);
+// Poids des modules chargés par une page : le module d'entrée et tout ce qu'il importe (transitivement).
+const graphe = (entree, vus = new Set()) => { const f = join(PUBLIC, entree.replace(/^\//, '').replace(/\?.*$/, '')); if (vus.has(f)) return vus; vus.add(f); for (const m of readFileSync(f, 'utf8').matchAll(/from\s+['"](\.{1,2}\/[^'"?]+\.js)/g)) graphe('/' + join(f.slice(PUBLIC.length + 1), '..', m[1]).replace(/\\/g, '/'), vus); return vus; };
+const poidsModules = (html) => { const vus = new Set(); for (const m of html.matchAll(/<script type="module" src="([^"]+)"/g)) graphe(m[1], vus); const fichiers = [...vus]; return { gz: fichiers.reduce((a, f) => a + gz(f), 0), brut: fichiers.reduce((a, f) => a + statSync(f).size, 0) }; };
 let heaviest = ['', 0];
 for (const p of pagesHtml()) {
-  const size = statSync(p).size, z = gz(p), total = z + shared + (readFileSync(p, 'utf8').includes('/assets/js/') ? modulesGz : 0);
+  const source = readFileSync(p, 'utf8'), mod = poidsModules(source);
+  const size = statSync(p).size, z = gz(p), total = z + shared + mod.gz;
+  if (mod.gz > 22 * KB) fail(`${relative(PUBLIC, p)} : modules ${fmt(mod.gz)} compressé (limite 22 Ko)`);
   if (size > HTML_MAX[0] || z > HTML_MAX[1]) fail(`${relative(PUBLIC, p)} : HTML ${fmt(size)} / ${fmt(z)} compressé`);
   if (total > PAGE_BUDGET_GZ) fail(`${relative(PUBLIC, p)} : ${fmt(total)} compressé (limite ${fmt(PAGE_BUDGET_GZ)})`);
   if (total > heaviest[1]) heaviest = [relative(PUBLIC, p), total];
