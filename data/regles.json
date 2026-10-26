@@ -711,6 +711,54 @@
       "verifie_le": "2026-10-26",
       "valable_du": "2026-01-01",
       "valable_au": "2027-12-31"
+    },
+    {
+      "id": "livre_seuil_global_euros",
+      "libelle": "Montant unitaire en dessous duquel les ventes au détail et services aux particuliers peuvent être inscrits globalement en fin de journée dans le livre des recettes",
+      "unite": "euro",
+      "valeur": 76,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23266",
+      "source_titre": "Obligations comptables du micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 7 septembre 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2027-12-31"
+    },
+    {
+      "id": "livre_conservation_ans",
+      "libelle": "Durée de conservation du livre des recettes, du registre des achats et des pièces justificatives, à partir de la clôture de l'exercice",
+      "unite": "ans",
+      "valeur": 10,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23266",
+      "source_titre": "Obligations comptables du micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 7 septembre 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2027-12-31"
+    },
+    {
+      "id": "livre_faux_prison_ans",
+      "libelle": "Peine d'emprisonnement maximale en cas de faux ou d'usage de faux dans les registres",
+      "unite": "ans",
+      "valeur": 3,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23266",
+      "source_titre": "Obligations comptables du micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 7 septembre 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2027-12-31"
+    },
+    {
+      "id": "livre_faux_amende_euros",
+      "libelle": "Amende maximale en cas de faux ou d'usage de faux dans les registres",
+      "unite": "euro",
+      "valeur": 45000,
+      "statut": "verifie",
+      "source_url": "https://entreprendre.service-public.gouv.fr/vosdroits/F23266",
+      "source_titre": "Obligations comptables du micro-entrepreneur, service-public.gouv.fr (page vérifiée par la DILA le 7 septembre 2026)",
+      "verifie_le": "2026-10-26",
+      "valable_du": "2026-01-01",
+      "valable_au": "2027-12-31"
     }
   ]
 }

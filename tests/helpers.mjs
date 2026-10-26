@@ -31,5 +31,5 @@ export function serve({ csp = true } = {}) {
 }
 
 export const launch = () => chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
-export const PAGES = ['/', '/outils/', '/outils/facture-auto-entrepreneur/', '/outils/simulateur-revenu-net/', '/outils/calendrier-echeances/', '/outils/tarif-journalier/', '/guides/', '/guides/mentions-obligatoires-facture/', '/guides/plafonds-et-seuils-de-tva/', '/guides/declarer-son-chiffre-d-affaires/', '/sources/', '/recherche/?q=facture', '/a-propos/', '/contact/', '/mentions-legales/', '/confidentialite/', '/cgu/', '/introuvable-test'];
+export const PAGES = ['/', '/outils/', '/outils/facture-auto-entrepreneur/', '/outils/simulateur-revenu-net/', '/outils/calendrier-echeances/', '/outils/tarif-journalier/', '/outils/livre-des-recettes/', '/guides/', '/guides/mentions-obligatoires-facture/', '/guides/plafonds-et-seuils-de-tva/', '/guides/declarer-son-chiffre-d-affaires/', '/guides/livre-des-recettes-a-quoi-ca-sert/', '/sources/', '/recherche/?q=facture', '/a-propos/', '/contact/', '/mentions-legales/', '/confidentialite/', '/cgu/', '/introuvable-test'];
 export const ok = (m) => console.log('✓', m);

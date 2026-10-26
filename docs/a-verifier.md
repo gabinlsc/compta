@@ -2,7 +2,7 @@
 
 État au 26 octobre 2026. Règle : aucun chiffre n'est publié tant qu'il n'a pas été **lu sur une source officielle** (voir `docs/mise-a-jour-annuelle.md`).
 
-## Vérifié le 26 octobre 2026 (59 données de `data/regles.json`)
+## Vérifié le 26 octobre 2026 (63 données de `data/regles.json`)
 
 Lues directement sur les pages de service-public.gouv.fr (Direction de l'information légale et administrative) :
 
@@ -23,6 +23,7 @@ Lues directement sur les pages de service-public.gouv.fr (Direction de l'informa
 | CFE : paiement au 15 décembre (reporté au jour ouvrable suivant), acompte au-delà de 3 000 € | https://entreprendre.service-public.gouv.fr/vosdroits/F23547 | 2 avril 2026 |
 | CFE du micro-entrepreneur : exonération la première année avec déclaration 1447-C-SD avant le 31 décembre, seuil de 5 000 €, réduction de 50 % l'année suivante | https://entreprendre.service-public.gouv.fr/vosdroits/F23999 | 26 mars 2026 |
 | Facturation électronique : réception pour toutes les entreprises le 1er septembre 2026, émission pour les micro-entreprises le 1er septembre 2027 | https://entreprendre.service-public.gouv.fr/actualites/A15683 | mise à jour du 27 février 2026 |
+| Livre des recettes : contenu, totaux tous les 3 mois, écritures non modifiables, seuil de 76 € pour l'écriture globale, conservation de 10 ans, absence de sanction de la non-tenue, faux (3 ans, 45 000 €) | https://entreprendre.service-public.gouv.fr/vosdroits/F23266 et https://entreprendre.service-public.gouv.fr/vosdroits/F36018 | 7 septembre 2026 et 21 février 2026 |
 
 Contrôle croisé impossible à ce jour avec urssaf.fr : les domaines `urssaf.fr` et `autoentrepreneur.urssaf.fr` sont refusés par le réseau de l'environnement de développement. À faire dès qu'ils sont accessibles, et pour les valeurs de référence des tests (simulateur officiel de l'Urssaf).
 
