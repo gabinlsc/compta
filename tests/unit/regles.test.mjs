@@ -52,3 +52,13 @@ test('jetons : valeur formatée si vérifiée, « en cours de vérification » s
   assert.throws(() => remplirJetons('{{absent}}', data), /Jeton inconnu/);
   assert.equal(formaterValeur(verifie({ unite: 'euro', valeur: 83600 })), '83 600 €');
 });
+
+test('les données publiées sont lues sur service-public.gouv.fr ou une autre source officielle', () => {
+  for (const e of chargerRegles().entrees) if (e.statut === 'verifie') assert.match(e.source_url, /^https:\/\/(entreprendre\.service-public\.gouv\.fr|www\.urssaf\.fr|www\.impots\.gouv\.fr|www\.legifrance\.gouv\.fr|bofip\.impots\.gouv\.fr)\//, e.id);
+});
+
+test('cohérence des seuils : majoré supérieur au seuil de base, taux global avec versement libératoire supérieur au taux de cotisations', () => {
+  const v = Object.fromEntries(chargerRegles().entrees.map((e) => [e.id, e.valeur]));
+  assert.ok(v.tva_majore_vente > v.tva_franchise_vente && v.tva_majore_services > v.tva_franchise_services);
+  for (const a of ['vente', 'bic_services', 'bnc_ssi', 'bnc_cipav']) assert.ok(v['taux_vl_' + a] > v['taux_' + a], a);
+});
