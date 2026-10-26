@@ -1,7 +1,7 @@
 // Simulateur « combien me reste-t-il ? » : cotisations, versement libératoire, net avant impôt, alertes de plafond.
 // Tous les taux, plafonds et seuils viennent de data/regles.json ; une donnée non vérifiée bloque le calcul au lieu d'être remplacée.
-import { parseMontant } from './money.js?v=122afbfd';
-import { dateIsoValide, dernierJourDuMois, dateLongue } from './dates.js?v=122afbfd';
+import { parseMontant } from './money.js?v=4fe9bb99';
+import { dateIsoValide, dernierJourDuMois, dateLongue } from './dates.js?v=4fe9bb99';
 
 export const ACTIVITES = {
   vente: { libelle: 'Vente de marchandises, fourniture de logement (BIC)', taux: 'taux_vente', vl: 'taux_vl_vente', abattement: 'abattement_vente', plafond: 'plafond_ca_vente', tvaBase: 'tva_franchise_vente', tvaMajore: 'tva_majore_vente' },
@@ -21,6 +21,27 @@ export function finAcre(debutIso, trimestres) {
   const [a, m] = debutIso.split('-').map(Number);
   const total = a * 4 + Math.floor((m - 1) / 3) + trimestres;
   return dernierJourDuMois(Math.floor(total / 4), (total % 4) * 3 + 3);
+}
+
+
+/** Alertes de plafond de chiffre d'affaires et de seuils de franchise de TVA, sur un chiffre d'affaires annuel en centimes (projeté si `projection`). */
+export function alertesSeuils({ annuel, activite, projection = false }, regles) {
+  const act = ACTIVITES[activite], alertes = [];
+  const plafond = regles.valeur(act.plafond), tvaBase = regles.valeur(act.tvaBase), tvaMajore = regles.valeur(act.tvaMajore);
+  const eurosTxt = (c) => `${(c / 100).toLocaleString('fr-FR', { maximumFractionDigits: 0 })} €`;
+  const proj = projection ? ` (estimation sur l’année : ${eurosTxt(annuel)})` : '';
+  if (plafond !== null) {
+    const p = plafond * 100;
+    if (annuel > p) alertes.push({ niveau: 'danger', texte: `Plafond de chiffre d’affaires dépassé${proj} : ${eurosTxt(p)}. Si vous le dépassez deux années de suite, vous quittez le régime de la micro-entreprise.` });
+    else if (annuel * 10 >= p * 9) alertes.push({ niveau: 'attention', texte: `Vous approchez du plafond de chiffre d’affaires${proj} : ${eurosTxt(p)}.` });
+  }
+  if (tvaBase !== null && tvaMajore !== null) {
+    const b = tvaBase * 100, m = tvaMajore * 100;
+    if (annuel > m) alertes.push({ niveau: 'danger', texte: `Seuil majoré de franchise de TVA dépassé${proj} : ${eurosTxt(m)}. Vous devenez redevable de la TVA dès le jour du dépassement.` });
+    else if (annuel > b) alertes.push({ niveau: 'attention', texte: `Seuil de franchise de TVA dépassé${proj} : ${eurosTxt(b)}. Vous restez en franchise cette année tant que vous ne dépassez pas ${eurosTxt(m)} ; si le seuil de base est dépassé l’année civile précédente, la TVA s’applique dès le 1er janvier suivant.` });
+    else if (annuel * 10 >= b * 9) alertes.push({ niveau: 'info', texte: `Vous approchez du seuil de franchise de TVA${proj} : ${eurosTxt(b)}.` });
+  }
+  return alertes;
 }
 
 export function simuler(e, regles, aujourdhui) {
@@ -60,21 +81,7 @@ export function simuler(e, regles, aujourdhui) {
     if (pct !== null && mini !== null) { const abat = Math.max(partDe(annuel, bp(pct), 10000), Math.round(mini * 100)); imposable = { abattement: abat, pct, base: Math.max(annuel - abat, 0) }; }
   }
 
-  // Alertes de plafond et de seuils de TVA (sur le chiffre d'affaires annuel, projeté si la période est plus courte).
-  const plafond = regles.valeur(act.plafond), tvaBase = regles.valeur(act.tvaBase), tvaMajore = regles.valeur(act.tvaMajore);
-  const eurosTxt = (c) => `${(c / 100).toLocaleString('fr-FR', { maximumFractionDigits: 0 })} €`;
-  const proj = projection ? ` (estimation sur l’année : ${eurosTxt(annuel)})` : '';
-  if (plafond !== null) {
-    const p = plafond * 100;
-    if (annuel > p) alertes.push({ niveau: 'danger', texte: `Plafond de chiffre d’affaires dépassé${proj} : ${eurosTxt(p)}. Si vous le dépassez deux années de suite, vous quittez le régime de la micro-entreprise.` });
-    else if (annuel * 10 >= p * 9) alertes.push({ niveau: 'attention', texte: `Vous approchez du plafond de chiffre d’affaires${proj} : ${eurosTxt(p)}.` });
-  }
-  if (tvaBase !== null && tvaMajore !== null) {
-    const b = tvaBase * 100, m = tvaMajore * 100;
-    if (annuel > m) alertes.push({ niveau: 'danger', texte: `Seuil majoré de franchise de TVA dépassé${proj} : ${eurosTxt(m)}. Vous devenez redevable de la TVA dès le jour du dépassement.` });
-    else if (annuel > b) alertes.push({ niveau: 'attention', texte: `Seuil de franchise de TVA dépassé${proj} : ${eurosTxt(b)}. Vous restez en franchise cette année tant que vous ne dépassez pas ${eurosTxt(m)} ; si le seuil de base est dépassé l’année civile précédente, la TVA s’applique dès le 1er janvier suivant.` });
-    else if (annuel * 10 >= b * 9) alertes.push({ niveau: 'info', texte: `Vous approchez du seuil de franchise de TVA${proj} : ${eurosTxt(b)}.` });
-  }
+  alertes.push(...alertesSeuils({ annuel, activite: e.activite, projection }, regles));
   if (net < 0) alertes.push({ niveau: 'attention', texte: 'Vos dépenses dépassent ce qu’il vous reste après cotisations : le résultat est négatif.' });
   if (ca > 0 && e.activite !== 'vente') alertes.push({ niveau: 'info', texte: 'Pour certaines activités (avocat, auteur, artiste-interprète…), d’autres seuils de TVA s’appliquent : vérifiez sur service-public.gouv.fr.' });
 

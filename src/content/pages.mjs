@@ -8,6 +8,7 @@ import { pageFacture, FAQ_FACTURE } from './outil-facture.mjs';
 import { pageSimulateur, FAQ_SIMULATEUR } from './outil-simulateur.mjs';
 import { pageCalendrier, FAQ_CALENDRIER } from './outil-calendrier.mjs';
 import { pageTjm, FAQ_TJM } from './outil-tjm.mjs';
+import { pageLivre, FAQ_LIVRE } from './outil-livre.mjs';
 
 const carte = (x, base) => `<article class="card"><h3>${x.pret ? `<a href="${base}${x.slug}/">${esc(x.titre)}</a>` : esc(x.titre)}</h3><p>${esc(x.resume)}</p>${x.pret ? '' : '<span class="tag">Bientôt</span>'}</article>`;
 const HOME = [['/', 'Accueil']];
@@ -78,6 +79,17 @@ export function pages(regles) {
       { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_TJM.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
     ],
     body: pageTjm(),
+  });
+
+  liste.push({
+    path: '/outils/livre-des-recettes/', title: 'Livre des recettes auto-entrepreneur gratuit', outil: true,
+    description: 'Tenez votre livre des recettes de micro-entrepreneur : totaux par mois et par période de déclaration, jauge de plafond, export CSV et impression. Gratuit.',
+    crumbs: [...HOME, ['/outils/', 'Outils'], ['/outils/livre-des-recettes/', 'Livre des recettes']], modules: ['/assets/js/outils/livre.js'], studio: true,
+    jsonld: [
+      { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Livre des recettes du micro-entrepreneur', url: CFG.origin + '/outils/livre-des-recettes/', applicationCategory: 'BusinessApplication', operatingSystem: 'Web', inLanguage: 'fr', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, description: 'Livre des recettes en ligne pour micro-entrepreneur, dans le navigateur, avec export CSV.' },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_LIVRE.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
+    ],
+    body: pageLivre(),
   });
 
   for (const g of GUIDES.filter((x) => x.pret)) {

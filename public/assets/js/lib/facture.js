@@ -1,8 +1,8 @@
 // Devis et factures : modèle, validations, calculs et mentions légales. Aucun accès au DOM : testable sous Node.
 // Les chiffres et textes réglementaires viennent tous de data/regles.json (via creerRegles) ; si l'un d'eux n'est pas vérifié, le document est bloqué.
-import { parseMontant, parseQuantite, parsePourcent, totalLigne, partEnPourcent, formaterEuros } from './money.js?v=122afbfd';
-import { sirenValide, siretValide, ibanValide, bicValide, emailValide, chiffres, formaterIban, formaterSiren, formaterSiret } from './valid.js?v=122afbfd';
-import { dateIsoValide, ajouterJours, dateLongue } from './dates.js?v=122afbfd';
+import { parseMontant, parseQuantite, parsePourcent, totalLigne, partEnPourcent, formaterEuros } from './money.js?v=4fe9bb99';
+import { sirenValide, siretValide, ibanValide, bicValide, emailValide, chiffres, formaterIban, formaterSiren, formaterSiret } from './valid.js?v=4fe9bb99';
+import { dateIsoValide, ajouterJours, dateLongue } from './dates.js?v=4fe9bb99';
 
 export const TYPES = {
   devis: { prefixe: 'D', titre: 'Devis' },

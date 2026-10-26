@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Livre des recettes auto-entrepreneur gratuit · Compta by glsc</title>
+<meta name="description" content="Tenez votre livre des recettes de micro-entrepreneur : totaux par mois et par période de déclaration, jauge de plafond, export CSV et impression. Gratuit.">
+<link rel="canonical" href="https://compta.glsc.fr/outils/livre-des-recettes/">
+<meta name="theme-color" content="#2447d6">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=7775759b">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Compta by glsc">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Livre des recettes auto-entrepreneur gratuit · Compta by glsc">
+<meta property="og:description" content="Tenez votre livre des recettes de micro-entrepreneur : totaux par mois et par période de déclaration, jauge de plafond, export CSV et impression. Gratuit.">
+<meta property="og:url" content="https://compta.glsc.fr/outils/livre-des-recettes/">
+<meta property="og:image" content="https://compta.glsc.fr/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Compta by glsc : La boîte à outils gratuite du micro-entrepreneur">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://compta.glsc.fr/"},{"@type":"ListItem","position":2,"name":"Outils","item":"https://compta.glsc.fr/outils/"},{"@type":"ListItem","position":3,"name":"Livre des recettes","item":"https://compta.glsc.fr/outils/livre-des-recettes/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Livre des recettes du micro-entrepreneur","url":"https://compta.glsc.fr/outils/livre-des-recettes/","applicationCategory":"BusinessApplication","operatingSystem":"Web","inLanguage":"fr","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Livre des recettes en ligne pour micro-entrepreneur, dans le navigateur, avec export CSV."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Pourquoi ne puis-je pas modifier une écriture ?","acceptedAnswer":{"@type":"Answer","text":"Une fois enregistrées, les écritures du livre ne peuvent pas être modifiées. Pour corriger une erreur, on ajoute une écriture inverse."}},{"@type":"Question","name":"Combien de temps garder le livre des recettes ?","acceptedAnswer":{"@type":"Answer","text":"Dix ans à partir de la clôture de l’exercice comptable concerné, ainsi que les pièces justificatives."}},{"@type":"Question","name":"Mes données sont-elles envoyées ?","acceptedAnswer":{"@type":"Answer","text":"Non. Elles restent dans votre navigateur ; rien n’est conservé sans votre action."}}]}</script>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/"><img src="/assets/favicon.svg" width="36" height="36" alt=""><span>Compta <small>by glsc</small></span></a>
+    <nav class="menu" aria-label="Navigation principale">
+      <a href="/outils/" aria-current="page">Outils</a><a href="/guides/">Guides</a><a href="/sources/">Sources</a>
+    </nav>
+    <form class="search" action="/recherche/" method="get" role="search"><label class="sr-only" for="q">Rechercher sur le site</label><input id="q" name="q" type="search" placeholder="Rechercher…" autocomplete="off" maxlength="80"></form>
+    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Changer de thème (clair ou sombre)" title="Changer de thème"><span aria-hidden="true">◐</span></button>
+  </div>
+</header>
+<main id="contenu">
+<div class="wrap wrap-outil">
+<nav class="crumbs" aria-label="Fil d’Ariane"><ol><li><a href="/">Accueil</a></li><li><a href="/outils/">Outils</a></li><li aria-current="page">Livre des recettes</li></ol></nav>
+<p class="eyebrow">Outil gratuit · sans compte</p>
+<h1>Livre des recettes et suivi du chiffre d’affaires</h1>
+<p class="lead">Notez chaque encaissement : le livre se tient dans l’ordre, calcule vos totaux par mois et par période de déclaration, vous dit combien déclarer et vous prévient quand vous approchez du plafond. Export CSV et impression inclus.</p>
+<p class="notice info"><strong>Vos données restent chez vous.</strong> Rien n’est envoyé. Par défaut, rien n’est même conservé : pour retrouver votre livre la prochaine fois, enregistrez-le dans ce navigateur (vous pouvez activer l’enregistrement automatique) ou exportez-le en fichier.</p>
+<noscript><p class="notice">Cet outil demande JavaScript pour fonctionner dans votre navigateur. Aucune donnée n’est envoyée.</p></noscript>
+
+<div class="outil outil-livre" id="outil-livre" hidden>
+<div class="colonne-livre">
+  <form class="outil-form" id="formulaire" novalidate autocomplete="off" aria-label="Nouvelle recette">
+    <div class="bloc plein">
+      <h2 class="titre-form">Nouvelle recette encaissée</h2>
+      <div class="grille">
+      <div class="champ"><label for="f-date">Date d’encaissement *</label><input id="f-date" name="date" type="date" required></div>
+      <div class="champ"><label for="f-montant">Montant encaissé (€) *</label><input id="f-montant" name="montant" type="text" inputmode="decimal" maxlength="14" required></div>
+      <div class="champ large"><label for="f-origine">Origine : client ou société qui vous a payé *</label><input id="f-origine" name="origine" type="text" maxlength="120" required></div>
+      <div class="champ large"><label for="f-nature">Nature de la prestation ou de la vente</label><input id="f-nature" name="nature" type="text" maxlength="160"></div>
+      <div class="champ"><label for="f-mode">Mode de règlement *</label><select id="f-mode" name="mode"><option value="virement">Virement</option><option value="cb">Carte bancaire</option><option value="cheque">Chèque</option><option value="especes">Espèces</option><option value="autre">Autre</option></select></div>
+      <div class="champ"><label for="f-piece">Référence de la pièce justificative</label><input id="f-piece" name="piece" type="text" maxlength="60"><p class="aide" id="f-piece-aide">Par exemple le numéro de facture.</p></div>
+      </div>
+      <div class="champ coche"><label><input id="f-global" name="global" type="checkbox"> <span>Écriture globale de fin de journée</span></label><p class="aide">Pour des ventes au détail ou des services à des particuliers dont chaque montant est inférieur à 76 €.</p></div>
+      <div class="actions"><button type="submit" class="btn" id="ajouter">Ajouter au livre</button></div>
+      <p class="aide">Une écriture enregistrée ne se modifie pas : pour la corriger, le livre ajoute une écriture inverse, puis vous saisissez la bonne.</p>
+      <p id="erreur-saisie" class="champ-erreur" role="alert"></p>
+      <p id="statut-saisie" class="aide" role="status"></p>
+    </div>
+  </form>
+
+  <div class="bloc plein parametres">
+    <h2 class="titre-form">Réglages</h2>
+    <div class="grille">
+    <div class="champ"><label for="f-annee">Année affichée</label><select id="f-annee" name="annee"><option value="2026">2026</option></select></div>
+    <div class="champ"><label for="f-activite">Votre activité</label><select id="f-activite" name="activite"><option value="bic_services">Prestations de services (BIC)</option><option value="bnc_ssi">Profession libérale non réglementée (BNC, SSI)</option><option value="bnc_cipav">Profession libérale réglementée (BNC, Cipav)</option><option value="vente">Vente de marchandises (BIC)</option></select></div>
+    <div class="champ"><label for="f-periodicite">Vous déclarez…</label><select id="f-periodicite" name="periodicite"><option value="mois">Chaque mois</option><option value="trimestre">Chaque trimestre</option></select></div>
+    </div>
+    <div class="champ coche"><label><input id="f-auto" name="auto" type="checkbox"> <span>Enregistrer automatiquement dans ce navigateur</span></label><p class="aide">Vos recettes sont gardées sur cet appareil à chaque ajout. Décochez pour que rien ne soit conservé.</p></div>
+    <div class="actions">
+      <button type="button" class="btn ghost petit" id="enregistrer">Enregistrer dans ce navigateur</button>
+      <button type="button" class="btn ghost petit" id="exporter-json">Exporter (JSON)</button>
+      <label class="btn ghost petit" for="importer">Importer (JSON)</label><input type="file" id="importer" accept="application/json,.json" class="sr-only">
+      <button type="button" class="btn ghost petit danger" id="effacer">Tout effacer</button>
+    </div>
+    <p class="aide" id="etat-stockage" role="status"></p>
+  </div>
+</div>
+
+<section class="resultat" aria-labelledby="titre-resultat">
+  <h2 id="titre-resultat">Votre livre</h2>
+  <div id="synthese"></div>
+  <div class="actions no-print"><button type="button" class="btn" id="csv">Exporter en CSV</button><button type="button" class="btn ghost" id="imprimer">Imprimer le livre</button></div>
+  <div id="tableau-zone"></div>
+</section>
+</div>
+
+<div class="prose aide-page">
+<h2>À quoi sert le livre des recettes ?</h2>
+<p>Un micro-entrepreneur doit enregistrer chronologiquement le montant et l’origine des recettes qu’il perçoit, en distinguant les règlements en espèces des autres règlements et en indiquant la référence des pièces justificatives. Il fait le total de ses recettes tous les 3 mois. Vous pouvez le tenir sur un cahier, avec un logiciel, ou sous forme électronique comme ici.</p>
+<h2>Questions fréquentes</h2>
+<h3>Pourquoi ne puis-je pas modifier une écriture ?</h3>
+<p>Une fois enregistrées, les écritures du livre ne peuvent pas être modifiées. Pour corriger une erreur, ajoutez une écriture inverse : l’outil le fait pour vous avec le bouton « Corriger », et conserve ainsi une trace claire.</p>
+<h3>Combien de temps garder le livre ?</h3>
+<p>10 ans à partir de la clôture de l’exercice comptable concerné, ainsi que les pièces justificatives. Le fait de ne pas tenir le livre n’est pas sanctionné, mais un faux ou l’usage d’un faux dans un registre l’est : jusqu’à 3 ans d’emprisonnement et 45 000 € d’amende.</p>
+<h3>Qu’est-ce que le « montant à déclarer » ?</h3>
+<p>C’est le chiffre d’affaires encaissé sur la période de déclaration (mois ou trimestre) : c’est la somme que vous déclarez à l’Urssaf avant la date limite indiquée. Voir le guide <a href="/guides/declarer-son-chiffre-d-affaires/">Déclarer son chiffre d’affaires</a>.</p>
+<h3>Faut-il aussi un registre des achats ?</h3>
+<p>Seulement si votre activité consiste à vendre des marchandises, des objets, des fournitures ou des denrées, ou à fournir un logement. Les prestataires de services en sont dispensés. Cet outil ne tient que le livre des recettes.</p>
+</div>
+<aside class="studio-cta no-print" aria-label="À propos de l’éditeur"><strong>Besoin d’un site pour votre activité ?</strong> Ce site est édité par StudioGLSC, studio web en Bretagne. <a href="https://studio.glsc.fr" rel="noopener">Découvrir StudioGLSC</a>.</aside>
+</div>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div><p class="footer-logo"><img src="/assets/favicon.svg" width="32" height="32" alt="">Compta by glsc</p><p>Outils gratuits pour les micro-entrepreneurs. Sans compte, sans publicité, sans cookie : vos chiffres restent dans votre navigateur.</p></div>
+      <div><h2>Le site</h2><ul><li><a href="/outils/">Outils</a></li><li><a href="/guides/">Guides</a></li><li><a href="/a-propos/">À propos</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+      <div><h2>Informations</h2><ul><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/confidentialite/">Confidentialité</a></li><li><a href="/cgu/">Conditions d’utilisation</a></li><li><a href="/sources/">Sources et mises à jour</a></li><li><a href="https://github.com/gabinlsc/compta" rel="noopener">Code source</a></li></ul></div>
+    </div>
+    <p class="small">Ces outils ne constituent ni un conseil juridique, ni un conseil fiscal, ni un conseil comptable. Édité par Gabin Lescoat (<a href="https://studio.glsc.fr" rel="noopener">StudioGLSC</a>).</p>
+  </div>
+</footer>
+<script type="application/json" id="regles-data">[{"id":"taux_vente","unite":"pourcent","valeur":12.3,"statut":"verifie"},{"id":"taux_bic_services","unite":"pourcent","valeur":21.2,"statut":"verifie"},{"id":"taux_bnc_ssi","unite":"pourcent","valeur":25.6,"statut":"verifie"},{"id":"taux_bnc_cipav","unite":"pourcent","valeur":23.2,"statut":"verifie"},{"id":"taux_vl_vente","unite":"pourcent","valeur":13.3,"statut":"verifie"},{"id":"taux_vl_bic_services","unite":"pourcent","valeur":22.9,"statut":"verifie"},{"id":"taux_vl_bnc_ssi","unite":"pourcent","valeur":27.8,"statut":"verifie"},{"id":"taux_vl_bnc_cipav","unite":"pourcent","valeur":25.4,"statut":"verifie"},{"id":"plafond_ca_vente","unite":"euro","valeur":203100,"statut":"verifie"},{"id":"plafond_ca_services","unite":"euro","valeur":83600,"statut":"verifie"},{"id":"tva_franchise_vente","unite":"euro","valeur":85000,"statut":"verifie"},{"id":"tva_majore_vente","unite":"euro","valeur":93500,"statut":"verifie"},{"id":"tva_franchise_services","unite":"euro","valeur":37500,"statut":"verifie"},{"id":"tva_majore_services","unite":"euro","valeur":41250,"statut":"verifie"},{"id":"abattement_vente","unite":"pourcent","valeur":71,"statut":"verifie"},{"id":"abattement_bic_services","unite":"pourcent","valeur":50,"statut":"verifie"},{"id":"abattement_bnc","unite":"pourcent","valeur":34,"statut":"verifie"},{"id":"mention_franchise_tva_cibs","unite":"texte","valeur":"TVA non applicable, art. L. 223 et s. du code des impositions sur les biens et services (CIBS)","statut":"verifie"},{"id":"mention_franchise_tva_cgi","unite":"texte","valeur":"TVA non applicable, art. 293 B du code général des impôts","statut":"verifie"},{"id":"mention_entrepreneur_individuel","unite":"texte","valeur":"Entrepreneur individuel (EI)","statut":"verifie"},{"id":"mention_siret_en_cours","unite":"texte","valeur":"Siret en cours d'attribution","statut":"verifie"},{"id":"mention_escompte_neant","unite":"texte","valeur":"Escompte pour paiement anticipé : néant","statut":"verifie"},{"id":"indemnite_recouvrement","unite":"euro","valeur":40,"statut":"verifie"},{"id":"penalite_taux_minimum","unite":"pourcent","valeur":8.25,"statut":"verifie"},{"id":"penalite_majoration_bce","unite":"points","valeur":10,"statut":"verifie"},{"id":"penalite_bce_2026_s1","unite":"pourcent","valeur":12.15,"statut":"verifie"},{"id":"penalite_bce_2026_s2","unite":"pourcent","valeur":12.4,"statut":"verifie"},{"id":"delai_paiement_max_jours","unite":"jours","valeur":60,"statut":"verifie"},{"id":"siren_client_obligatoire_micro","unite":"date","valeur":"2027-09-01","statut":"verifie"},{"id":"garantie_conformite_ans","unite":"ans","valeur":2,"statut":"verifie"},{"id":"mention_association_agreee","unite":"texte","valeur":"Membre d'une association agréée, le règlement par chèque et carte bancaire est accepté","statut":"verifie"},{"id":"acre_exoneration_micro","unite":"pourcent","valeur":25,"statut":"verifie"},{"id":"acre_debut_regime","unite":"date","valeur":"2026-07-01","statut":"verifie"},{"id":"acre_trimestres_suivants","unite":"trimestres","valeur":3,"statut":"verifie"},{"id":"acre_delai_demande_jours","unite":"jours","valeur":60,"statut":"verifie"},{"id":"vfl_rfr_seul","unite":"euro","valeur":29579,"statut":"verifie"},{"id":"vfl_rfr_couple","unite":"euro","valeur":59158,"statut":"verifie"},{"id":"vfl_rfr_couple_1_enfant","unite":"euro","valeur":73947.5,"statut":"verifie"},{"id":"vfl_rfr_couple_2_enfants","unite":"euro","valeur":88737,"statut":"verifie"},{"id":"abattement_minimum","unite":"euro","valeur":305,"statut":"verifie"},{"id":"decl_trimestre_1","unite":"jour_mois","valeur":"04-30","statut":"verifie"},{"id":"decl_trimestre_2","unite":"jour_mois","valeur":"07-31","statut":"verifie"},{"id":"decl_trimestre_3","unite":"jour_mois","valeur":"10-31","statut":"verifie"},{"id":"decl_trimestre_4","unite":"jour_mois","valeur":"01-31","statut":"verifie"},{"id":"decl_retour_mensuel_limite","unite":"jour_mois","valeur":"10-31","statut":"verifie"},{"id":"decl_penalite_euros","unite":"euro","valeur":60.1,"statut":"verifie"},{"id":"decl_majoration_mensuelle","unite":"pourcent","valeur":5,"statut":"verifie"},{"id":"decl_majoration_trimestrielle","unite":"pourcent","valeur":15,"statut":"verifie"},{"id":"cfe_paiement","unite":"jour_mois","valeur":"12-15","statut":"verifie"},{"id":"cfe_declaration_creation","unite":"jour_mois","valeur":"12-31","statut":"verifie"},{"id":"cfe_exoneration_ca_max","unite":"euro","valeur":5000,"statut":"verifie"},{"id":"cfe_reduction_deuxieme_annee","unite":"pourcent","valeur":50,"statut":"verifie"},{"id":"fe_reception_obligatoire","unite":"date","valeur":"2026-09-01","statut":"verifie"},{"id":"fe_emission_micro","unite":"date","valeur":"2027-09-01","statut":"verifie"},{"id":"vfl_option_limite","unite":"jour_mois","valeur":"09-30","statut":"verifie"},{"id":"decl_base_forfaitaire_vente_mensuelle","unite":"euro","valeur":7791.67,"statut":"verifie"},{"id":"decl_base_forfaitaire_services_mensuelle","unite":"euro","valeur":3125,"statut":"verifie"},{"id":"decl_base_forfaitaire_vente_trimestrielle","unite":"euro","valeur":23375,"statut":"verifie"},{"id":"decl_base_forfaitaire_services_trimestrielle","unite":"euro","valeur":10313,"statut":"verifie"},{"id":"livre_seuil_global_euros","unite":"euro","valeur":76,"statut":"verifie"},{"id":"livre_conservation_ans","unite":"ans","valeur":10,"statut":"verifie"},{"id":"livre_faux_prison_ans","unite":"ans","valeur":3,"statut":"verifie"},{"id":"livre_faux_amende_euros","unite":"euro","valeur":45000,"statut":"verifie"}]</script>
+<script src="/assets/app.js?v=cfc3cd7e" defer></script>
+<script type="module" src="/assets/js/outils/livre.js?v=4fe9bb99"></script>
+</body>
+</html>
