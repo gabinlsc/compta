@@ -31,5 +31,5 @@ export function serve({ csp = true } = {}) {
 }
 
 export const launch = () => chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined });
-export const PAGES = ['/', '/outils/', '/guides/', '/sources/', '/recherche/?q=facture', '/a-propos/', '/contact/', '/mentions-legales/', '/confidentialite/', '/cgu/', '/introuvable-test'];
+export const PAGES = ['/', '/outils/', '/outils/facture-auto-entrepreneur/', '/guides/', '/guides/mentions-obligatoires-facture/', '/sources/', '/recherche/?q=facture', '/a-propos/', '/contact/', '/mentions-legales/', '/confidentialite/', '/cgu/', '/introuvable-test'];
 export const ok = (m) => console.log('✓', m);

@@ -4,6 +4,7 @@ import { esc, dateFr, avertissement } from '../../tools/lib/layout.mjs';
 import { formaterValeur } from '../../tools/lib/regles.mjs';
 import { OUTILS } from './outils.mjs';
 import { GUIDES } from './guides.mjs';
+import { pageFacture, FAQ_FACTURE } from './outil-facture.mjs';
 
 const carte = (x, base) => `<article class="card"><h3>${x.pret ? `<a href="${base}${x.slug}/">${esc(x.titre)}</a>` : esc(x.titre)}</h3><p>${esc(x.resume)}</p>${x.pret ? '' : '<span class="tag">Bientôt</span>'}</article>`;
 const HOME = [['/', 'Accueil']];
@@ -31,6 +32,34 @@ export function pages(regles) {
     crumbs: [...HOME, ['/outils/', 'Outils']],
     body: `<h1>Outils pour micro-entrepreneur</h1><p class="lead">Chaque outil fonctionne dans votre navigateur, sans inscription.</p>${avertissement()}<div class="grid">${OUTILS.map((o) => carte(o, '/outils/')).join('')}</div>`,
   });
+
+  liste.push({
+    path: '/outils/facture-auto-entrepreneur/', title: 'Devis et facture auto-entrepreneur gratuits', outil: true,
+    description: 'Créez un devis, une facture, un acompte ou un avoir de micro-entrepreneur avec les mentions obligatoires, et enregistrez-le en PDF. Gratuit, sans compte.',
+    crumbs: [...HOME, ['/outils/', 'Outils'], ['/outils/facture-auto-entrepreneur/', 'Devis et factures']], modules: ['/assets/js/outils/facture.js'], studio: true,
+    jsonld: [
+      { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Devis et factures d’auto-entrepreneur', url: CFG.origin + '/outils/facture-auto-entrepreneur/', applicationCategory: 'BusinessApplication', operatingSystem: 'Web', inLanguage: 'fr', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' }, description: 'Générateur de devis, factures, acomptes, soldes et avoirs pour micro-entrepreneur, dans le navigateur.' },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ_FACTURE.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
+    ],
+    body: pageFacture(),
+  });
+
+  for (const g of GUIDES.filter((x) => x.pret)) {
+    const url = `${CFG.origin}/guides/${g.slug}/`;
+    liste.push({
+      path: `/guides/${g.slug}/`, title: g.titreLong ?? g.titre, description: g.description, studio: true,
+      crumbs: [...HOME, ['/guides/', 'Guides'], [`/guides/${g.slug}/`, g.titre]],
+      jsonld: [
+        { '@context': 'https://schema.org', '@type': 'Article', headline: g.titreLong ?? g.titre, description: g.description, inLanguage: 'fr', datePublished: g.publie, dateModified: g.miseAJour, mainEntityOfPage: url,
+          author: { '@type': 'Person', name: CFG.editeur }, publisher: { '@type': 'Organization', name: CFG.nom, url: CFG.origin + '/' } },
+        { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: g.faq.map(([q, r]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: r } })) },
+      ],
+      body: `<article class="prose guide"><p class="eyebrow">Guide · mis à jour le ${dateFr(g.miseAJour)}</p><h1>${esc(g.titreLong ?? g.titre)}</h1>${g.corps}
+<h2>Sources</h2><ul class="sources">${g.sources.map(([t, u]) => `<li><a href="${esc(u)}" rel="noopener">${esc(t)}</a></li>`).join('')}</ul>
+<p class="aide">Page rédigée le ${dateFr(g.publie)}, mise à jour le ${dateFr(g.miseAJour)}. Les chiffres viennent de la page <a href="/sources/">Sources</a>. Ce guide ne remplace pas l’avis d’un expert-comptable.</p>
+${g.outil ? `<p class="actions"><a class="btn" href="${g.outil[0]}">Ouvrir l’outil : ${esc(g.outil[1])}</a></p>` : ''}</article>`,
+    });
+  }
 
   liste.push({
     path: '/guides/', title: 'Guides pour micro-entrepreneur', description: 'Créer sa micro-entreprise, mentions obligatoires d’une facture, facturation électronique, déclarations, TVA : des guides clairs et sourcés.',

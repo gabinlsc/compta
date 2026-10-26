@@ -14,7 +14,7 @@ npm run build        # génère public/ à partir de src/, data/ et tools/
 npm run check        # build + vérification que public/ est à jour + liens, SEO, poids
 npm run test:unit    # tests unitaires (node:test)
 npx playwright install chromium   # une fois
-npm test             # unitaires + parcours, CSP, accessibilité
+npm test             # unitaires (dont tests croisés avec la logique PHP) + parcours, outil, CSP, accessibilité
 ```
 
 `public/` est généré **et commité** : après toute modification de `src/`, `data/` ou `tools/`, lancer `npm run build`.
@@ -51,3 +51,7 @@ Voir [`docs/mise-a-jour-annuelle.md`](docs/mise-a-jour-annuelle.md) et [`docs/a-
 ## Licence
 
 MIT. Polices Inter : SIL Open Font License (`src/assets/fonts/LICENSE-Inter-OFL.txt`).
+
+## Tests croisés avec la logique PHP
+
+`tests/fixtures/php-billing.json` contient les sorties de `admin/lib/billing.php` (dépôt portfolio) pour 412 lignes, 74 montants et 308 identifiants ; les tests comparent le JavaScript à ces valeurs. Pour régénérer : `node tools/gen-fixtures-php.mjs /chemin/vers/portfolio/admin/lib/billing.php` (nécessite PHP).

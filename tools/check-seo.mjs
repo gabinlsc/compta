@@ -31,10 +31,16 @@ for (const page of pagesHtml()) {
   if (!/property="og:image"/.test(src)) fail(page, 'og:image absente');
   for (const m of src.matchAll(/<img\b[^>]*>/g)) if (!/\salt="/.test(m[0])) fail(page, `image sans alt : ${m[0].slice(0, 60)}`);
   for (const m of src.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) { try { JSON.parse(m[1]); } catch (e) { fail(page, `JSON-LD invalide : ${e.message}`); } }
+  if (/\{\{\w+\}\}/.test(src)) fail(page, 'jeton {{…}} non remplacé');
+  if (/^\/guides\/[^/]+\/$/.test(rel)) { // un guide fait entre 700 et 1 400 mots et cite ses sources
+    const mots = (/<article[\s\S]*<\/article>/.exec(src)?.[0] ?? '').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+    if (mots < 700 || mots > 1400) fail(page, `guide de ${mots} mots (700 à 1 400 attendus)`);
+    if (!/<ul class="sources">/.test(src) || !/application\/ld\+json[^<]*Article/.test(src.replace(/\s+/g, ' ') ) && !/"@type":"Article"/.test(src)) fail(page, 'sources ou données structurées Article absentes');
+  }
   const ids = [...src.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
   const dup = ids.filter((x, i) => ids.indexOf(x) !== i);
   if (dup.length) fail(page, `identifiants en double : ${[...new Set(dup)].join(', ')}`);
-  if (/\sstyle="|<style[\s>]|\son\w+="|<script(?![^>]*\bsrc=)(?![^>]*ld\+json)/.test(src)) fail(page, 'style ou script en ligne (interdit par la CSP)');
+  if (/\sstyle="|<style[\s>]|\son\w+="|<script(?![^>]*\bsrc=)(?![^>]*ld\+json)(?![^>]*application\/json)/.test(src)) fail(page, 'style ou script en ligne (interdit par la CSP)');
 }
 const plan = [...readFileSync(join(PUBLIC, 'sitemap.xml'), 'utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 for (const c of canoniques) if (!plan.includes(c)) { errors++; console.error(`✗ sitemap.xml : ${c} absente`); }
