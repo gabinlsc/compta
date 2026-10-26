@@ -1,7 +1,7 @@
 // Tarif journalier (TJM) et horaire : le chiffre d'affaires à réaliser pour obtenir le revenu net visé, après cotisations (et impôt libératoire), frais et jours non facturés.
 // Taux de cotisations, Acre et plafonds viennent de data/regles.json. Les hypothèses de temps de travail (congés, jours non facturés…) sont saisies par l'utilisateur : ce ne sont pas des règles.
-import { parseMontant } from './money.js?v=4fe9bb99';
-import { ACTIVITES, simuler, formaterBp } from './simulateur.js?v=4fe9bb99';
+import { parseMontant } from './money.js?v=0a2b4039';
+import { ACTIVITES, simuler, formaterBp } from './simulateur.js?v=0a2b4039';
 
 const entier = (t, min, max) => (/^\d{1,3}$/.test(String(t ?? '').trim()) && Number(t) >= min && Number(t) <= max ? Number(t) : null);
 const decimal = (t, min, max) => { const s = String(t ?? '').trim().replace(',', '.'); return /^\d+(\.\d{1,2})?$/.test(s) && Number(s) >= min && Number(s) <= max ? Number(s) : null; };

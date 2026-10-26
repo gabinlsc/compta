@@ -9,6 +9,9 @@ import { pageSimulateur, FAQ_SIMULATEUR } from './outil-simulateur.mjs';
 import { pageCalendrier, FAQ_CALENDRIER } from './outil-calendrier.mjs';
 import { pageTjm, FAQ_TJM } from './outil-tjm.mjs';
 import { pageLivre, FAQ_LIVRE } from './outil-livre.mjs';
+import { pageRegistre, FAQ_REGISTRE } from './outil-registre.mjs';
+import { pageMentionsSite, FAQ_MENTIONS } from './outil-mentions-site.mjs';
+import { pageStatuts, FAQ_STATUTS } from './outil-statuts.mjs';
 import { blocLiens } from './liens.mjs';
 
 const carte = (x, base) => `<article class="card"><h3>${x.pret ? `<a href="${base}${x.slug}/">${esc(x.titre)}</a>` : esc(x.titre)}</h3><p>${esc(x.resume)}</p>${x.pret ? '' : '<span class="tag">Bientôt</span>'}</article>`;
@@ -95,6 +98,17 @@ export function pages(regles) {
     ],
     body: pageLivre(),
   });
+
+  const outilSimple = (slug, titre, titreCourt, description, body, faqListe, modules, categorie = 'BusinessApplication') => ({
+    path: `/outils/${slug}/`, title: titre, outil: modules.length > 0, description, crumbs: [...HOME, ['/outils/', 'Outils'], [`/outils/${slug}/`, titreCourt]], modules, studio: true, body,
+    jsonld: [
+      { '@context': 'https://schema.org', '@type': modules.length ? 'WebApplication' : 'WebPage', name: titre, url: `${CFG.origin}/outils/${slug}/`, inLanguage: 'fr', ...(modules.length ? { applicationCategory: categorie, operatingSystem: 'Web', isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' } } : {}), description },
+      { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faq(faqListe) },
+    ],
+  });
+  liste.push(outilSimple('registre-rgpd', 'Registre RGPD simplifié pour micro-entrepreneur', 'Registre RGPD', 'Remplissez le registre des traitements de données personnelles de votre micro-entreprise à partir de modèles courants, et imprimez-le. Gratuit, sans compte.', pageRegistre(), FAQ_REGISTRE, ['/assets/js/outils/registre.js']));
+  liste.push(outilSimple('mentions-legales-site', 'Mentions légales et confidentialité de votre site', 'Mentions légales de site', 'Générez les mentions légales et la politique de confidentialité du site d’un entrepreneur individuel à partir de vos réponses, prêtes à copier. Gratuit, sans compte.', pageMentionsSite(), FAQ_MENTIONS, ['/assets/js/outils/mentions-site.js']));
+  liste.push(outilSimple('comparateur-statuts', 'Micro-entreprise, EURL ou SASU : le comparatif', 'Comparateur de statuts', 'Comparatif qualitatif de la micro-entreprise, de l’EURL et de la SASU : démarches, capital, responsabilité, impôt, protection sociale et comptabilité.', pageStatuts(), FAQ_STATUTS, []));
 
   for (const g of GUIDES.filter((x) => x.pret)) {
     const url = `${CFG.origin}/guides/${g.slug}/`;

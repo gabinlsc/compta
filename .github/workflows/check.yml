@@ -45,5 +45,6 @@ jobs:
       - run: node tests/outil-calendrier.mjs
       - run: node tests/outil-tjm.mjs
       - run: node tests/outil-livre.mjs
+      - run: node tests/outil-v2.mjs
       - run: node tests/csp.mjs
       - run: node tests/a11y.mjs

@@ -1,6 +1,6 @@
 # Compta by glsc
 
-La boîte à outils gratuite du micro-entrepreneur français : devis et factures, simulateur de revenu net, calendrier des échéances, tarif journalier, livre des recettes.
+La boîte à outils gratuite du micro-entrepreneur français : devis et factures, simulateur de revenu net, calendrier des échéances, tarif journalier, livre des recettes, registre RGPD, mentions légales de site et comparatif qualitatif des statuts.
 
 - **Sans compte, sans publicité, sans cookie, sans traceur, sans service tiers.** Tout se calcule dans le navigateur ; rien de ce que l'on saisit n'est envoyé.
 - **Chiffres sourcés.** Tout taux, plafond ou date réglementaire vient de `data/regles.json`, avec sa source officielle et sa date de vérification. Un chiffre non vérifié n'est pas publié.

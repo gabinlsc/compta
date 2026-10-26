@@ -1,9 +1,9 @@
 // Outil « Devis et factures » : relie le formulaire à src/assets/js/lib/facture.js et dessine l'aperçu.
 // Règles de sécurité : jamais d'innerHTML ; tout texte saisi passe par textContent ; aucune requête réseau ; rien n'est stocké sans clic sur « Enregistrer ».
-import { creerRegles, analyser, docVide, ligneVide, proposerNumero, TYPES } from '../lib/facture.js?v=4fe9bb99';
-import { nettoyerDoc, nettoyerEtat, exporterEtat, importerEtat, CLE } from '../lib/etat.js?v=4fe9bb99';
-import { formaterEuros, formaterQuantite } from '../lib/money.js?v=4fe9bb99';
-import { dateLongue, aujourdhui } from '../lib/dates.js?v=4fe9bb99';
+import { creerRegles, analyser, docVide, ligneVide, proposerNumero, TYPES } from '../lib/facture.js?v=0a2b4039';
+import { nettoyerDoc, nettoyerEtat, exporterEtat, importerEtat, CLE } from '../lib/etat.js?v=0a2b4039';
+import { formaterEuros, formaterQuantite } from '../lib/money.js?v=0a2b4039';
+import { dateLongue, aujourdhui } from '../lib/dates.js?v=0a2b4039';
 
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];

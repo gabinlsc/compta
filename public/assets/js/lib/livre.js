@@ -1,8 +1,8 @@
 // Livre des recettes : écritures chronologiques non modifiables (on corrige par une écriture inverse), totaux par mois et par période de déclaration, jauge de plafond, export CSV.
 // Règles : service-public.gouv.fr F23266 et F36018 (voir data/regles.json). Les montants sont en centimes entiers.
-import { parseMontant, formaterEuros } from './money.js?v=4fe9bb99';
-import { dateIsoValide, dernierJourDuMois, MOIS_FR } from './dates.js?v=4fe9bb99';
-import { alertesSeuils } from './simulateur.js?v=4fe9bb99';
+import { parseMontant, formaterEuros } from './money.js?v=0a2b4039';
+import { dateIsoValide, dernierJourDuMois, MOIS_FR } from './dates.js?v=0a2b4039';
+import { alertesSeuils } from './simulateur.js?v=0a2b4039';
 
 export const FORMAT = 'compta-by-glsc-livre-1';
 export const CLE = 'compta:livre:v1';
